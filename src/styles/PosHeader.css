@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.divpremain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor5);
+  padding: 0 0 10px 0;
+}
+
+.premain {
+  display: flex;
+  flex-direction: column;
+  padding: 140px 20px 200px 150px;
+  margin: 0 0 100px 0;
+  background-color: var(--cor5);
+  color: var(--cor3);
+  text-align: left;
+}
+
+.img-im {
+  display: block;
+  max-width: 150px;
+  height: auto;
+}
+
+.Iam {
+  position: relative;
+  display: inline-block;
+}
+
+.p-im {
+  position: absolute;
+  top: 50%;
+  left: 41%;
+  transform: translate(-35%, -100%);
+  margin: 0;
+  color: var(--cor5);
+  pointer-events: none;
+}
+
+.titulo-container {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.titulo-premain {
+  font-size: 60px;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.p-premain {
+  display: flex;
+  font-size: 19.2px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.div-btn {
+    background-color: var(--cor5);
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 20px 0px;
+    padding-left: 0px;
+}
+
+.btn {
+  background-color: var(--cor4);
+  box-shadow: var(--cor1) 0px 0px 10px;
+  color: var(--cor3);
+  padding: 20px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn2 {
+  background-color: var(--cor5);
+  color: var(--cor3);
+  padding: 20px 20px;
+  box-shadow: var(--cor1) 0px 0px 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--cor5);
+  box-shadow: var(--cor1) 0px 0px 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn2:hover {
+  background-color: var(--cor4);
+  box-shadow: var(--cor4) 0px 0px 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn2:active {
+  transform: translateY(1px);
+}
+
+.img-premain {
+  display: flex;
+  align-items: center;
+  translate: -30% 0%;
+  z-index: 0;
+}
+
+.img-premain img {
+  width: 700px;
+}

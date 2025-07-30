@@ -1,0 +1,36 @@
+/* src/styles/Scrollbar.css */
+
+/* Estilo geral da scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Mais fina para um visual minimalista */
+  height: 8px; /* Altura da scrollbar horizontal, também mais fina */
+}
+
+/* Fundo da trilha da scrollbar */
+::-webkit-scrollbar-track {
+  background: var(--cor5); /* Preto do projeto para o fundo (pode ser #222 ou rgba(0,0,0,0.1) para mais leveza) */
+  border-radius: 10px; /* Mantém as bordas arredondadas */
+}
+
+/* "Polegar" da scrollbar (a parte que você arrasta) */
+::-webkit-scrollbar-thumb {
+  background: var(--cor2); /* Cinza escuro do projeto para o polegar, mais discreto */
+  border-radius: 10px; /* Mantém as bordas arredondadas */
+  border: 2px solid var(--cor5); /* Borda fina para separar do fundo, usando o preto */
+}
+
+/* "Polegar" da scrollbar ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor4); /* Laranja primário do projeto ao passar o mouse para um destaque suave */
+}
+
+/* Opcional: Estiliza o canto onde as scrollbars horizontal e vertical se encontram */
+/* Você pode remover esta regra se quiser um visual ainda mais limpo */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Transparente para não adicionar elementos visuais */
+}
+
+* {
+  scrollbar-width: thin; /* 'auto' ou 'thin' para minimalismo */
+  scrollbar-color: var(--cor2) var(--cor5); /* thumb color (cinza escuro) / track color (preto) */
+}

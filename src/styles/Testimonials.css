@@ -1,0 +1,67 @@
+.testimonials-section {
+  background-color: var(--cor5);
+  padding: 0px 150px;
+  text-align: center;
+}
+
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha em telas menores */
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: linear-gradient(145deg, #1e1e1e, #111111);
+  border: 1px solid var(--cor2);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(255, 77, 5, 0.2);
+}
+
+.testimonial-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--cor1);
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.testimonial-quote {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 20px;
+  font-style: italic;
+  flex-grow: 1; /* Faz a citação ocupar o espaço disponível, alinhando os nomes */
+}
+
+.testimonial-author h4 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--cor3);
+}
+
+.testimonial-author span {
+  font-size: 0.9em;
+  color: var(--cor1);
+}
+
+/* Deixa a seção responsiva em telas menores */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 60px 30px;
+  }
+}
