@@ -148,3 +148,19 @@ html {
   object-fit: cover;
   display: block;
 }
+
+.content-wrapper {
+  /* Adiciona um padding à esquerda igual à largura da sidebar retraída */
+  padding-left: var(--sidebar-width-retraido);
+  transition: padding-left var(--transicao-suave);
+}
+
+.sidebar.expanded ~ .content-wrapper {
+  /* Adiciona um padding à esquerda igual à largura da sidebar expandida */
+  padding-left: var(--sidebar-width-expandido);
+}
+
+/* Adicione um ID para a sua tag de header no App.jsx para que o scroll funcione corretamente */
+#inicio {
+  /* Garante que o scroll para o início funcione bem */
+}

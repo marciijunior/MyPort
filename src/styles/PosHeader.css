@@ -5,13 +5,13 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--cor5);
-  padding: 0 0 10px 0;
+  padding: 0 120px 10px 280px;
 }
 
 .premain {
   display: flex;
   flex-direction: column;
-  padding: 140px 20px 200px 150px;
+  padding: 140px 0px 200px 0px;
   margin: 0 0 100px 0;
   background-color: var(--cor5);
   color: var(--cor3);
@@ -124,10 +124,10 @@
 .img-premain {
   display: flex;
   align-items: center;
-  translate: -30% 0%;
+  translate: 0% 0%;
   z-index: 0;
 }
 
 .img-premain img {
-  width: 700px;
+  width: 750px;
 }

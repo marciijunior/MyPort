@@ -20,7 +20,7 @@ body {
 header {
   background: linear-gradient(to left, #000000 50.125%, #ff4d05 100%);
   margin: 0 0 0px 0;
-  padding: 10px 150px 10px 0px;
+  padding: 10px 0px 10px 0px;
   text-align: center;
 }
 
@@ -40,10 +40,10 @@ header {
 .links {
   background-color: var(--cor5);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
-  padding-bottom: 40px;
+  padding: 40px;
 }
 
 .link-list {
@@ -58,8 +58,8 @@ header {
 .linkedin img,
 .whatsapp img {
   gap: 20px;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: auto;
   transition: transform 0.3s ease;
 }
 

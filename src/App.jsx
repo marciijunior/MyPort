@@ -1,5 +1,6 @@
 // App.jsx
 import React, { useState, useEffect, useRef } from "react";
+import Sidebar from "./components/Sidebar"; // Importa o novo componente
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
 import "./styles/Main.css";
@@ -8,6 +9,7 @@ import "./styles/ScrollReveal.css";
 import "./styles/Main2.css";
 import "./styles/Modal.css";
 import "./styles/Testimonials.css";
+import "./styles/Sidebar.css"; // Importa o CSS da sidebar
 import ScrollReveal from "scrollreveal";
 
 import ExpandedContent from "./ExpandedContent";
@@ -26,7 +28,47 @@ export default function App() {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // O bloco de código do modal foi removido daqui.
+  // --- LÓGICA DA SIDEBAR ---
+  const [activeSection, setActiveSection] = useState("inicio");
+
+  const sectionRefs = {
+    inicio: useRef(null),
+    servicos: useRef(null),
+    portfolio: useRef(null),
+    avaliacoes: useRef(null),
+  };
+
+  const handleNavigate = (id) => {
+    sectionRefs[id].current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  useEffect(() => {
+    const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    const refs = Object.values(sectionRefs);
+    refs.forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+    return () => {
+      refs.forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+    };
+  }, []);
+  // --- FIM DA LÓGICA DA SIDEBAR ---
 
   const testimonialsData = [
     {
@@ -58,6 +100,7 @@ export default function App() {
     });
   }, []);
 
+  // ... Suas refs do ScrollReveal ...
   const headerRef = useScrollReveal({
     origin: "left",
     distance: "100px",
@@ -130,7 +173,6 @@ export default function App() {
     delay: 100,
     reset: true,
   });
-
   const tituloPrimeiroMainRef = useScrollReveal({
     origin: "left",
     distance: "100px",
@@ -179,7 +221,6 @@ export default function App() {
     delay: 200,
     reset: true,
   });
-
   const imgPremainRef = useScrollReveal({
     origin: "top",
     distance: "0px",
@@ -188,267 +229,281 @@ export default function App() {
     delay: 100,
     reset: true,
   });
-  const premainRef = useRef(null);
 
   return (
-    <div>
-      <header ref={headerRef}>
-        <div className="header-content">
-          <nav className="links" aria-label="Navegação principal do site">
-            <ul className="link-list">
-              <li className="link-sobremim">
-                <a href="#sobre">Sobre Mim</a>
-              </li>
-              <li>
-                <a href="#projetos">Meus Projetos</a>
-              </li>
-              <li>
-                <a href="#contato">Contato</a>
-              </li>
-              <li>
-                <a href="#blog">Blog</a>
-              </li>
-              <li>
-                <a href="#curriculo">Currículo</a>
-              </li>
-            </ul>
-            <ul className="links-redes">
-              <li className="insta">
-                <a href="#" aria-label="Instagram">
-                  <img src="/insta.png" alt="Instagram logo"></img>
-                </a>
-              </li>
-              <li className="git">
-                <a href="#" aria-label="Github">
-                  <img src="/git.png" alt="Github logo"></img>
-                </a>
-              </li>
-              <li className="linkedin">
-                <a href="#" aria-label="LinkedIn">
-                  <img src="/linkedin.png" alt="LinkedIn logo"></img>
-                </a>
-              </li>
-              <li className="whatsapp">
-                <a href="#" aria-label="WhatsApp">
-                  <img src="/whatsapp.png" alt="WhatsApp logo"></img>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div className="divpremain" ref={premainRef}>
-          <div className="premain">
-            <div>
-              <div className="Iam" ref={euSouRef}>
-                <img className="img-im" src="/img-im.png" alt="I am" />
-                <p className="p-im">Olá, eu sou</p>
+    <div className="app-container">
+      <Sidebar onNavigate={handleNavigate} activeSection={activeSection} />
+
+      <div className="content-wrapper">
+        <header id="inicio" ref={sectionRefs.inicio}>
+          <div className="header-content">
+            <nav className="links" aria-label="Navegação principal do site">
+              <ul className="links-redes" ref={headerRef}>
+                <li className="insta">
+                  {" "}
+                  <a href="#" aria-label="Instagram">
+                    {" "}
+                    <img src="/insta.png" alt="Instagram logo"></img>{" "}
+                  </a>{" "}
+                </li>
+                <li className="git">
+                  {" "}
+                  <a href="#" aria-label="Github">
+                    {" "}
+                    <img src="/git.png" alt="Github logo"></img>{" "}
+                  </a>{" "}
+                </li>
+                <li className="linkedin">
+                  {" "}
+                  <a href="#" aria-label="LinkedIn">
+                    {" "}
+                    <img src="/linkedin.png" alt="LinkedIn logo"></img>{" "}
+                  </a>{" "}
+                </li>
+                <li className="whatsapp">
+                  {" "}
+                  <a href="#" aria-label="WhatsApp">
+                    {" "}
+                    <img src="/whatsapp.png" alt="WhatsApp logo"></img>{" "}
+                  </a>{" "}
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className="divpremain">
+            <div className="premain">
+              <div>
+                <div className="Iam" ref={euSouRef}>
+                  <img className="img-im" src="/img-im.png" alt="I am" />
+                  <p className="p-im">Olá, eu sou</p>
+                </div>
+                <h1 className="titulo-premain" ref={tituloPreMainRef}>
+                  Marcio Junior
+                </h1>
+                <p className="p-premain" ref={textoPreMainRef}>
+                  O Web desenvolvedor e designer de UI/UX.
+                </p>
               </div>
-              <h1 className="titulo-premain" ref={tituloPreMainRef}>
-                Marcio Junior
-              </h1>
-              <p className="p-premain" ref={textoPreMainRef}>
-                O Web desenvolvedor e designer de UI/UX.
+              <div className="div-btn">
+                <button className="btn">Download CV</button>
+                <button className="btn2">My Work</button>
+              </div>
+            </div>
+            <div className="img-premain">
+              <img
+                src="/img-premain.png"
+                alt="Imagem principal do site"
+                ref={imgPremainRef}
+              />
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <section className="dots-column-section" ref={dotsColumn1Ref}>
+            <div className="dots-container">
+              {" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+            </div>
+          </section>
+
+          <div
+            id="servicos"
+            ref={sectionRefs.servicos}
+            className="container-primeiro-main"
+          >
+            <div className="interligacao">
+              <h2 className="titulo-interligacao" ref={tituloPrimeiroMainRef}>
+                {" "}
+                Nossos serviços{" "}
+              </h2>
+              <p className="texto-interligacao" ref={textoPrimeiroMainRef}>
+                {" "}
+                A interligação entre o design e a programação é essencial para
+                criar experiências digitais coesas e funcionais.{" "}
               </p>
             </div>
-            <div className="div-btn">
-              <button className="btn">Download CV</button>
-              <button className="btn2">My Work</button>
-            </div>
-          </div>
-          <div className="img-premain">
-            <img
-              src="/img-premain.png"
-              alt="Imagem principal do site"
-              ref={imgPremainRef}
-            />
-          </div>
-        </div>
-      </header>
-
-      <main>
-        <section className="dots-column-section" ref={dotsColumn1Ref}>
-          <div className="dots-container">
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-          </div>
-        </section>
-
-        <div className="container-primeiro-main">
-          <div className="interligacao">
-            <h2 className="titulo-interligacao" ref={tituloPrimeiroMainRef}>
-              Nossos serviços
-            </h2>
-            <p className="texto-interligacao" ref={textoPrimeiroMainRef}>
-              A interligação entre o design e a programação é essencial para
-              criar experiências digitais coesas e funcionais.
-            </p>
-          </div>
-          <div className="servicos-container">
-            <div className="primeiro-main" ref={mainImageRef}></div>
-            <div className="texto-primeiro-main" ref={mainTextRef}>
-              <div className="btn-linha1">
-                {botoesData.map((botao) => (
-                  <button
-                    key={botao.id}
-                    ref={(el) => (buttonRefs.current[botao.id] = el)}
-                    className={`${botao.className} ${
-                      expandedButtonId && expandedButtonId !== botao.id
-                        ? "hidden-button"
-                        : ""
-                    }`}
-                    onClick={() => handleButtonClick(botao.id)}
-                    style={{
-                      visibility:
-                        expandedButtonId === botao.id ? "hidden" : "visible",
-                      opacity: expandedButtonId === botao.id ? 0 : 1,
-                      pointerEvents:
-                        expandedButtonId === botao.id ? "none" : "auto",
-                    }}
-                  >
-                    <span className="img-card">
-                      <img src={botao.imageSrc} alt={botao.label} />
-                    </span>
-                    {botao.label}
-                  </button>
-                ))}
-                <div
-                  className={`expanding-overlay ${
-                    expandedButtonId ? "expanded" : ""
-                  }`}
-                  style={{
-                    transformOrigin: expandedOrigin,
-                  }}
-                >
-                  <ExpandedContent buttonId={expandedButtonId} />
-                  {expandedButtonId && (
-                    <span
-                      className="close-expanded-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpandedButtonId(null);
+            <div className="servicos-container">
+              <div className="primeiro-main" ref={mainImageRef}></div>
+              <div className="texto-primeiro-main" ref={mainTextRef}>
+                <div className="btn-linha1">
+                  {botoesData.map((botao) => (
+                    <button
+                      key={botao.id}
+                      ref={(el) => (buttonRefs.current[botao.id] = el)}
+                      className={`${botao.className} ${
+                        expandedButtonId && expandedButtonId !== botao.id
+                          ? "hidden-button"
+                          : ""
+                      }`}
+                      onClick={() => handleButtonClick(botao.id)}
+                      style={{
+                        visibility:
+                          expandedButtonId === botao.id ? "hidden" : "visible",
+                        opacity: expandedButtonId === botao.id ? 0 : 1,
+                        pointerEvents:
+                          expandedButtonId === botao.id ? "none" : "auto",
                       }}
                     >
-                      X
-                    </span>
-                  )}
+                      {" "}
+                      <span className="img-card">
+                        {" "}
+                        <img src={botao.imageSrc} alt={botao.label} />{" "}
+                      </span>{" "}
+                      {botao.label}{" "}
+                    </button>
+                  ))}
+                  <div
+                    className={`expanding-overlay ${
+                      expandedButtonId ? "expanded" : ""
+                    }`}
+                    style={{ transformOrigin: expandedOrigin }}
+                  >
+                    <ExpandedContent buttonId={expandedButtonId} />
+                    {expandedButtonId && (
+                      <span
+                        className="close-expanded-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedButtonId(null);
+                        }}
+                      >
+                        {" "}
+                        X{" "}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="container-segundo-main">
-          <div className="interligacao-segundo-main">
-            <h2
-              className="titulo-interligacao-segundo-main"
-              ref={tituloSegundoMainRef}
-            >
-              Portifólio
-            </h2>
-            <p
-              className="texto-interligacao-segundo-main"
-              ref={textoSegundoMainRef}
-            >
-              Trabalhos realizados em minha carreira
-            </p>
-          </div>
-          <div className="container-sites" ref={containerSitesRef}>
-            <div
-              className="portfolio-image-wrapper"
-              onClick={() => setSelectedImage("./site1.png")}
-            >
-              <img
-                src="./site1.png"
-                className="img-site1 portfolio-thumbnail"
-              ></img>
+          <div
+            id="portfolio"
+            ref={sectionRefs.portfolio}
+            className="container-segundo-main"
+          >
+            <div className="interligacao-segundo-main">
+              <h2
+                className="titulo-interligacao-segundo-main"
+                ref={tituloSegundoMainRef}
+              >
+                {" "}
+                Portifólio{" "}
+              </h2>
+              <p
+                className="texto-interligacao-segundo-main"
+                ref={textoSegundoMainRef}
+              >
+                {" "}
+                Trabalhos realizados em minha carreira{" "}
+              </p>
             </div>
-            <div
-              className="portfolio-image-wrapper"
-              onClick={() => setSelectedImage("./site2.png")}
-            >
-              <img
-                src="./site2.png"
-                className="img-site2 portfolio-thumbnail"
-              ></img>
-            </div>
-            <div
-              className="portfolio-image-wrapper"
-              onClick={() => setSelectedImage("./site3.png")}
-            >
-              <img
-                src="./site3.png"
-                className="img-site3 portfolio-thumbnail"
-              ></img>
-            </div>
-            <div
-              className="portfolio-image-wrapper"
-              onClick={() => setSelectedImage("./site4.png")}
-            >
-              <img
-                src="./site4.png"
-                className="img-site4 portfolio-thumbnail"
-              ></img>
-            </div>
-          </div>
-        </div>
-
-        <section className="dots-column-section" ref={dotsColumn2Ref}>
-          <div className="dots-container">
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-          </div>
-        </section>
-
-        <div className="testimonials-section" ref={testimonialsRef}>
-          <div className="interligacao-segundo-main">
-            <h2 className="titulo-interligacao-segundo-main">Avaliações</h2>
-          </div>
-          <div className="testimonials-container">
-            {testimonialsData.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
+            <div className="container-sites" ref={containerSitesRef}>
+              <div
+                className="portfolio-image-wrapper"
+                onClick={() => setSelectedImage("./site1.png")}
+              >
+                {" "}
                 <img
-                  src={testimonial.avatar}
-                  alt={`Avatar de ${testimonial.name}`}
-                  className="testimonial-avatar"
-                />
-                <p className="testimonial-quote">"{testimonial.quote}"</p>
-                <div className="testimonial-author">
-                  <h4>{testimonial.name}</h4>
-                  <span>{testimonial.role}</span>
-                </div>
+                  src="./site1.png"
+                  className="img-site1 portfolio-thumbnail"
+                ></img>{" "}
               </div>
-            ))}
+              <div
+                className="portfolio-image-wrapper"
+                onClick={() => setSelectedImage("./site2.png")}
+              >
+                {" "}
+                <img
+                  src="./site2.png"
+                  className="img-site2 portfolio-thumbnail"
+                ></img>{" "}
+              </div>
+              <div
+                className="portfolio-image-wrapper"
+                onClick={() => setSelectedImage("./site3.png")}
+              >
+                {" "}
+                <img
+                  src="./site3.png"
+                  className="img-site3 portfolio-thumbnail"
+                ></img>{" "}
+              </div>
+              <div
+                className="portfolio-image-wrapper"
+                onClick={() => setSelectedImage("./site4.png")}
+              >
+                {" "}
+                <img
+                  src="./site4.png"
+                  className="img-site4 portfolio-thumbnail"
+                ></img>{" "}
+              </div>
+            </div>
           </div>
-        </div>
-      </main>
 
-      <footer ref={footerRef}>
-        <p>© 2025 - Desenvolvido com React Three Fiber</p>
-      </footer>
+          <section className="dots-column-section" ref={dotsColumn2Ref}>
+            <div className="dots-container">
+              {" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+              <div className="dot"></div> <div className="dot"></div>{" "}
+            </div>
+          </section>
 
-      {/* Corrigido: O código do modal foi movido para dentro do return */}
-      {selectedImage && (
-        <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
-          <span className="modal-close" onClick={() => setSelectedImage(null)}>
-            X
-          </span>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={selectedImage}
-              alt="Visualização do site"
-              className="modal-img"
-            />
+          <div
+            id="avaliacoes"
+            ref={sectionRefs.avaliacoes}
+            className="testimonials-section"
+          >
+            <div className="interligacao-segundo-main">
+              <h2 className="titulo-interligacao-segundo-main">Avaliações</h2>
+            </div>
+            <div className="testimonials-container" ref={testimonialsRef}>
+              {testimonialsData.map((testimonial, index) => (
+                <div key={index} className="testimonial-card">
+                  <img
+                    src={testimonial.avatar}
+                    alt={`Avatar de ${testimonial.name}`}
+                    className="testimonial-avatar"
+                  />
+                  <p className="testimonial-quote">"{testimonial.quote}"</p>
+                  <div className="testimonial-author">
+                    {" "}
+                    <h4>{testimonial.name}</h4> <span>{testimonial.role}</span>{" "}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        </main>
+
+        <footer ref={footerRef}>
+          <p>© 2025 - Desenvolvido com React Three Fiber</p>
+        </footer>
+
+        {selectedImage && (
+          <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+            <span
+              className="modal-close"
+              onClick={() => setSelectedImage(null)}
+            >
+              {" "}
+              X{" "}
+            </span>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={selectedImage}
+                alt="Visualização do site"
+                className="modal-img"
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
