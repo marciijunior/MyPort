@@ -2,7 +2,7 @@
 
 .divpremain {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   background-color: var(--cor5);
   padding: 0 120px 10px 280px;
@@ -11,8 +11,7 @@
 .premain {
   display: flex;
   flex-direction: column;
-  padding: 140px 0px 200px 0px;
-  margin: 0 0 100px 0;
+  margin: 0;
   background-color: var(--cor5);
   color: var(--cor3);
   text-align: left;

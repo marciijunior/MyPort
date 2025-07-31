@@ -22,6 +22,9 @@
   max-width: 85%;
   max-height: 90%;
   overflow-y: auto;
+  background-color: #1c1c1c; /* Adicionado para o container ter uma cor de fundo */
+  border-radius: 8px; /* Bordas arredondadas para um visual mais suave */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para destacar o modal */
 }
 
 .modal-img {
@@ -38,5 +41,39 @@
   font-size: 2em;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1001;
+}
+
+/* Adicionado: Estilos para a seção de detalhes */
+.modal-details {
+  padding: 25px 30px;
+  color: var(--cor3);
+}
+
+.modal-title {
+  font-size: 1.8em;
+  font-weight: 500;
+  color: var(--cor1);
+  margin: 0 0 15px 0;
+}
+
+.modal-description {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.tech-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  background-color: var(--cor2);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
 }

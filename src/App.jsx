@@ -1,6 +1,8 @@
 // App.jsx
 import React, { useState, useEffect, useRef } from "react";
-import Sidebar from "./components/Sidebar"; // Importa o novo componente
+import Sidebar from "./components/Sidebar";
+
+// Imports de CSS (Contact.css removido)
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
 import "./styles/Main.css";
@@ -9,9 +11,10 @@ import "./styles/ScrollReveal.css";
 import "./styles/Main2.css";
 import "./styles/Modal.css";
 import "./styles/Testimonials.css";
-import "./styles/Sidebar.css"; // Importa o CSS da sidebar
-import ScrollReveal from "scrollreveal";
+import "./styles/Sidebar.css";
+import "./styles/InviteScroll.css";
 
+import ScrollReveal from "scrollreveal";
 import ExpandedContent from "./ExpandedContent";
 import { useButtonExpansion } from "./hooks/useButtonExpansion";
 import { useScrollReveal } from "./hooks/useScrollReveal";
@@ -26,11 +29,10 @@ export default function App() {
     setExpandedButtonId,
   } = useButtonExpansion();
 
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  // --- LÓGICA DA SIDEBAR ---
+  const [selectedProject, setSelectedProject] = useState(null);
   const [activeSection, setActiveSection] = useState("inicio");
 
+  // Ref de 'contato' foi removida
   const sectionRefs = {
     inicio: useRef(null),
     servicos: useRef(null),
@@ -45,6 +47,7 @@ export default function App() {
     });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
     const observerCallback = (entries) => {
@@ -68,7 +71,6 @@ export default function App() {
       });
     };
   }, []);
-  // --- FIM DA LÓGICA DA SIDEBAR ---
 
   const testimonialsData = [
     {
@@ -94,13 +96,46 @@ export default function App() {
     },
   ];
 
+  const portfolioData = [
+    {
+      id: "proj1",
+      imageSrc: "./site1.png",
+      title: "Website Corporativo Moderno",
+      description:
+        "Um projeto focado em criar uma presença online forte e profissional para a empresa InovaTech, com foco em performance e design responsivo.",
+      technologies: ["React", "Vite", "CSS Grid", "Figma"],
+    },
+    {
+      id: "proj2",
+      imageSrc: "./site2.png",
+      title: "Plataforma de E-commerce",
+      description:
+        "Desenvolvimento de uma loja virtual completa, com integração de pagamentos e um painel de gerenciamento de produtos intuitivo.",
+      technologies: ["JavaScript", "HTML5", "CSS3", "API Rest"],
+    },
+    {
+      id: "proj3",
+      imageSrc: "./site3.png",
+      title: "Landing Page para Evento",
+      description:
+        "Criação de uma landing page de alta conversão para um evento de tecnologia, utilizando animações para engajar os visitantes.",
+      technologies: ["React", "ScrollReveal", "Spline"],
+    },
+    {
+      id: "proj4",
+      imageSrc: "./site4.png",
+      title: "Blog Pessoal Minimalista",
+      description:
+        "Um blog com foco na legibilidade e na velocidade, construído com um design limpo para uma experiência de leitura agradável.",
+      technologies: ["React", "CSS Flexbox", "UI/UX"],
+    },
+  ];
+
   useEffect(() => {
-    ScrollReveal({
-      opacity: 0,
-    });
+    ScrollReveal({ opacity: 0 });
   }, []);
 
-  // ... Suas refs do ScrollReveal ...
+  // Refs do ScrollReveal (ref de contato removida)
   const headerRef = useScrollReveal({
     origin: "left",
     distance: "100px",
@@ -108,6 +143,7 @@ export default function App() {
     viewFactor: 0.2,
     delay: 0,
     reset: true,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
   });
   const euSouRef = useScrollReveal({
     origin: "left",
@@ -116,6 +152,7 @@ export default function App() {
     viewFactor: 0.2,
     delay: 0,
     reset: true,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
   });
   const tituloPreMainRef = useScrollReveal({
     origin: "left",
@@ -124,6 +161,7 @@ export default function App() {
     viewFactor: 0.4,
     delay: 200,
     reset: true,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
   });
   const textoPreMainRef = useScrollReveal({
     origin: "left",
@@ -132,6 +170,16 @@ export default function App() {
     viewFactor: 0.4,
     delay: 400,
     reset: true,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
+  });
+  const textoPreMainComplementoRef = useScrollReveal({
+    origin: "left",
+    distance: "100px",
+    duration: 1500,
+    viewFactor: 0.4,
+    delay: 600,
+    reset: true,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
   });
   const mainImageRef = useScrollReveal({
     origin: "left",
@@ -243,28 +291,28 @@ export default function App() {
                   {" "}
                   <a href="#" aria-label="Instagram">
                     {" "}
-                    <img src="/insta.png" alt="Instagram logo"></img>{" "}
+                    <img src="/insta.png" alt="Instagram logo" />{" "}
                   </a>{" "}
                 </li>
                 <li className="git">
                   {" "}
                   <a href="#" aria-label="Github">
                     {" "}
-                    <img src="/git.png" alt="Github logo"></img>{" "}
+                    <img src="/git.png" alt="Github logo" />{" "}
                   </a>{" "}
                 </li>
                 <li className="linkedin">
                   {" "}
                   <a href="#" aria-label="LinkedIn">
                     {" "}
-                    <img src="/linkedin.png" alt="LinkedIn logo"></img>{" "}
+                    <img src="/linkedin.png" alt="LinkedIn logo" />{" "}
                   </a>{" "}
                 </li>
                 <li className="whatsapp">
                   {" "}
                   <a href="#" aria-label="WhatsApp">
                     {" "}
-                    <img src="/whatsapp.png" alt="WhatsApp logo"></img>{" "}
+                    <img src="/whatsapp.png" alt="WhatsApp logo" />{" "}
                   </a>{" "}
                 </li>
               </ul>
@@ -280,13 +328,23 @@ export default function App() {
                 <h1 className="titulo-premain" ref={tituloPreMainRef}>
                   Marcio Junior
                 </h1>
-                <p className="p-premain" ref={textoPreMainRef}>
+                <h1 className="p-premain" ref={textoPreMainRef}>
                   O Web desenvolvedor e designer de UI/UX.
+                </h1>
+                <p
+                  className="complemento-premain"
+                  ref={textoPreMainComplementoRef}
+                >
+                  Transformo suas ideias em sites que geram resultados. Explore
+                  meu trabalho e vamos construir algo incrível juntos.
                 </p>
               </div>
               <div className="div-btn">
                 <button className="btn">Download CV</button>
                 <button className="btn2">My Work</button>
+              </div>
+              <div className="invite-to-scroll">
+                <div className="animationScrollInvite"></div>
               </div>
             </div>
             <div className="img-premain">
@@ -302,27 +360,24 @@ export default function App() {
         <main>
           <section className="dots-column-section" ref={dotsColumn1Ref}>
             <div className="dots-container">
-              {" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
+              <div className="dot"></div> <div className="dot"></div>
+              <div className="dot"></div> <div className="dot"></div>
+              <div className="dot"></div> <div className="dot"></div>
             </div>
           </section>
 
-          <div
+          <section
             id="servicos"
             ref={sectionRefs.servicos}
             className="container-primeiro-main"
           >
             <div className="interligacao">
               <h2 className="titulo-interligacao" ref={tituloPrimeiroMainRef}>
-                {" "}
-                Nossos serviços{" "}
+                Nossos serviços
               </h2>
               <p className="texto-interligacao" ref={textoPrimeiroMainRef}>
-                {" "}
                 A interligação entre o design e a programação é essencial para
-                criar experiências digitais coesas e funcionais.{" "}
+                criar experiências digitais coesas e funcionais.
               </p>
             </div>
             <div className="servicos-container">
@@ -347,12 +402,10 @@ export default function App() {
                           expandedButtonId === botao.id ? "none" : "auto",
                       }}
                     >
-                      {" "}
                       <span className="img-card">
-                        {" "}
-                        <img src={botao.imageSrc} alt={botao.label} />{" "}
-                      </span>{" "}
-                      {botao.label}{" "}
+                        <img src={botao.imageSrc} alt={botao.label} />
+                      </span>
+                      {botao.label}
                     </button>
                   ))}
                   <div
@@ -370,17 +423,16 @@ export default function App() {
                           setExpandedButtonId(null);
                         }}
                       >
-                        {" "}
-                        X{" "}
+                        X
                       </span>
                     )}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div
+          <section
             id="portfolio"
             ref={sectionRefs.portfolio}
             className="container-segundo-main"
@@ -390,71 +442,41 @@ export default function App() {
                 className="titulo-interligacao-segundo-main"
                 ref={tituloSegundoMainRef}
               >
-                {" "}
-                Portifólio{" "}
+                Portfólio
               </h2>
               <p
                 className="texto-interligacao-segundo-main"
                 ref={textoSegundoMainRef}
               >
-                {" "}
-                Trabalhos realizados em minha carreira{" "}
+                Trabalhos realizados em minha carreira
               </p>
             </div>
             <div className="container-sites" ref={containerSitesRef}>
-              <div
-                className="portfolio-image-wrapper"
-                onClick={() => setSelectedImage("./site1.png")}
-              >
-                {" "}
-                <img
-                  src="./site1.png"
-                  className="img-site1 portfolio-thumbnail"
-                ></img>{" "}
-              </div>
-              <div
-                className="portfolio-image-wrapper"
-                onClick={() => setSelectedImage("./site2.png")}
-              >
-                {" "}
-                <img
-                  src="./site2.png"
-                  className="img-site2 portfolio-thumbnail"
-                ></img>{" "}
-              </div>
-              <div
-                className="portfolio-image-wrapper"
-                onClick={() => setSelectedImage("./site3.png")}
-              >
-                {" "}
-                <img
-                  src="./site3.png"
-                  className="img-site3 portfolio-thumbnail"
-                ></img>{" "}
-              </div>
-              <div
-                className="portfolio-image-wrapper"
-                onClick={() => setSelectedImage("./site4.png")}
-              >
-                {" "}
-                <img
-                  src="./site4.png"
-                  className="img-site4 portfolio-thumbnail"
-                ></img>{" "}
-              </div>
-            </div>
-          </div>
-
-          <section className="dots-column-section" ref={dotsColumn2Ref}>
-            <div className="dots-container">
-              {" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
-              <div className="dot"></div> <div className="dot"></div>{" "}
+              {portfolioData.map((project) => (
+                <div
+                  key={project.id}
+                  className="portfolio-image-wrapper"
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <img
+                    src={project.imageSrc}
+                    className="portfolio-thumbnail"
+                    alt={`Prévia do projeto ${project.title}`}
+                  />
+                </div>
+              ))}
             </div>
           </section>
 
-          <div
+          <section className="dots-column-section" ref={dotsColumn2Ref}>
+            <div className="dots-container">
+              <div className="dot"></div> <div className="dot"></div>
+              <div className="dot"></div> <div className="dot"></div>
+              <div className="dot"></div> <div className="dot"></div>
+            </div>
+          </section>
+
+          <section
             id="avaliacoes"
             ref={sectionRefs.avaliacoes}
             className="testimonials-section"
@@ -472,34 +494,48 @@ export default function App() {
                   />
                   <p className="testimonial-quote">"{testimonial.quote}"</p>
                   <div className="testimonial-author">
-                    {" "}
-                    <h4>{testimonial.name}</h4> <span>{testimonial.role}</span>{" "}
+                    <h4>{testimonial.name}</h4> <span>{testimonial.role}</span>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         </main>
 
         <footer ref={footerRef}>
           <p>© 2025 - Desenvolvido com React Three Fiber</p>
         </footer>
 
-        {selectedImage && (
-          <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+        {selectedProject && (
+          <div
+            className="modal-overlay"
+            onClick={() => setSelectedProject(null)}
+          >
             <span
               className="modal-close"
-              onClick={() => setSelectedImage(null)}
+              onClick={() => setSelectedProject(null)}
             >
-              {" "}
-              X{" "}
+              X
             </span>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <img
-                src={selectedImage}
-                alt="Visualização do site"
+                src={selectedProject.imageSrc}
+                alt={`Visualização do projeto ${selectedProject.title}`}
                 className="modal-img"
               />
+              <div className="modal-details">
+                <h3 className="modal-title">{selectedProject.title}</h3>
+                <p className="modal-description">
+                  {selectedProject.description}
+                </p>
+                <div className="tech-tags-container">
+                  {selectedProject.technologies.map((tech, index) => (
+                    <span key={index} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}

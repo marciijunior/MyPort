@@ -1,62 +1,26 @@
 /* ======================= VARIÁVEIS ======================= */
 :root {
-  --sidebar-width-retraido: 80px;
-  --sidebar-width-expandido: 250px;
-  --transicao-suave: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Largura mais estreita, ideal para uma ilha de ícones */
+  --sidebar-width: 70px;
+  --transicao-suave: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ======================= CONTAINER PRINCIPAL DA SIDEBAR ======================= */
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: var(--sidebar-width-retraido);
-  background-color: var(--cor5);
-  border: 1px solid var(--cor2);
-  padding: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  height: auto;
+  width: var(--sidebar-width);
+  background-color: var(--cor4);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  padding: 20px 0; /* Padding vertical, sem padding horizontal */
   display: flex;
-  flex-direction: column;
+  justify-content: center; /* Centraliza a lista de ícones */
   z-index: 1000;
-  transition: width var(--transicao-suave);
-}
-
-.sidebar.expanded {
-  width: var(--sidebar-width-expandido);
-}
-
-/* ======================= CABEÇALHO DA SIDEBAR ======================= */
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  min-height: 50px;
-}
-
-.sidebar-logo .logo-full {
-  display: none; /* Escondido por padrão */
-  max-height: 45px;
-}
-.sidebar-logo .logo-icon {
-  display: block; /* Visível por padrão */
-  max-height: 45px;
-}
-
-.sidebar.expanded .sidebar-logo .logo-full {
-  display: block;
-}
-.sidebar.expanded .sidebar-logo .logo-icon {
-  display: none;
-}
-
-.sidebar-toggle-btn {
-  background: none;
-  border: none;
-  border-radius: 4px;
-  color: var(--cor3);
-  font-size: 1.5rem;
-  cursor: pointer;
+  transition: 4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ======================= NAVEGAÇÃO ======================= */
@@ -66,55 +30,63 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centraliza os itens da lista */
   gap: 15px;
 }
 
 .nav-link {
   display: flex;
+  justify-content: center; /* Centraliza o ícone dentro do link */
   align-items: center;
-  padding: 15px 0 15px 0;
-  border-radius: 8px;
+  width: 50px; /* Largura fixa para o botão do ícone */
+  height: 50px; /* Altura fixa para o botão do ícone */
+  border-radius: 30px;
   color: var(--cor3);
   text-decoration: none;
-  transition: background-color var(--transicao-suave);
-  white-space: nowrap; /* Impede que o texto quebre a linha durante a transição */
-  overflow: hidden;
+  transition: background-color 0.3s ease,
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover {
-  background-color: var(--cor2);
+  background-color: var(--cor1);
+  color: var(--cor5);
 }
 
 .nav-link.active {
+  position: relative;
+  transform: translateX(35px);
   background-color: var(--cor1);
-  color: var(--cor3);
+  border-radius: 50%;
   box-shadow: 0 0 15px var(--cor1);
 }
 
+.nav-link.active::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 25px;
+  width: 20px;
+  height: 30px;
+  border-radius: 50px;
+  background: rgba(255, 0, 0, 0);
+  box-shadow: -9px -15px 0px -3px var(--cor1);
+  transition: 1 cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 25px;
+  width: 20px;
+  height: 30px;
+  border-radius: 50px;
+  background: rgba(255, 0, 0, 0);
+  box-shadow: -9px 15px 0px -3px var(--cor1);
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .nav-link i {
-  font-size: 1.2rem;
-  min-width: 50px; /* Alinha os ícones e o texto */
-  text-align: center;
-  transition: color var(--transicao-suave);
-}
-
-.nav-link .nav-text {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.sidebar.expanded .nav-link .nav-text {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.2s 0.1s ease, visibility 0.2s 0.1s ease; /* Delay para aparecer depois */
-}
-
-/* ======================= ÍCONE DE SETA ======================= */
-.arrow-icon {
-  transition: transform var(--transicao-suave); /* Adiciona uma transição suave para a rotação */
-}
-
-.rotate-180 {
-  transform: rotate(180deg); /* Rotação de 180 graus */
+  font-size: 1.4rem; /* Tamanho do ícone */
 }
