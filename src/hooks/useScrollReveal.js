@@ -1,17 +1,24 @@
-// src/hooks/useScrollReveal.js
 import { useRef, useEffect } from "react";
 import ScrollReveal from "scrollreveal";
 
 export const useScrollReveal = (options = {}) => {
   const elementRef = useRef(null);
+  // Converte as opções em uma string para criar uma dependência estável para o useEffect.
+  // Isso garante que o efeito só execute novamente se as opções realmente mudarem.
+  const optionsJSON = JSON.stringify(options);
 
   useEffect(() => {
-    if (elementRef.current) {
-      ScrollReveal().reveal(elementRef.current, options);
+    const currentElement = elementRef.current;
+
+    // Garante que o elemento exista e que a biblioteca ScrollReveal esteja disponível.
+    if (currentElement && typeof ScrollReveal !== 'undefined') {
+      const sr = ScrollReveal();
+      
+      // Revela o elemento com as opções fornecidas.
+      // A biblioteca é inteligente o suficiente para atualizar um elemento se ele já foi revelado antes.
+      sr.reveal(currentElement, JSON.parse(optionsJSON));
     }
-    // Alterado: Garante que o efeito só execute se o conteúdo das opções mudar,
-    // evitando re-execuções desnecessárias a cada renderização.
-  }, [JSON.stringify(options)]);
+  }, [optionsJSON]); // A chave da correção: o efeito é re-executado se as opções mudarem.
 
   return elementRef;
 };

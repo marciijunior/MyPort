@@ -1,0 +1,114 @@
+/* src/styles/Main2.css */
+
+.container-segundo-main {
+  background-color: var(--cor5);
+  padding: 0px 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.interligacao-portfolio {
+  width: 100%;
+  text-align: center;
+  color: var(--cor3);
+  padding: 40px 0 0 0;
+}
+
+.titulo-portfolio {
+  font-weight: 400;
+  font-size: 2.2em;
+  color: var(--cor1);
+  margin-bottom: 0px;
+}
+
+.texto-portfolio {
+  font-weight: 400;
+  font-size: 1em;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.2;
+}
+
+.container-sites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+.portfolio-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 300px;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-image-wrapper:hover {
+  cursor: pointer;
+}
+
+.portfolio-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* --- ESTILOS PARA O OVERLAY DE DETALHES --- */
+
+.portfolio-details-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 50%, rgba(0, 0, 0, 0));
+  color: var(--cor3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  opacity: 0; /* Começa invisível */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.portfolio-image-wrapper:hover .portfolio-details-overlay {
+  opacity: 1; /* Fica visível no hover */
+  transform: translateY(0); /* Sobe para a posição final */
+}
+
+/* Faz a imagem dar um leve zoom para um efeito parallax */
+.portfolio-image-wrapper:hover .portfolio-thumbnail {
+  transform: scale(1);
+}
+
+.portfolio-title {
+  font-size: 1.4em;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+
+.portfolio-description {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Reutilizando estilos do modal para as tags */
+.tech-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: 500;
+}

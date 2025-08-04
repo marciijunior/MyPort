@@ -1,101 +1,156 @@
 // App.jsx
 import React, { useState, useEffect, useRef } from "react";
-import Sidebar from "./components/Sidebar";
 
-// Imports de CSS (Contact.css removido)
+// Importando os componentes de seção
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import AboutMe from "./components/AboutMe";
+import Habilidades from "./components/Habilidades";
+import Portfolio from "./components/Portfolio";
+import Certificados from "./components/Certificados";
+import Footer from "./components/Footer";
+import SeparadorDots from "./components/SeparadorDots";
+
+// Imports de CSS
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
-import "./styles/Main.css";
+import "./styles/Habilidades.css";
 import "./styles/ExpandedContent.css";
 import "./styles/ScrollReveal.css";
-import "./styles/Main2.css";
+import "./styles/Portfolio.css";
 import "./styles/Modal.css";
-import "./styles/Testimonials.css";
 import "./styles/Sidebar.css";
 import "./styles/InviteScroll.css";
+import "./styles/AboutMe.css";
+import "./styles/TechStack.css";
+import "./styles/Certificates.css";
 
+// Imports de Hooks e bibliotecas
 import ScrollReveal from "scrollreveal";
-import ExpandedContent from "./ExpandedContent";
 import { useButtonExpansion } from "./hooks/useButtonExpansion";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 export default function App() {
-  const {
-    expandedButtonId,
-    expandedOrigin,
-    buttonRefs,
-    botoesData,
-    handleButtonClick,
-    setExpandedButtonId,
-  } = useButtonExpansion();
-
+  // --- ESTADO E DADOS ---
+  const expansionState = useButtonExpansion();
+  const { botoesData } = expansionState;
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeSection, setActiveSection] = useState("inicio");
 
-  // Ref de 'contato' foi removida
-  const sectionRefs = {
-    inicio: useRef(null),
-    servicos: useRef(null),
-    portfolio: useRef(null),
-    avaliacoes: useRef(null),
-  };
-
-  const handleNavigate = (id) => {
-    sectionRefs[id].current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-    const refs = Object.values(sectionRefs);
-    refs.forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-    return () => {
-      refs.forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-    };
-  }, []);
-
-  const testimonialsData = [
+  const certificatesData = [
     {
-      quote:
-        "Ficamos de queixo caído com o resultado! O Marcio não só entendeu o que a gente queria, como entregou um site super rápido e lindo. Foi muito além do que esperávamos!",
-      avatar: "/avatar1.png",
-      name: "Carlos Pereira",
-      role: "CEO, Startup Criativa",
+      title:
+        "Acessibilidade no HTML: escrevendo códigos semânticos para inclusão",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado1.png",
+      pdfSrc: "/certificates/pdf/certificado1Pdf.pdf",
     },
     {
-      quote:
-        "O cara manja muito! Além de super talentoso, o que mais gostei foi o suporte depois que o site foi pro ar. Sempre que precisei, ele estava lá pra ajudar. Recomendo de olhos fechados!",
-      avatar: "/avatar2.png",
-      name: "Fabiane Alexandre",
-      role: "Gerente de Marketing, InovaTech",
+      title: "Começando em Programação: carreira e primeiros passos",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado2.png",
+      pdfSrc: "/certificates/pdf/certificado2Pdf.pdf",
     },
     {
-      quote:
-        "Eu não entendia muito de design, mas o Marcio transformou nossas ideias em um site que é super fácil de usar e muito bonito. Nossos clientes adoraram e o site voa de tão rápido. Sensacional!",
-      avatar: "/avatar3.png",
-      name: "Juliana Costa",
-      role: "Fundadora, Tech & Cia",
+      title:
+        "HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado3.png",
+      pdfSrc: "/certificates/pdf/certificado3Pdf.pdf",
+    },
+    {
+      title: "HTML e CSS: cabeçalho, footer e variáveis CSS",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado4.png",
+      pdfSrc: "/certificates/pdf/certificado4Pdf.pdf",
+    },
+    {
+      title: "HTML e CSS: Classes, posicionamento e Flexbox",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado5.png",
+      pdfSrc: "/certificates/pdf/certificado5Pdf.pdf",
+    },
+    {
+      title: "HTML e CSS: praticando HTML/CSS",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado6.png",
+      pdfSrc: "/certificates/pdf/certificado6Pdf.pdf",
+    },
+    {
+      title: "HTML e CSS: responsividade com mobile-first",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado7.png",
+      pdfSrc: "/certificates/pdf/certificado7Pdf.pdf",
+    },
+    {
+      title:
+        "HTML e CSS: trabalhando com responsividade e publicação de projetos",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado8.png",
+      pdfSrc: "/certificates/pdf/certificado8Pdf.pdf",
+    },
+    {
+      title: "JavaScript: construindo páginas dinâmicas",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado9.png",
+      pdfSrc: "/certificates/pdf/certicado9Pdf.pdf",
+    },
+    {
+      title: "JavaScript: entendendo promises e async/await",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado10.png",
+      pdfSrc: "/certificates/pdf/certicado10Pdf.pdf",
+    },
+    {
+      title: "JavaScript: explorando a linguagem",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado11.png",
+      pdfSrc: "/certificates/pdf/certificado11Pdf.pdf",
+    },
+    {
+      title: "JavaScript: interfaces e Herança em Orientação a Objetos",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado12.png",
+      pdfSrc: "/certificates/pdf/certificado12Pdf.pdf",
+    },
+    {
+      title: "JavaScript: métodos de array",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado13.png",
+      pdfSrc: "/certificates/pdf/certificado13Pdf.pdf",
+    },
+    {
+      title: "JavaScript: programando a Orientação a Objetos",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado14.png",
+      pdfSrc: "/certificates/pdf/certificado14Pdf.pdf",
+    },
+    {
+      title: "Lógica de programação: explore funções e listas",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado15.png",
+      pdfSrc: "/certificates/pdf/certificado15Pdf.pdf",
+    },
+    {
+      title: "Lógica de programação: mergulhe em programação com JavaScript",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado16.png",
+      pdfSrc: "/certificates/pdf/certificado16Pdf.pdf",
+    },
+    {
+      title:
+        "Node.js e terminal: dominando o ambiente de desenvolvimento front-end",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado17.png",
+      pdfSrc: "/certificates/pdf/certificado17Pdf.pdf",
+    },
+    {
+      title: "React: desenvolvendo com JavaScript",
+      issuer: "Alura",
+      thumbnailSrc: "/certificates/images/certificado18.png",
+      pdfSrc: "/certificates/pdf/certificado18Pdf.pdf",
     },
   ];
-
   const portfolioData = [
     {
       id: "proj1",
@@ -130,382 +185,141 @@ export default function App() {
       technologies: ["React", "CSS Flexbox", "UI/UX"],
     },
   ];
+  const techStackData = {
+    frontend: [
+      "React",
+      "Next.js",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Responsividade",
+      "React Three Fiber",
+      "Three.js",
+    ],
+    backend: ["Node.js", "Python", "SQL", "SQLite", "C++", "Pascal"],
+    ferramentas: [
+      "Git",
+      "GitHub",
+      "Figma",
+      "Photoshop",
+      "VS Code",
+      "Vite",
+      "Webpack",
+      "NPM",
+    ],
+  };
 
+  // --- LÓGICA DE NAVEGAÇÃO ---
+  const sectionRefs = {
+    inicio: useRef(null),
+    sobre: useRef(null),
+    servicos: useRef(null),
+    portfolio: useRef(null),
+    certificados: useRef(null),
+  };
+  const handleNavigate = (id) => {
+    sectionRefs[id].current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   useEffect(() => {
-    ScrollReveal({ opacity: 0 });
+    const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
+      });
+    };
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    const refs = Object.values(sectionRefs);
+    refs.forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+    return () => {
+      refs.forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Refs do ScrollReveal (ref de contato removida)
-  const headerRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1000,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-    easing: "cubic-bezier(0.5, 0, 0, 1)",
-  });
-  const euSouRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-    easing: "cubic-bezier(0.5, 0, 0, 1)",
-  });
-  const tituloPreMainRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.4,
-    delay: 200,
-    reset: true,
-    easing: "cubic-bezier(0.5, 0, 0, 1)",
-  });
-  const textoPreMainRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.4,
-    delay: 400,
-    reset: true,
-    easing: "cubic-bezier(0.5, 0, 0, 1)",
-  });
-  const textoPreMainComplementoRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.4,
-    delay: 600,
-    reset: true,
-    easing: "cubic-bezier(0.5, 0, 0, 1)",
-  });
-  const mainImageRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const mainTextRef = useScrollReveal({
-    origin: "right",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const footerRef = useScrollReveal({
-    origin: "bottom",
-    distance: "10px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const dotsColumn1Ref = useScrollReveal({
-    origin: "bottom",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.7,
-    delay: 100,
-    reset: true,
-  });
-  const dotsColumn2Ref = useScrollReveal({
-    origin: "bottom",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.1,
-    delay: 100,
-    reset: true,
-  });
-  const tituloPrimeiroMainRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.4,
-    delay: 0,
-    reset: true,
-  });
-  const textoPrimeiroMainRef = useScrollReveal({
-    origin: "right",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.4,
-    delay: 0,
-    reset: true,
-  });
-  const tituloSegundoMainRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const textoSegundoMainRef = useScrollReveal({
-    origin: "right",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const containerSitesRef = useScrollReveal({
-    origin: "left",
-    distance: "100px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 0,
-    reset: true,
-  });
-  const testimonialsRef = useScrollReveal({
-    origin: "bottom",
-    distance: "0px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 200,
-    reset: true,
-  });
-  const imgPremainRef = useScrollReveal({
-    origin: "top",
-    distance: "0px",
-    duration: 1500,
-    viewFactor: 0.2,
-    delay: 100,
-    reset: true,
-  });
+  // --- INICIALIZAÇÃO E REFS DE ANIMAÇÃO ---
+  // A configuração global ainda é útil como um padrão.
+  useEffect(() => {
+    ScrollReveal({
+      distance: "100px",
+      duration: 1000,
+      opacity: 0,
+      reset: true,
+      easing: "cubic-bezier(0.5, 0, 0, 1)",
+    });
+  }, []);
+
+  // Com o novo hook, podemos especificar 'reset: true' aqui com segurança.
+  const scrollRefs = {
+    headerRef: useScrollReveal({ origin: "left", reset: true }),
+    euSouRef: useScrollReveal({ origin: "left" }),
+    tituloHeaderRef: useScrollReveal({
+      origin: "left",
+      duration: 1400,
+    }),
+    textoHeaderRef: useScrollReveal({
+      origin: "left",
+      duration: 1600,
+    }),
+    textoHeaderComplementoRef: useScrollReveal({
+      origin: "left",
+      duration: 1800,
+    }),
+    imgPremainRef: useScrollReveal({
+      origin: "right",
+    }),
+    dotsColumn1Ref: useScrollReveal({ reset: true }),
+    tituloPrimeiroMainRef: useScrollReveal({ origin: "left" }),
+    textoPrimeiroMainRef: useScrollReveal({ origin: "right" }),
+    mainImageRef: useScrollReveal({ origin: "left" }),
+    mainTextRef: useScrollReveal({ origin: "right" }),
+    tituloSkillsRef: useScrollReveal({ reset: true }),
+    textoSkillsRef: useScrollReveal({ reset: true }),
+    containerSitesRef: useScrollReveal({ origin: "bottom" }),
+    dotsColumn2Ref: useScrollReveal({ reset: true }),
+    certificatesContainerRef: useScrollReveal({
+      origin: "bottom",
+    }),
+  };
 
   return (
     <div className="app-container">
       <Sidebar onNavigate={handleNavigate} activeSection={activeSection} />
-
       <div className="content-wrapper">
-        <header id="inicio" ref={sectionRefs.inicio}>
-          <div className="header-content">
-            <nav className="links" aria-label="Navegação principal do site">
-              <ul className="links-redes" ref={headerRef}>
-                <li className="insta">
-                  {" "}
-                  <a href="#" aria-label="Instagram">
-                    {" "}
-                    <img src="/insta.png" alt="Instagram logo" />{" "}
-                  </a>{" "}
-                </li>
-                <li className="git">
-                  {" "}
-                  <a href="#" aria-label="Github">
-                    {" "}
-                    <img src="/git.png" alt="Github logo" />{" "}
-                  </a>{" "}
-                </li>
-                <li className="linkedin">
-                  {" "}
-                  <a href="#" aria-label="LinkedIn">
-                    {" "}
-                    <img src="/linkedin.png" alt="LinkedIn logo" />{" "}
-                  </a>{" "}
-                </li>
-                <li className="whatsapp">
-                  {" "}
-                  <a href="#" aria-label="WhatsApp">
-                    {" "}
-                    <img src="/whatsapp.png" alt="WhatsApp logo" />{" "}
-                  </a>{" "}
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className="divpremain">
-            <div className="premain">
-              <div>
-                <div className="Iam" ref={euSouRef}>
-                  <img className="img-im" src="/img-im.png" alt="I am" />
-                  <p className="p-im">Olá, eu sou</p>
-                </div>
-                <h1 className="titulo-premain" ref={tituloPreMainRef}>
-                  Marcio Junior
-                </h1>
-                <h1 className="p-premain" ref={textoPreMainRef}>
-                  O Web desenvolvedor e designer de UI/UX.
-                </h1>
-                <p
-                  className="complemento-premain"
-                  ref={textoPreMainComplementoRef}
-                >
-                  Transformo suas ideias em sites que geram resultados. Explore
-                  meu trabalho e vamos construir algo incrível juntos.
-                </p>
-              </div>
-              <div className="div-btn">
-                <button className="btn">Download CV</button>
-                <button className="btn2">My Work</button>
-              </div>
-              <div className="invite-to-scroll">
-                <div className="animationScrollInvite"></div>
-              </div>
-            </div>
-            <div className="img-premain">
-              <img
-                src="/img-premain.png"
-                alt="Imagem principal do site"
-                ref={imgPremainRef}
-              />
-            </div>
-          </div>
-        </header>
-
+        <Header sectionRef={sectionRefs.inicio} refs={scrollRefs} />
         <main>
-          <section className="dots-column-section" ref={dotsColumn1Ref}>
-            <div className="dots-container">
-              <div className="dot"></div> <div className="dot"></div>
-              <div className="dot"></div> <div className="dot"></div>
-              <div className="dot"></div> <div className="dot"></div>
-            </div>
-          </section>
-
-          <section
-            id="servicos"
-            ref={sectionRefs.servicos}
-            className="container-primeiro-main"
-          >
-            <div className="interligacao">
-              <h2 className="titulo-interligacao" ref={tituloPrimeiroMainRef}>
-                Nossos serviços
-              </h2>
-              <p className="texto-interligacao" ref={textoPrimeiroMainRef}>
-                A interligação entre o design e a programação é essencial para
-                criar experiências digitais coesas e funcionais.
-              </p>
-            </div>
-            <div className="servicos-container">
-              <div className="primeiro-main" ref={mainImageRef}></div>
-              <div className="texto-primeiro-main" ref={mainTextRef}>
-                <div className="btn-linha1">
-                  {botoesData.map((botao) => (
-                    <button
-                      key={botao.id}
-                      ref={(el) => (buttonRefs.current[botao.id] = el)}
-                      className={`${botao.className} ${
-                        expandedButtonId && expandedButtonId !== botao.id
-                          ? "hidden-button"
-                          : ""
-                      }`}
-                      onClick={() => handleButtonClick(botao.id)}
-                      style={{
-                        visibility:
-                          expandedButtonId === botao.id ? "hidden" : "visible",
-                        opacity: expandedButtonId === botao.id ? 0 : 1,
-                        pointerEvents:
-                          expandedButtonId === botao.id ? "none" : "auto",
-                      }}
-                    >
-                      <span className="img-card">
-                        <img src={botao.imageSrc} alt={botao.label} />
-                      </span>
-                      {botao.label}
-                    </button>
-                  ))}
-                  <div
-                    className={`expanding-overlay ${
-                      expandedButtonId ? "expanded" : ""
-                    }`}
-                    style={{ transformOrigin: expandedOrigin }}
-                  >
-                    <ExpandedContent buttonId={expandedButtonId} />
-                    {expandedButtonId && (
-                      <span
-                        className="close-expanded-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setExpandedButtonId(null);
-                        }}
-                      >
-                        X
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section
-            id="portfolio"
-            ref={sectionRefs.portfolio}
-            className="container-segundo-main"
-          >
-            <div className="interligacao-segundo-main">
-              <h2
-                className="titulo-interligacao-segundo-main"
-                ref={tituloSegundoMainRef}
-              >
-                Portfólio
-              </h2>
-              <p
-                className="texto-interligacao-segundo-main"
-                ref={textoSegundoMainRef}
-              >
-                Trabalhos realizados em minha carreira
-              </p>
-            </div>
-            <div className="container-sites" ref={containerSitesRef}>
-              {portfolioData.map((project) => (
-                <div
-                  key={project.id}
-                  className="portfolio-image-wrapper"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  <img
-                    src={project.imageSrc}
-                    className="portfolio-thumbnail"
-                    alt={`Prévia do projeto ${project.title}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="dots-column-section" ref={dotsColumn2Ref}>
-            <div className="dots-container">
-              <div className="dot"></div> <div className="dot"></div>
-              <div className="dot"></div> <div className="dot"></div>
-              <div className="dot"></div> <div className="dot"></div>
-            </div>
-          </section>
-
-          <section
-            id="avaliacoes"
-            ref={sectionRefs.avaliacoes}
-            className="testimonials-section"
-          >
-            <div className="interligacao-segundo-main">
-              <h2 className="titulo-interligacao-segundo-main">Avaliações</h2>
-            </div>
-            <div className="testimonials-container" ref={testimonialsRef}>
-              {testimonialsData.map((testimonial, index) => (
-                <div key={index} className="testimonial-card">
-                  <img
-                    src={testimonial.avatar}
-                    alt={`Avatar de ${testimonial.name}`}
-                    className="testimonial-avatar"
-                  />
-                  <p className="testimonial-quote">"{testimonial.quote}"</p>
-                  <div className="testimonial-author">
-                    <h4>{testimonial.name}</h4> <span>{testimonial.role}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <AboutMe sectionRef={sectionRefs.sobre} />
+          <SeparadorDots animRef={scrollRefs.dotsColumn1Ref} />
+          <Habilidades
+            sectionRef={sectionRefs.servicos}
+            refs={scrollRefs}
+            data={{ botoesData, techStackData }}
+            expansionState={expansionState}
+          />
+          <SeparadorDots animRef={scrollRefs.dotsColumn2Ref} />
+          <Portfolio
+            sectionRef={sectionRefs.portfolio}
+            refs={scrollRefs}
+            portfolioData={portfolioData}
+            onProjectClick={setSelectedProject}
+          />
+          <Certificados
+            sectionRef={sectionRefs.certificados}
+            certificatesData={certificatesData}
+            animRef={scrollRefs.certificatesContainerRef}
+          />
         </main>
-
-        <footer ref={footerRef}>
-          <p>© 2025 - Desenvolvido com React Three Fiber</p>
-        </footer>
-
+        <Footer animRef={scrollRefs.footerRef} />
         {selectedProject && (
           <div
             className="modal-overlay"
@@ -515,7 +329,8 @@ export default function App() {
               className="modal-close"
               onClick={() => setSelectedProject(null)}
             >
-              X
+              {" "}
+              X{" "}
             </span>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <img
@@ -526,14 +341,17 @@ export default function App() {
               <div className="modal-details">
                 <h3 className="modal-title">{selectedProject.title}</h3>
                 <p className="modal-description">
-                  {selectedProject.description}
+                  {" "}
+                  {selectedProject.description}{" "}
                 </p>
                 <div className="tech-tags-container">
+                  {" "}
                   {selectedProject.technologies.map((tech, index) => (
                     <span key={index} className="tech-tag">
-                      {tech}
+                      {" "}
+                      {tech}{" "}
                     </span>
-                  ))}
+                  ))}{" "}
                 </div>
               </div>
             </div>

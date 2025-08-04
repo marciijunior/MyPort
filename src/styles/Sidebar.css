@@ -69,7 +69,7 @@
   width: 20px;
   height: 30px;
   border-radius: 50px;
-  background: rgba(255, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
   box-shadow: -9px -15px 0px -3px var(--cor1);
   transition: 1 cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -89,4 +89,6 @@
 
 .nav-link i {
   font-size: 1.4rem; /* Tamanho do ícone */
+  position: relative; /* Cria um novo contexto de empilhamento */
+  z-index: 2; /* Garante que o ícone fique na camada de cima */
 }

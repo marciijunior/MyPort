@@ -1,77 +1,48 @@
+/* src/styles/Habilidades.css */
+/* src/styles/Habilidades.css */
 @import "Scrollbar.css";
-@import "ScrollReveal.css";
 @import "Footer.css";
-@import "Main2.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-html {
-  scroll-behavior: smooth;
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
 }
 
-/* Adicionado para acomodar a sidebar flutuante */
-.content-wrapper {
-  /* 70px (largura da ilha) + 40px (espaço extra) = 110px */
-  padding-left: 110px;
-  transition: none;
+.interligacao-habilidades {
+  width: 100%;
+  text-align: center;
+  color: var(--cor3);
+  padding: 40px 0 0 0;
 }
 
-.dots-column-section {
-  background-color: var(--cor5);
-  display: flex;
-  justify-content: center;
-  padding: 40px 0 20px 0;
-  min-height: 80px;
+.titulo-habilidades {
+  font-weight: 400;
+  font-size: 2.2em;
+  color: var(--cor1);
+  margin-bottom: 10px;
 }
 
-.dots-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.dot {
-  width: 4px;
-  height: 4px;
-  background-color: var(--cor1);
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.texto-habilidades {
+  font-weight: 400;
+  font-size: 1em;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .container-primeiro-main {
   background-color: var(--cor5);
-  padding: 0px 150px 40px 150px;
+  padding: 0px 250px 0px 250px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
   box-sizing: border-box;
 }
-
-.interligacao {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--cor3);
-}
-
-.titulo-interligacao {
-  font-weight: 400;
-  font-size: 2.8em;
-  color: var(--cor1);
-  margin-bottom: 10px;
-}
-
-.texto-interligacao {
-  font-weight: 400;
-  font-size: 1.1em;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-
+/* ... o resto do seu código de Habilidades.css permanece o mesmo ... */
 .servicos-container {
   background-color: var(--cor5);
   padding: 0px 0px 0px 0px;
@@ -88,24 +59,44 @@ html {
 }
 
 .texto-primeiro-main {
+  display: flex;
+}
+
+.texto-primeiro-main::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from var(--deg),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
+    var(--cor2)
+  );
+  border-radius: 12px;
+  animation: autoRotate 30s linear infinite;
+  filter: blur(30px);
   font-size: 19.2px;
   padding: 0px;
   display: flex;
   align-items: center;
   flex: 1;
-  position: relative;
 }
 
-.texto-primeiro-main-paragrafo {
-  font-size: 19.2px;
-  margin-bottom: 20px;
+@keyframes autoRotate {
+  to {
+    --deg: 360deg;
+  }
 }
 
 .btn-linha1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 17px;
-  margin: 18px 0px 0px 0px;
+  margin: 10px;
   width: 100%;
   position: relative;
 }

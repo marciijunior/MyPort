@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import '../styles/Sidebar.css';
 
-// Dados dos links (apenas id e ícone são necessários agora)
 const navLinks = [
-  { id: 'inicio', icon: 'fa-house' },
-  { id: 'servicos', icon: 'fa-briefcase' },
-  { id: 'portfolio', icon: 'fa-image' },
-  { id: 'avaliacoes', icon: 'fa-comments' }
+  { id: 'inicio', icon: 'fa-house'},
+  { id: 'sobre', icon: 'fa-user'},
+  { id: 'servicos', icon: 'fa-briefcase'},
+  { id: 'portfolio', icon: 'fa-image'},
+  { id: 'certificados', icon: 'fa-certificate'}
 ];
 
 export default function Sidebar({ onNavigate, activeSection }) {
+  // ... resto do seu componente Sidebar (sem alterações) ...
+  const navRef = useRef(null);
+  const linkRefs = useRef({});
+
+  useEffect(() => {
+    const activeLink = linkRefs.current[activeSection];
+    if (activeLink && navRef.current) {
+      const top = activeLink.offsetTop;
+      navRef.current.style.setProperty('--highlight-top', `${top}px`);
+    }
+  }, [activeSection]);
+
   return (
     <nav className="sidebar">
-      <ul className="sidebar-nav">
+      <ul className="sidebar-nav" ref={navRef}>
         {navLinks.map(link => (
-          <li key={link.id}>
-            <a 
-              href={`#${link.id}`} 
+          <li
+            key={link.id}
+            ref={el => linkRefs.current[link.id] = el}
+          >
+            <a
+              href={`#${link.id}`}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
               onClick={() => onNavigate(link.id)}
-              aria-label={link.id} // Adicionado para acessibilidade
+              aria-label={link.text}
             >
               <i className={`fa-solid ${link.icon}`}></i>
-              {/* O texto foi completamente removido */}
+              <span className="nav-text">{link.text}</span>
             </a>
           </li>
         ))}
