@@ -1,4 +1,3 @@
-/* Adicionado para a animação do gradiente */
 @property --deg {
   syntax: "<angle>";
   inherits: true;
@@ -10,42 +9,38 @@
     --deg: 360deg;
   }
 }
-/* Fim da adição */
 
 .container-certificados {
-  padding: 100px 250px 0 250px; /* Padding ajustado para dar espaço às setas */
+  padding: 6.25em 15.625em 0 15.625em;
 }
 
 .interligacao-certificado {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 0px 0 30px 0;
+  padding: 0em 0 1.875em 0;
 }
 
 .titulo-certificado {
   font-weight: 300;
   font-size: 2em;
   color: var(--cor1);
-  margin: 0px;
+  margin: 0em;
 }
 
 .texto-certificado {
   font-weight: 400;
   font-size: 1em;
-  max-width: 800px;
+  max-width: 50em;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-
-/* O container do Swiper agora ocupa o lugar do grid */
 .swiper-container {
   width: 100%;
-  padding: 0 40px 0px 40px; /* Padding para a paginação não ficar colada */
+  padding: 0 2.5em 0em 2.5em;
 }
 
-/* Garante que os cards tenham a mesma altura em cada linha */
 .swiper-slide {
   height: auto;
   display: flex;
@@ -53,26 +48,25 @@
 
 .certificate-card {
   background: linear-gradient(145deg, #1a1a1a, #000000);
-  border-radius: 10px;
+  border-radius: 0.625em;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%; /* O card ocupa todo o espaço do slide */
-  display: flex; /* Adicionado para garantir alinhamento interno */
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  height: 450px;
-  position: relative; /* Adicionado para conter o pseudo-elemento ::before */
-  z-index: 1; /* Garante que o conteúdo do card fique acima do fundo */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* ADICIONADO */
+  height: 28.125em;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.4), 0 0.125em 0.5em rgba(0, 0, 0, 0.2);
 }
 
-/* EFEITO DE FUNDO ADICIONADO AQUI */
 .certificate-card::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 150%; /* Maior que o card para o gradiente girar nas bordas */
+  width: 150%;
   height: 250%;
   background: conic-gradient(
     from var(--deg),
@@ -82,9 +76,9 @@
     var(--cor2)
   );
   animation: autoRotate 20s linear infinite;
-  filter: blur(40px);
-  z-index: -1; /* Coloca o fundo atrás do conteúdo */
-  opacity: 0.8; /* Suaviza a intensidade do efeito */
+  filter: blur(2.5em);
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .certificate-image {
@@ -100,12 +94,12 @@
 }
 
 .certificate-info {
-  padding: 20px;
-  flex-grow: 1; /* Faz esta área crescer para alinhar os cards */
+  padding: 1.25em;
+  flex-grow: 1;
 }
 
 .certificate-info h4 {
-  margin: 0 0 10px 0;
+  margin: 0 0 0.625em 0;
   font-size: 1.2em;
   font-weight: 500;
   color: var(--cor3);
@@ -116,34 +110,45 @@
   color: #aaa;
 }
 
-/* --- ESTILOS CUSTOMIZADOS PARA O SWIPER --- */
 .swiper-button-next,
 .swiper-button-prev {
-  color: var(--cor1) !important; /* Usa a cor primária do seu site */
+  color: var(--cor1) !important;
 }
 
 .swiper-pagination-bullet {
-  background: var(--cor2) !important; /* Cor inativa das bolinhas */
+  background: var(--cor2) !important;
   opacity: 1 !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: var(--cor1) !important; /* Cor ativa da bolinha */
+  background: var(--cor1) !important;
 }
 
-/* Adicione esta regra ao Certificates.css */
 .certificate-card-link {
-  text-decoration: none; /* Remove o sublinhado */
-  color: inherit; /* Faz o texto herdar a cor do pai */
+  text-decoration: none;
+  color: inherit;
   display: block;
   height: 100%;
 }
 
-@media (max-width: 768px) {
-  .certificates-section {
-    padding: 60px 15px;
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 75em) { /* 1200px */
+  .container-certificados {
+    padding: 6.25em 9.375em 0 9.375em;
   }
-  .certificates-container {
-    padding: 0 0 40px 0;
+}
+
+@media (max-width: 62em) { /* 992px */
+  .container-certificados {
+    padding: 5em 3.125em 0 3.125em;
+  }
+}
+
+@media (max-width: 48em) { /* 768px */
+  .container-certificados {
+    padding: 3.75em 0.9375em 0 0.9375em;
+  }
+  .swiper-container {
+    padding: 0 0 2.5em 0;
   }
 }

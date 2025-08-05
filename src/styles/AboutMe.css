@@ -9,8 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 400px 0px 400px;
-  gap: 80px;
+  padding: 6.25em 25em 0em 25em;
+  gap: 5em;
 }
 
 .about-me-image {
@@ -18,8 +18,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 22.5em;
+  height: 22.5em;
 }
 
 .about-me-image::before {
@@ -36,9 +36,9 @@
     var(--cor5),
     var(--cor2)
   );
-  border-radius: 10px;
+  border-radius: 0.625em;
   animation: autoRotate 30s linear infinite;
-  filter: blur(30px);
+  filter: blur(1.875em);
 }
 
 @keyframes autoRotate {
@@ -50,10 +50,10 @@
 .about-me-image img {
   position: relative;
   z-index: 1;
-  width: 330px;
-  height: 330px;
+  width: 20.625em;
+  height: 20.625em;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 0.625em;
 }
 
 .about-me-text {
@@ -61,20 +61,19 @@
   align-items: flex-start;
   flex-direction: column;
   flex: 1.2;
-  /* --- ALTERAÇÕES APLICADAS AQUI --- */
-  justify-content: center; /* Centraliza o conteúdo de texto na vertical */
+  justify-content: center;
 }
 
 .about-me-title {
   font-size: 2em;
   font-weight: 400;
   color: var(--cor3);
-  margin-bottom: 15px;
+  margin-bottom: 0.9375em;
 }
 
 .about-me-subtitle {
-  border-left: 3px solid var(--cor1);
-  padding-left: 15px;
+  border-left: 0.1875em solid var(--cor1);
+  padding-left: 0.9375em;
 }
 
 .about-me-text p {
@@ -83,18 +82,22 @@
   color: #b0b0b0;
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-  .about-me-section {
-    padding: 80px 50px;
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 75em) { /* 1200px */
+  .about-me-content {
+    padding: 6.25em 9.375em 0em 9.375em;
   }
+}
+
+@media (max-width: 62em) { /* 992px */
   .about-me-content {
     flex-direction: column;
     text-align: center;
+    padding: 5em 3.125em 0em 3.125em;
   }
   .about-me-text {
-    height: auto; /* Remove a altura fixa em telas menores */
-    align-items: center; /* Centraliza o texto horizontalmente no mobile */
+    height: auto;
+    align-items: center;
   }
   .about-me-title {
     text-align: center;

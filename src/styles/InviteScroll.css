@@ -2,24 +2,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 160px;
+  width: 5em;
+  height: 10em;
   background-color: #000000;
   border: solid var(--cor2);
-  border-radius: 50px;
+  border-radius: 3.125em;
   animation-name: pulsar-animacao;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   position: relative;
-  top: 100px;
-  left: 125px;
+  top: 6.25em;
+  left: 7.8125em;
 }
 
 .animationScrollInvite {
-  width: 20px;
-  height: 40px;
+  width: 1.25em;
+  height: 2.5em;
   background-color: var(--cor2);
-  border-radius: 10px;
+  border-radius: 0.625em;
   animation-name: scroll-animation;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -28,23 +28,23 @@
 
 @keyframes scroll-animation {
   0% {
-    transform: translateY(-40px);
+    transform: translateY(-2.5em);
     opacity: 1;
   }
   15% {
-    transform: translateY(40px);
+    transform: translateY(2.5em);
     opacity: 0.5;
   }
   45% {
-    transform: translateY(15px);
+    transform: translateY(0.9375em);
     opacity: 1;
   }
   50% {
-    transform: translateY(40px);
+    transform: translateY(2.5em);
     opacity: 1;
   }
   100% {
-    transform: translateY(-40px);
+    transform: translateY(-2.5em);
     opacity: 1;
   }
 }

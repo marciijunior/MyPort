@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  /* --cor1: #ff4d05; */
   --cor1: #ff4d05;
   --cor2: #3b3b3b;
   --cor3: #ffffff;
@@ -19,8 +18,8 @@ body {
 
 header {
   background: linear-gradient(to left, #000000 50.125%, #ff4d05 100%);
-  margin: 0 0 0px 0;
-  padding: 10px 0px 10px 0px;
+  margin: 0 0 0em 0;
+  padding: 0.625em 0em 0.625em 0em;
   text-align: center;
 }
 
@@ -42,23 +41,23 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 40px;
+  gap: 1.25em;
+  padding: 2.5em;
 }
 
 .link-list {
-  gap: 50px;
+  gap: 3.125em;
   font-size: 1.1rem;
   display: flex;
-  padding: 50px 0px 50px 150px;
+  padding: 3.125em 0em 3.125em 9.375em;
 }
 
 .insta img,
 .git img,
 .linkedin img,
 .whatsapp img {
-  gap: 20px;
-  width: 35px;
+  gap: 1.25em;
+  width: 2.1875em;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -76,7 +75,7 @@ header {
 
 .links-redes {
   display: flex;
-  gap: 50px;
+  gap: 3.125em;
 }
 
 nav ul {
@@ -84,7 +83,7 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 25px;
+  gap: 1.5625em;
 }
 
 nav ul li a {
@@ -95,7 +94,7 @@ nav ul li a {
 
 nav ul li a:hover {
   color: var(--cor1);
-  text-shadow: var(--cor1) 0px 0px 10px;
+  text-shadow: var(--cor1) 0em 0em 0.625em;
 }
 
 canvas {
