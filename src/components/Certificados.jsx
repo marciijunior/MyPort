@@ -28,7 +28,7 @@ export default function Certificados({
     <section
       id="certificados"
       ref={sectionRef}
-      className="certificates-section"
+      className="container-certificados"
     >
       <div className="interligacao-certificado">
         <h2 className="titulo-certificado" ref={certificatesTitleRef}>
@@ -36,7 +36,7 @@ export default function Certificados({
         </h2>
         {/* TEXTO MENOS FORMAL ADICIONADO AQUI */}
         <p className="texto-certificado" ref={certificatesTextRef}>
-          A jornada do conhecimento nunca para! Confira algumas das minhas
+          Algumas das minhas
           certificações e cursos mais recentes.
         </p>
       </div>
@@ -52,7 +52,7 @@ export default function Certificados({
             768: { slidesPerView: 2, spaceBetween: 30 },
             1024: { slidesPerView: 3, spaceBetween: 40 },
           }}
-          className="certificates-container"
+          className="swiper-container"
         >
           {certificatesData.map((cert, index) => (
             <SwiperSlide key={index}>

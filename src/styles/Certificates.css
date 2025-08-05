@@ -1,15 +1,33 @@
+/* Adicionado para a animação do gradiente */
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes autoRotate {
+  to {
+    --deg: 360deg;
+  }
+}
+/* Fim da adição */
+
+.container-certificados {
+  padding: 100px 250px 0 250px; /* Padding ajustado para dar espaço às setas */
+}
+
 .interligacao-certificado {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 40px 0 0 0;
+  padding: 0px 0 30px 0;
 }
 
 .titulo-certificado {
-  font-weight: 400;
-  font-size: 2.2em;
+  font-weight: 300;
+  font-size: 2em;
   color: var(--cor1);
-  margin-bottom: 10px;
+  margin: 0px;
 }
 
 .texto-certificado {
@@ -17,18 +35,14 @@
   font-size: 1em;
   max-width: 800px;
   margin: 0 auto;
-  line-height: 1.2;
+  line-height: 1.6;
 }
 
-.certificates-section {
-  padding: 80px 250px; /* Padding ajustado para dar espaço às setas */
-}
 
 /* O container do Swiper agora ocupa o lugar do grid */
-.certificates-container {
+.swiper-container {
   width: 100%;
-  margin-top: 40px;
-  padding: 0 40px 40px 40px; /* Padding para a paginação não ficar colada */
+  padding: 0 40px 0px 40px; /* Padding para a paginação não ficar colada */
 }
 
 /* Garante que os cards tenham a mesma altura em cada linha */
@@ -38,8 +52,7 @@
 }
 
 .certificate-card {
-  background: linear-gradient(145deg, #1a1a1a, #101010);
-  border: 1px solid var(--cor2);
+  background: linear-gradient(145deg, #1a1a1a, #000000);
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -47,11 +60,31 @@
   display: flex; /* Adicionado para garantir alinhamento interno */
   flex-direction: column;
   height: 450px;
+  position: relative; /* Adicionado para conter o pseudo-elemento ::before */
+  z-index: 1; /* Garante que o conteúdo do card fique acima do fundo */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* ADICIONADO */
 }
 
-.certificate-card:hover {
-  transform: translateY(0px);
-  box-shadow: 0 8px 25px rgba(255, 76, 5, 0.651);
+/* EFEITO DE FUNDO ADICIONADO AQUI */
+.certificate-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%; /* Maior que o card para o gradiente girar nas bordas */
+  height: 250%;
+  background: conic-gradient(
+    from var(--deg),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
+    var(--cor2)
+  );
+  animation: autoRotate 20s linear infinite;
+  filter: blur(40px);
+  z-index: -1; /* Coloca o fundo atrás do conteúdo */
+  opacity: 0.8; /* Suaviza a intensidade do efeito */
 }
 
 .certificate-image {

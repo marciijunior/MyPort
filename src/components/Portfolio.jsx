@@ -20,7 +20,7 @@ export default function Portfolio({
   })
 
   return (
-    <section id="portfolio" ref={sectionRef} className="container-segundo-main">
+    <section id="portfolio" ref={sectionRef} className="container-portfolio">
       <div className="interligacao-portfolio">
         {/* A ref de animação é aplicada ao h2 */}
         <h2 className="titulo-portfolio" ref={tituloPortfolioRef}>

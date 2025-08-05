@@ -1,23 +1,34 @@
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes autoRotate {
+  to {
+    --deg: 360deg;
+  }
+}
+
 .interligacao-tech {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 40px 0 0 0;
+  padding: 100px 0 0 0;
 }
 
 .titulo-tech {
-  font-weight: 400;
-  font-size: 2.2em;
+  font-weight: 300;
+  font-size: 2em;
   color: var(--cor1);
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .texto-tech {
   font-weight: 400;
   font-size: 1em;
-  max-width: 800px;
   margin: 0 auto;
-  line-height: 1.2;
+  line-height: 1.6;
 }
 
 .tech-stack-section {
@@ -27,18 +38,55 @@
 .tech-stack-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
+  gap: 1em;
+  margin-top: 30px;
+  padding: 0 300px;
 }
 
 .tech-category-column {
-  background: linear-gradient(240deg, #161616, #000000);
-  border: 1px solid var(--cor2);
   border-radius: 3px;
   padding: 25px;
   flex: 1;
   width: 350px;
   text-align: center;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Camada de Fundo (o gradiente escuro do card) */
+.tech-category-column::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(240deg, #161616, #000000);
+  border-radius: 3px;
+  z-index: -1;
+}
+
+/* Camada de Brilho (a animação giratória) */
+.tech-category-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from var(--deg),
+    var(--cor2),
+    var(--cor5),
+    var(--cor1),
+    var(--cor2)
+  );
+  animation: autoRotate 20s linear infinite;
+  filter: blur(35px); /* Desfoque amplo do efeito anterior */
+  z-index: -2;
+  opacity: 0.9;
+  border-radius: 3px; /* Adicionado para consistência */
 }
 
 .tech-category-column:hover {
@@ -46,10 +94,11 @@
 }
 
 .tech-category-column h3 {
-  font-weight: 500;
+  font-weight: 400;
+  text-shadow: #000000 0px 0px 5px;
   font-size: 1.4em;
   color: var(--cor1);
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   border-bottom: 2px solid var(--cor2);
   padding-bottom: 10px;
 }
@@ -57,16 +106,16 @@
 .tech-items-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
 }
 
 .tech-item {
   background-color: var(--cor2);
-  color: #ddd;
+  color: #b0b0b0;
   padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9em;
+  border-radius: 15px;
+  font-size: 0.8em;
   font-weight: 500;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

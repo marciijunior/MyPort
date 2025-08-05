@@ -1,5 +1,4 @@
 /* src/styles/Habilidades.css */
-/* src/styles/Habilidades.css */
 @import "Scrollbar.css";
 @import "Footer.css";
 
@@ -15,31 +14,31 @@
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 40px 0 0 0;
+  padding: 100px 0 0 0;
+  margin: 0 auto;
 }
 
 .titulo-habilidades {
-  font-weight: 400;
-  font-size: 2.2em;
+  font-weight: 300;
+  font-size: 2em;
   color: var(--cor1);
-  margin-bottom: 10px;
+  margin: 0px;
 }
 
 .texto-habilidades {
   font-weight: 400;
   font-size: 1em;
-  max-width: 800px;
-  margin: 0 auto;
+  margin: 0px 0px 30px 0;
   line-height: 1.6;
 }
 
 .container-primeiro-main {
   background-color: var(--cor5);
-  padding: 0px 250px 0px 250px;
+  padding: 0px 300px 0px 300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
   box-sizing: border-box;
 }
 /* ... o resto do seu código de Habilidades.css permanece o mesmo ... */
@@ -49,7 +48,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0px;
   box-sizing: border-box;
 }
 
@@ -60,10 +58,13 @@
 
 .texto-primeiro-main {
   display: flex;
+    position: relative;
 }
 
 .texto-primeiro-main::before {
   content: "";
+  display: flex;
+  align-items: center;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -76,14 +77,11 @@
     var(--cor5),
     var(--cor2)
   );
-  border-radius: 12px;
+  border-radius: 10px;
   animation: autoRotate 30s linear infinite;
   filter: blur(30px);
-  font-size: 19.2px;
-  padding: 0px;
-  display: flex;
-  align-items: center;
   flex: 1;
+  padding: 0px;
 }
 
 @keyframes autoRotate {
@@ -95,8 +93,8 @@
 .btn-linha1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
-  margin: 10px;
+  gap: 1em;
+  margin: 0px; /* Espaçamento entre os botões */
   width: 100%;
   position: relative;
 }
@@ -106,13 +104,13 @@
   background: linear-gradient(240deg, #161616, #000000);
   color: var(--cor3);
   border: none;
-  padding: 40px 50px;
+  padding: 50px 50px;
   border-radius: 3px;
   cursor: pointer;
   flex-grow: 1;
   height: 200px;
   font-family: "montserrat", sans-serif;
-  font-size: 15px;
+  font-size: 0.9em;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   position: relative;
@@ -137,7 +135,6 @@
   height: 80px;
   border-radius: 50%;
   padding: 18px;
-  margin-right: 20px;
 }
 
 .img-card img {

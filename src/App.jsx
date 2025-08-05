@@ -6,10 +6,10 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import AboutMe from "./components/AboutMe";
 import Habilidades from "./components/Habilidades";
+import Tecnologias from "./components/Tecnologias";
 import Portfolio from "./components/Portfolio";
 import Certificados from "./components/Certificados";
 import Footer from "./components/Footer";
-import SeparadorDots from "./components/SeparadorDots";
 
 // Imports de CSS
 import "./styles/Header.css";
@@ -215,6 +215,7 @@ export default function App() {
     inicio: useRef(null),
     sobre: useRef(null),
     servicos: useRef(null),
+    tecnologias: useRef(null),
     portfolio: useRef(null),
     certificados: useRef(null),
   };
@@ -235,20 +236,17 @@ export default function App() {
       observerCallback,
       observerOptions
     );
-    const refs = Object.values(sectionRefs);
-    refs.forEach((ref) => {
+    Object.values(sectionRefs).forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
     return () => {
-      refs.forEach((ref) => {
+      Object.values(sectionRefs).forEach((ref) => {
         if (ref.current) observer.unobserve(ref.current);
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // --- INICIALIZAÇÃO E REFS DE ANIMAÇÃO ---
-  // A configuração global ainda é útil como um padrão.
+  // --- CENTRAL DE ANIMAÇÕES SCROLLREVEAL ---
   useEffect(() => {
     ScrollReveal({
       distance: "100px",
@@ -259,37 +257,45 @@ export default function App() {
     });
   }, []);
 
-  // Com o novo hook, podemos especificar 'reset: true' aqui com segurança.
   const scrollRefs = {
-    headerRef: useScrollReveal({ origin: "left", reset: true }),
-    euSouRef: useScrollReveal({ origin: "left" }),
-    tituloHeaderRef: useScrollReveal({
-      origin: "left",
-      duration: 1400,
-    }),
-    textoHeaderRef: useScrollReveal({
-      origin: "left",
-      duration: 1600,
-    }),
-    textoHeaderComplementoRef: useScrollReveal({
-      origin: "left",
-      duration: 1800,
-    }),
-    imgPremainRef: useScrollReveal({
-      origin: "right",
-    }),
-    dotsColumn1Ref: useScrollReveal({ reset: true }),
-    tituloPrimeiroMainRef: useScrollReveal({ origin: "left" }),
-    textoPrimeiroMainRef: useScrollReveal({ origin: "right" }),
-    mainImageRef: useScrollReveal({ origin: "left" }),
-    mainTextRef: useScrollReveal({ origin: "right" }),
-    tituloSkillsRef: useScrollReveal({ reset: true }),
-    textoSkillsRef: useScrollReveal({ reset: true }),
-    containerSitesRef: useScrollReveal({ origin: "bottom" }),
-    dotsColumn2Ref: useScrollReveal({ reset: true }),
-    certificatesContainerRef: useScrollReveal({
-      origin: "bottom",
-    }),
+    // Header
+    header_redesSociais: useScrollReveal({ origin: "left" }),
+    header_olaEuSou: useScrollReveal({ origin: "left", delay: 200 }),
+    header_titulo: useScrollReveal({ origin: "left", delay: 400 }),
+    header_subtitulo: useScrollReveal({ origin: "left", delay: 600 }),
+    header_complemento: useScrollReveal({ origin: "left", delay: 800 }),
+    header_imagem: useScrollReveal({ origin: "right", delay: 500 }),
+
+    // Sobre Mim
+    sobreMim_imagem: useScrollReveal({ origin: "left" }),
+    sobreMim_titulo: useScrollReveal({ origin: "right" }),
+    sobreMim_subtitulo: useScrollReveal({ origin: "right", delay: 200 }),
+    sobreMim_paragrafo1: useScrollReveal({ origin: "right", delay: 400 }),
+    sobreMim_paragrafo2: useScrollReveal({ origin: "right", delay: 600 }),
+
+    // Habilidades
+    habilidades_titulo: useScrollReveal({ origin: "left" }),
+    habilidades_texto: useScrollReveal({ origin: "right" }),
+    habilidades_imagemFundo: useScrollReveal({ origin: "left" }),
+    habilidades_containerBotoes: useScrollReveal({ origin: "right" }),
+
+    // Tecnologias
+    tecnologias_titulo: useScrollReveal({ origin: "bottom" }),
+    tecnologias_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    tecnologias_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Portfolio
+    portfolio_titulo: useScrollReveal({ origin: "bottom" }),
+    portfolio_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    portfolio_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Certificados
+    certificados_titulo: useScrollReveal({ origin: "bottom" }),
+    certificados_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    certificados_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Footer
+    footer: useScrollReveal({ origin: "bottom" }),
   };
 
   return (
@@ -298,15 +304,18 @@ export default function App() {
       <div className="content-wrapper">
         <Header sectionRef={sectionRefs.inicio} refs={scrollRefs} />
         <main>
-          <AboutMe sectionRef={sectionRefs.sobre} />
-          <SeparadorDots animRef={scrollRefs.dotsColumn1Ref} />
+          <AboutMe sectionRef={sectionRefs.sobre} refs={scrollRefs} />
           <Habilidades
             sectionRef={sectionRefs.servicos}
             refs={scrollRefs}
-            data={{ botoesData, techStackData }}
+            data={{ botoesData }}
             expansionState={expansionState}
           />
-          <SeparadorDots animRef={scrollRefs.dotsColumn2Ref} />
+          <Tecnologias
+            sectionRef={sectionRefs.tecnologias}
+            refs={scrollRefs}
+            techStackData={techStackData}
+          />
           <Portfolio
             sectionRef={sectionRefs.portfolio}
             refs={scrollRefs}
@@ -315,11 +324,11 @@ export default function App() {
           />
           <Certificados
             sectionRef={sectionRefs.certificados}
+            refs={scrollRefs}
             certificatesData={certificatesData}
-            animRef={scrollRefs.certificatesContainerRef}
           />
         </main>
-        <Footer animRef={scrollRefs.footerRef} />
+        <Footer animRef={scrollRefs.footer} />
         {selectedProject && (
           <div
             className="modal-overlay"
@@ -329,8 +338,7 @@ export default function App() {
               className="modal-close"
               onClick={() => setSelectedProject(null)}
             >
-              {" "}
-              X{" "}
+              X
             </span>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <img
@@ -341,17 +349,14 @@ export default function App() {
               <div className="modal-details">
                 <h3 className="modal-title">{selectedProject.title}</h3>
                 <p className="modal-description">
-                  {" "}
-                  {selectedProject.description}{" "}
+                  {selectedProject.description}
                 </p>
                 <div className="tech-tags-container">
-                  {" "}
                   {selectedProject.technologies.map((tech, index) => (
                     <span key={index} className="tech-tag">
-                      {" "}
-                      {tech}{" "}
+                      {tech}
                     </span>
-                  ))}{" "}
+                  ))}
                 </div>
               </div>
             </div>

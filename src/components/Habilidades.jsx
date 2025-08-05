@@ -1,7 +1,6 @@
 // src/components/Habilidades.jsx
 import React from "react";
 import ExpandedContent from "../ExpandedContent";
-import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function Habilidades({
   sectionRef,
@@ -9,7 +8,7 @@ export default function Habilidades({
   data,
   expansionState,
 }) {
-  const { botoesData, techStackData } = data;
+  const { botoesData } = data;
   const {
     expandedButtonId,
     buttonRefs,
@@ -18,29 +17,20 @@ export default function Habilidades({
     expandedOrigin,
   } = expansionState;
 
-  // Hook de animação para o novo parágrafo
-  const textoTecnologiasRef = useScrollReveal({
-    origin: "left",
-    reset: true,
-    delay: 200,
-  });
-
   return (
     <section id="servicos" ref={sectionRef} className="container-primeiro-main">
       <div className="interligacao-habilidades">
-        <h2 className="titulo-habilidades" ref={refs.tituloPrimeiroMainRef}>
-          {" "}
-          Habilidades{" "}
+        <h2 className="titulo-habilidades" ref={refs.habilidades_titulo}>
+          Habilidades
         </h2>
-        <p className="texto-habilidades" ref={refs.textoPrimeiroMainRef}>
-          {" "}
+        <p className="texto-habilidades" ref={refs.habilidades_texto}>
           A interligação entre o design e a programação é essencial para criar
-          experiências digitais coesas e funcionais.{" "}
+          experiências digitais coesas e funcionais.
         </p>
       </div>
       <div className="servicos-container">
-        <div className="primeiro-main" ref={refs.mainImageRef}></div>
-        <div className="texto-primeiro-main" ref={refs.mainTextRef}>
+        <div className="primeiro-main" ref={refs.habilidades_imagemFundo}></div>
+        <div className="texto-primeiro-main" ref={refs.habilidades_containerBotoes}>
           <div className="btn-linha1">
             {botoesData.map((botao) => (
               <button
@@ -60,12 +50,10 @@ export default function Habilidades({
                     expandedButtonId === botao.id ? "none" : "auto",
                 }}
               >
-                {" "}
                 <span className="img-card">
-                  {" "}
-                  <img src={botao.imageSrc} alt={botao.label} />{" "}
-                </span>{" "}
-                {botao.label}{" "}
+                  <img src={botao.imageSrc} alt={botao.label} />
+                </span>
+                {botao.label}
               </button>
             ))}
             <div
@@ -83,66 +71,13 @@ export default function Habilidades({
                     setExpandedButtonId(null);
                   }}
                 >
-                  {" "}
-                  X{" "}
+                  X
                 </span>
               )}
             </div>
           </div>
         </div>
       </div>
-      <section className="tech-stack-section">
-        <div className="interligacao-tech">
-          {" "}
-          <h2 className="titulo-tech" ref={refs.tituloSkillsRef}>
-            {" "}
-            Tecnologias e Ferramentas{" "}
-          </h2>{" "}
-          <p className="texto-tech" ref={textoTecnologiasRef}>
-            Aqui está um resumo do meu arsenal tecnológico. São as ferramentas e
-            linguagens que mais utilizo para criar interfaces dinâmicas e
-            funcionais.
-          </p>
-        </div>
-        <div className="tech-stack-container" ref={refs.textoSkillsRef}>
-          <div className="tech-category-column">
-            <h3>Frontend</h3>
-            <div className="tech-items-list">
-              {" "}
-              {techStackData.frontend.map((tech, index) => (
-                <span key={index} className="tech-item">
-                  {" "}
-                  {tech}{" "}
-                </span>
-              ))}{" "}
-            </div>
-          </div>
-          <div className="tech-category-column">
-            <h3>Backend</h3>
-            <div className="tech-items-list">
-              {" "}
-              {techStackData.backend.map((tech, index) => (
-                <span key={index} className="tech-item">
-                  {" "}
-                  {tech}{" "}
-                </span>
-              ))}{" "}
-            </div>
-          </div>
-          <div className="tech-category-column">
-            <h3>Ferramentas</h3>
-            <div className="tech-items-list">
-              {" "}
-              {techStackData.ferramentas.map((tech, index) => (
-                <span key={index} className="tech-item">
-                  {" "}
-                  {tech}{" "}
-                </span>
-              ))}{" "}
-            </div>
-          </div>
-        </div>
-      </section>
     </section>
   );
 }
