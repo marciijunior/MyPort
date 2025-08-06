@@ -17,23 +17,18 @@ body {
 }
 
 header {
-  background: linear-gradient(to left, #000000 50.125%, #ff4d05 100%);
-  margin: 0 0 0em 0;
-  padding: 0.625em 0em 0.625em 0em;
-  text-align: center;
+  /* ALTERAÇÕES PRINCIPAIS AQUI */
+  min-height: 100vh; /* Garante que o header ocupe no mínimo a altura total da tela */
+  display: flex; /* Transforma o header em um container flex */
+  flex-direction: column; /* Organiza os filhos (header-content e divpremain) verticalmente */
+  padding: 0; /* Remove padding desnecessário */
 }
 
 .header-content {
   background-color: var(--cor5);
   align-items: center;
   margin: 0 auto;
-}
-
-.site-branding {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 0;
+  width: 100%;
 }
 
 .links {
@@ -41,23 +36,23 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.25em;
-  padding: 2.5em;
+  gap: 1.25rem;
+  padding: 2.5rem;
 }
 
 .link-list {
-  gap: 3.125em;
+  gap: 3.125rem;
   font-size: 1.1rem;
   display: flex;
-  padding: 3.125em 0em 3.125em 9.375em;
+  padding: 3.125rem 0rem 3.125rem 9.375rem;
 }
 
 .insta img,
 .git img,
 .linkedin img,
 .whatsapp img {
-  gap: 1.25em;
-  width: 2.1875em;
+  gap: 1.25rem;
+  width: 2.1875rem;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -75,7 +70,7 @@ header {
 
 .links-redes {
   display: flex;
-  gap: 3.125em;
+  gap: 3.125rem;
 }
 
 nav ul {
@@ -83,7 +78,7 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.5625em;
+  gap: 1.5625rem;
 }
 
 nav ul li a {
@@ -94,11 +89,5 @@ nav ul li a {
 
 nav ul li a:hover {
   color: var(--cor1);
-  text-shadow: var(--cor1) 0em 0em 0.625em;
-}
-
-canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
+  text-shadow: var(--cor1) 0rem 0rem 0.625rem;
 }

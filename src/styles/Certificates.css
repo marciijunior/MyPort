@@ -11,34 +11,34 @@
 }
 
 .container-certificados {
-  padding: 6.25em 15.625em 0 15.625em;
+  padding: 6.25rem 15.625rem 0 15.625rem;
 }
 
 .interligacao-certificado {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 0em 0 1.875em 0;
+  padding: 0rem 0 1.875rem 0;
 }
 
 .titulo-certificado {
   font-weight: 300;
-  font-size: 2em;
+  font-size: 2rem;
   color: var(--cor1);
-  margin: 0em;
+  margin: 0rem;
 }
 
 .texto-certificado {
   font-weight: 400;
-  font-size: 1em;
-  max-width: 50em;
+  font-size: 1rem;
+  max-width: 50rem;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 .swiper-container {
   width: 100%;
-  padding: 0 2.5em 0em 2.5em;
+  padding: 0 2.5rem 0rem 2.5rem;
 }
 
 .swiper-slide {
@@ -48,16 +48,16 @@
 
 .certificate-card {
   background: linear-gradient(145deg, #1a1a1a, #000000);
-  border-radius: 0.625em;
+  border-radius: 0.625rem;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 28.125em;
+  height: 28.125rem;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.4), 0 0.125em 0.5em rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.4), 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .certificate-card::before {
@@ -76,7 +76,7 @@
     var(--cor2)
   );
   animation: autoRotate 20s linear infinite;
-  filter: blur(2.5em);
+  filter: blur(2.5rem);
   z-index: -1;
   opacity: 0.8;
 }
@@ -94,19 +94,19 @@
 }
 
 .certificate-info {
-  padding: 1.25em;
+  padding: 1.25rem;
   flex-grow: 1;
 }
 
 .certificate-info h4 {
-  margin: 0 0 0.625em 0;
-  font-size: 1.2em;
+  margin: 0 0 0.625rem 0;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--cor3);
 }
 
 .certificate-info span {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   color: #aaa;
 }
 
@@ -132,23 +132,23 @@
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 75em) { /* 1200px */
+@media (max-width: 75rem) { /* 1200px */
   .container-certificados {
-    padding: 6.25em 9.375em 0 9.375em;
+    padding: 6.25rem 9.375rem 0 9.375rem;
   }
 }
 
-@media (max-width: 62em) { /* 992px */
+@media (max-width: 62rem) { /* 992px */
   .container-certificados {
-    padding: 5em 3.125em 0 3.125em;
+    padding: 5rem 3.125rem 0 3.125rem;
   }
 }
 
-@media (max-width: 48em) { /* 768px */
+@media (max-width: 48rem) { /* 768px */
   .container-certificados {
-    padding: 3.75em 0.9375em 0 0.9375em;
+    padding: 3.75rem 0.9375rem 0 0.9375rem;
   }
   .swiper-container {
-    padding: 0 0 2.5em 0;
+    padding: 0 0 2.5rem 0;
   }
 }

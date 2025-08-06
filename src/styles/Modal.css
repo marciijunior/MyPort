@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(0.3125rem);
 }
 
 .modal-content {
@@ -22,9 +22,9 @@
   max-width: 85%;
   max-height: 90%;
   overflow-y: auto;
-  background-color: #1c1c1c; /* Adicionado para o container ter uma cor de fundo */
-  border-radius: 8px; /* Bordas arredondadas para um visual mais suave */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para destacar o modal */
+  background-color: #1c1c1c;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.625rem 1.875rem rgba(0,0,0,0.5);
 }
 
 .modal-img {
@@ -35,45 +35,44 @@
 
 .modal-close {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 0.9375rem;
+  right: 1.25rem;
   color: #fff;
-  font-size: 2em;
+  font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   z-index: 1001;
 }
 
-/* Adicionado: Estilos para a seção de detalhes */
 .modal-details {
-  padding: 25px 30px;
+  padding: 1.5625rem 1.875rem;
   color: var(--cor3);
 }
 
 .modal-title {
-  font-size: 1.8em;
+  font-size: 1.8rem;
   font-weight: 500;
   color: var(--cor1);
-  margin: 0 0 15px 0;
+  margin: 0 0 0.9375rem 0;
 }
 
 .modal-description {
-  font-size: 1em;
+  font-size: 1rem;
   line-height: 1.6;
   color: #ccc;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
 }
 
 .tech-tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .tech-tag {
   background-color: var(--cor2);
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.85em;
+  padding: 0.3125rem 0.75rem;
+  border-radius: 0.9375rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }

@@ -22,8 +22,7 @@ export default function Header({ sectionRef, refs }) {
               <p className="p-im">Olá, eu sou</p>
             </div>
             <h1 className="titulo-premain" ref={refs.header_titulo}> Marcio Junior </h1>
-            <h1 className="p-premain" ref={refs.header_subtitulo}> O Web desenvolvedor e designer de UI/UX. </h1>
-            <p className="complemento-premain" ref={refs.header_complemento}> Transformo suas ideias em sites que geram resultados. Explore meu trabalho e vamos construir algo incrível juntos. </p>
+            <h1 className="p-premain" ref={refs.header_subtitulo}> O Web desenvolvedor e designer UI/UX. </h1>
           </div>
           <div className="div-btn">
             <button className="btn">Download CV</button>

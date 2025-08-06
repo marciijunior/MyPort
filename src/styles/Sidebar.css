@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   z-index: 1000;
-  transition: 4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-nav {
@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.9375em;
+  width: 100%;
 }
 
 .nav-link {
@@ -67,7 +68,7 @@
   border-radius: 3.125em;
   background: rgba(0, 0, 0, 0);
   box-shadow: -0.5625em -0.9375em 0em -0.1875em var(--cor1);
-  transition: 1 cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link.active::after {
@@ -87,4 +88,36 @@
   font-size: 1.4rem;
   position: relative;
   z-index: 2;
+}
+
+
+/* --- RESPONSIVIDADE PARA CELULARES --- */
+@media (max-width: 768px) { /* 768px */
+  .sidebar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5em;
+    transform: none;
+    flex-direction: row;
+    padding: 0 1em;
+    border-radius: 1.25em 1.25em 0 0; /* Arredonda as bordas superiores */
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around; /* Espaça os ícones igualmente */
+  }
+
+  .nav-link.active {
+    /* O ícone ativo agora sobe em vez de ir para o lado */
+    transform: translateY(-1.5em);
+  }
+
+  /* O efeito de "ilha" não funciona bem na horizontal, então o removemos */
+  .nav-link.active::before,
+  .nav-link.active::after {
+    display: none;
+  }
 }

@@ -14,19 +14,19 @@
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 6.25em 0 0 0;
+  padding: 6.25rem 0 0 0;
 }
 
 .titulo-tech {
   font-weight: 300;
-  font-size: 2em;
+  font-size: 2rem;
   color: var(--cor1);
-  margin-bottom: 0em;
+  margin-bottom: 0rem;
 }
 
 .texto-tech {
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1rem;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -38,16 +38,16 @@
 .tech-stack-container {
   display: flex;
   justify-content: center;
-  gap: 1em;
-  margin-top: 1.875em;
-  padding: 0 18.75em;
+  gap: 1rem;
+  margin-top: 1.875rem;
+  padding: 0 18.75rem;
 }
 
 .tech-category-column {
-  border-radius: 0.1875em;
-  padding: 1.5625em;
+  border-radius: 0.1875rem;
+  padding: 1.5625rem;
   flex: 1;
-  width: 21.875em;
+  width: 21.875rem;
   text-align: center;
   position: relative;
   overflow: visible;
@@ -62,7 +62,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(240deg, #161616, #000000);
-  border-radius: 0.1875em;
+  border-radius: 0.1875rem;
   z-index: -1;
 }
 
@@ -81,10 +81,10 @@
     var(--cor2)
   );
   animation: autoRotate 20s linear infinite;
-  filter: blur(2.1875em);
+  filter: blur(2.1875rem);
   z-index: -2;
   opacity: 0.9;
-  border-radius: 0.1875em;
+  border-radius: 0.1875rem;
 }
 
 .tech-category-column:hover {
@@ -93,27 +93,27 @@
 
 .tech-category-column h3 {
   font-weight: 400;
-  text-shadow: #000000 0em 0em 0.3125em;
-  font-size: 1.4em;
+  text-shadow: #000000 0rem 0rem 0.3125rem;
+  font-size: 1.4rem;
   color: var(--cor1);
-  margin-bottom: 1.875em;
-  border-bottom: 0.125em solid var(--cor2);
-  padding-bottom: 0.625em;
+  margin-bottom: 1.875rem;
+  border-bottom: 0.125rem solid var(--cor2);
+  padding-bottom: 0.625rem;
 }
 
 .tech-items-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.625em;
+  gap: 0.625rem;
   justify-content: center;
 }
 
 .tech-item {
   background-color: var(--cor2);
   color: #b0b0b0;
-  padding: 0.5em 0.9375em;
-  border-radius: 0.9375em;
-  font-size: 0.8em;
+  padding: 0.5rem 0.9375rem;
+  border-radius: 0.9375rem;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -124,15 +124,15 @@
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 75em) { /* 1200px */
+@media (max-width: 75rem) { /* 1200px */
   .tech-stack-container {
-    padding: 0 9.375em;
+    padding: 0 9.375rem;
   }
 }
 
-@media (max-width: 62em) { /* 992px */
+@media (max-width: 62rem) { /* 992px */
   .tech-stack-container {
     flex-direction: column;
-    padding: 0 3.125em;
+    padding: 0 3.125rem;
   }
 }
