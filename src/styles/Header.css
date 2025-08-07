@@ -73,6 +73,22 @@ header {
   gap: 3.125rem;
 }
 
+@media (max-width: 500px) {
+
+.insta img,
+.git img,
+.linkedin img,
+.whatsapp img {
+  width: 1.5rem;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+  .links-redes {
+
+  }
+}
+
 nav ul {
   list-style: none;
   padding: 0;
