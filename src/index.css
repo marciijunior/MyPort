@@ -5,16 +5,26 @@
   box-sizing: border-box;
 }
 
+/* Previne a rolagem horizontal no nível mais alto */
+html {
+  width: 100%;
+  overflow: visible;
+}
+
+/* O body agora tem altura automática, crescendo conforme o conteúdo.
+   Apenas prevenimos a rolagem horizontal aqui também por segurança.
+*/
 body {
   width: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  overflow: visible;
 }
 
-/* Garante que todas as imagens sejam responsivas por padrão */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.content-wrapper {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;   /* ATIVA A ROLAGEM VERTICAL AQUI */
+  overflow-x: hidden; /* DESATIVA A ROLAGEM HORIZONTAL AQUI */
 }
