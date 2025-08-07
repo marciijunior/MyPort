@@ -92,7 +92,7 @@
 
 
 /* --- RESPONSIVIDADE PARA CELULARES --- */
-@media (max-width: 768px) { /* 768px */
+@media (max-width: 800px) { /* 768px */
   .sidebar {
     display: none;
   }
