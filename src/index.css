@@ -1,10 +1,20 @@
+/* src/index.css */
+
+/* Garante que o modelo de caixa seja consistente */
 * {
   box-sizing: border-box;
 }
 
-html, body {
+body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
+}
+
+/* Garante que todas as imagens sejam responsivas por padrão */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
