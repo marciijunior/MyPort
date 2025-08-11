@@ -15,6 +15,8 @@ import Footer from "./components/Footer";
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
 import "./styles/Habilidades.css";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import "./styles/ExpandedContent.css";
 import "./styles/ScrollReveal.css";
 import "./styles/Portfolio.css";

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from "react";
 
 const BOTOES_DATA = [
   {
@@ -41,44 +41,45 @@ const BOTOES_DATA = [
 
 export const useButtonExpansion = () => {
   const [expandedButtonId, setExpandedButtonId] = useState(null);
-  const [expandedContent, setExpandedContent] = useState("");
   const [expandedOrigin, setExpandedOrigin] = useState("center center");
   const buttonRefs = useRef({});
 
-  const handleButtonClick = useCallback((id) => { // 'label' foi removido daqui
-    if (expandedButtonId === id) {
-      setExpandedButtonId(null);
-      setExpandedContent("");
-      setExpandedOrigin("center center");
-    } else {
-      setExpandedButtonId(id);
-      
-      // O 'label' não era usado aqui, então a lógica restante permanece a mesma
-      const clickedButton = buttonRefs.current[id];
-      if (clickedButton) {
-        const parentRect = clickedButton.closest(".btn-linha1").getBoundingClientRect();
-        const buttonRect = clickedButton.getBoundingClientRect();
+  const handleButtonClick = useCallback(
+    (id) => {
+      if (expandedButtonId === id) {
+        setExpandedButtonId(null);
+      } else {
+        const clickedButton = buttonRefs.current[id];
+        if (clickedButton) {
+          const parentRect = clickedButton
+            .closest(".texto-primeiro-main")
+            ?.getBoundingClientRect();
 
-        const originX =
-          ((buttonRect.left + buttonRect.width / 2 - parentRect.left) /
-            parentRect.width) *
-          100;
-        const originY =
-          ((buttonRect.top + buttonRect.height / 2 - parentRect.top) /
-            parentRect.height) *
-          100;
-        setExpandedOrigin(`${originX}% ${originY}%`);
+          if (parentRect) {
+            setExpandedButtonId(id);
+            const buttonRect = clickedButton.getBoundingClientRect();
+            const originX =
+              ((buttonRect.left + buttonRect.width / 2 - parentRect.left) /
+                parentRect.width) *
+              100;
+            const originY =
+              ((buttonRect.top + buttonRect.height / 2 - parentRect.top) /
+                parentRect.height) *
+              100;
+            setExpandedOrigin(`${originX}% ${originY}%`);
+          }
+        }
       }
-    }
-  }, [expandedButtonId]);
+    },
+    [expandedButtonId]
+  );
 
   return {
     expandedButtonId,
-    expandedContent,
     expandedOrigin,
     buttonRefs,
-    botoesData: BOTOES_DATA,
+    botoesData: BOTOES_DATA, // Supondo que BOTOES_DATA está definido aqui ou importado
     handleButtonClick,
-    setExpandedButtonId
+    setExpandedButtonId,
   };
 };

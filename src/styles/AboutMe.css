@@ -265,7 +265,8 @@
     height: 12rem;
   }
   .about-me-content {
-    padding: 1rem 6rem 0rem 6rem;
+    padding: 1rem 4rem 0rem 4rem;
+    gap: 2rem;
   }
 
   .about-me-text p {
@@ -290,6 +291,7 @@
   }
   .about-me-content {
     padding: 1rem 4rem 0rem 4rem;
+
   }
 
   .about-me-text p {
@@ -313,7 +315,7 @@
     height: 9rem;
   }
   .about-me-content {
-    padding: 1rem 1rem 0rem 1rem;
+    padding: 1rem 5rem 0rem 5rem;
   }
 
   .about-me-text p {
@@ -324,6 +326,30 @@
   .about-me-title {
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-me-image {
+    width: 9rem;
+    height: 9rem;
+  }
+  .about-me-image img {
+    width: 8rem;
+    height: 8rem;
+  }
+  .about-me-content {
+    padding: 1rem 2rem 0rem 2rem;
+  }
+
+  .about-me-text p {
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+
+  .about-me-title {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
   }
 }
 

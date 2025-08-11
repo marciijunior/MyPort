@@ -1,30 +1,25 @@
+/* ExpandedContent.css - VERSÃO FINAL COM ÍCONE DA BIBLIOTECA */
+
 .expanding-overlay {
-  background-color: rgba(
-    22,
-    22,
-    22,
-    0.8
-  );
-  position: absolute;
+  position: fixed;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(8px);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 2.5rem;
-  border-radius: 0.3125rem;
-  z-index: 10;
-  box-shadow: 0 0rem 1rem var(--cor3);
-  white-space: normal;
-  word-break: break-word;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  z-index: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   transform: scale(0.95);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1),
-    opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    opacity 0.3s ease-in-out;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .expanding-overlay.expanded {
@@ -33,6 +28,82 @@
   pointer-events: auto;
 }
 
+.close-expanded-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 11;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+  /* A cor do ícone é definida aqui */
+  color: white; 
+}
+
+.close-expanded-btn:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 77, 5, 0.8);
+}
+
+/* Estilo do ícone SVG renderizado pelo react-icons */
+.close-expanded-btn svg {
+  width: 50%; /* 50% do tamanho do botão pai */
+  height: 50%;
+}
+
+
+/* Estilos para o conteúdo interno */
+.container-expanded-content1 {
+  color: var(--cor3);
+  text-align: left;
+  max-width: 900px;
+  width: 100%;
+}
+
+.column-btn1 {
+    padding: 2rem;
+}
+
+.container-expanded-content1 h3 {
+    font-size: 2rem;
+    color: var(--cor1);
+    margin-bottom: 1rem;
+}
+
+.container-expanded-content1 p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.container-expanded-content1 ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1.5rem;
+}
+
+.container-expanded-content1 li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.container-expanded-content1 li::before {
+  content: '✓';
+  color: var(--cor1);
+  position: absolute;
+  left: 0;
+}
+
+/* Oculta os botões que não estão expandidos */
 .hidden-button {
   visibility: hidden;
   opacity: 0;
@@ -40,53 +111,19 @@
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.close-expanded-btn {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  font-size: 0.8rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  width: 2.1875rem;
-  height: 2.1875rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: var(--cor3);
-  z-index: 11;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.close-expanded-btn:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.container-expanded-content1 {
-  display: flex;
-  text-align: center;
-  column-gap: 4.375rem;
-  font-family: "montserrat", sans-serif;
-  font-size: 0.875rem;
-  padding: 0rem 3.125rem 0rem 3.125rem;
-}
-
-.column-btn1 {
-  border: 0.125rem solid var(--cor3);
-  background-color: var(--cor5);
-  box-shadow: 0 0 0.625rem var(--cor3);
-  border-radius: 1.25rem;
-  padding: 0rem 2.5rem 0 2.5rem;
-  width: 25rem;
-}
-
-.container-expanded-content1 img {
-  max-width: 11.25rem;
-  height: auto;
-  margin: 1.25rem 1.25rem 0.625rem 1.25rem;
-}
-
-.container-expanded-content1 h3 {
-  font-size: 1.125rem;
-  font-weight: 500;
+@media (max-width: 768px) {
+    .expanding-overlay {
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    .container-expanded-content1 h3 {
+        font-size: 1.5rem;
+    }
+    .container-expanded-content1 p, .container-expanded-content1 li {
+        font-size: 0.9rem;
+    }
+    .close-expanded-btn {
+        top: 1rem;
+        right: 1rem;
+    }
 }

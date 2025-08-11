@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --cor1: #ff4d05;
@@ -13,7 +13,7 @@ body {
   padding: 0;
   background-color: var(--cor5);
   color: var(--cor3);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -67,25 +67,19 @@ header {
   cursor: pointer;
 }
 
-
 .links-redes {
   display: flex;
   gap: 3.125rem;
 }
 
 @media (max-width: 500px) {
-
-.insta img,
-.git img,
-.linkedin img,
-.whatsapp img {
-  width: 1.5rem;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-  .links-redes {
-
+  .insta img,
+  .git img,
+  .linkedin img,
+  .whatsapp img {
+    width: 1.5rem;
+    height: auto;
+    transition: transform 0.3s ease;
   }
 }
 

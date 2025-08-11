@@ -1,83 +1,141 @@
-// src/components/Habilidades.jsx
 import React from "react";
-import ExpandedContent from "../ExpandedContent";
+import Slider from "react-slick";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import ExpandedContent from "./ExpandedContent";
 
-export default function Habilidades({
-  sectionRef,
-  refs,
-  data,
-  expansionState,
-}) {
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const Habilidades = ({ data, expansionState }) => {
   const { botoesData } = data;
   const {
     expandedButtonId,
     buttonRefs,
     handleButtonClick,
-    setExpandedButtonId,
     expandedOrigin,
+    setExpandedButtonId,
   } = expansionState;
 
+  const isCarouselView = useMediaQuery("(max-width: 1299px)");
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+
+    // ADICIONE AS DUAS LINHAS ABAIXO
+    autoplay: true,
+    autoplaySpeed: 5000,
+
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <section id="servicos" ref={sectionRef} className="container-primeiro-main">
+    <div className="container-primeiro-main">
       <div className="interligacao-habilidades">
-        <h2 className="titulo-habilidades" ref={refs.habilidades_titulo}>
-          Habilidades
-        </h2>
-        <p className="texto-habilidades" ref={refs.habilidades_texto}>
-          A interligação entre o design e a programação é essencial para criar
+        <h2 className="titulo-habilidades">Habilidades</h2>
+        <p className="texto-habilidades">
+          A interligacao entre o design e a programação é essencial para criar
           experiências digitais coesas e funcionais.
         </p>
       </div>
+
       <div className="servicos-container">
-        <div className="primeiro-main" ref={refs.habilidades_imagemFundo}></div>
-        <div className="texto-primeiro-main" ref={refs.habilidades_containerBotoes}>
-          <div className="btn-linha1">
-            {botoesData.map((botao) => (
-              <button
-                key={botao.id}
-                ref={(el) => (buttonRefs.current[botao.id] = el)}
-                className={`${botao.className} ${
-                  expandedButtonId && expandedButtonId !== botao.id
-                    ? "hidden-button"
-                    : ""
-                }`}
-                onClick={() => handleButtonClick(botao.id)}
-                style={{
-                  visibility:
-                    expandedButtonId === botao.id ? "hidden" : "visible",
-                  opacity: expandedButtonId === botao.id ? 0 : 1,
-                  pointerEvents:
-                    expandedButtonId === botao.id ? "none" : "auto",
-                }}
-              >
-                <span className="img-card">
-                  <img src={botao.imageSrc} alt={botao.label} />
-                </span>
-                {botao.label}
-              </button>
-            ))}
-            <div
-              className={`expanding-overlay ${
-                expandedButtonId ? "expanded" : ""
-              }`}
-              style={{ transformOrigin: expandedOrigin }}
-            >
-              <ExpandedContent buttonId={expandedButtonId} />
-              {expandedButtonId && (
-                <span
-                  className="close-expanded-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setExpandedButtonId(null);
-                  }}
-                >
-                  X
-                </span>
-              )}
+        <div className="texto-primeiro-main">
+          {isCarouselView ? (
+            // MODO CARROSSEL (< 1300px)
+            <div className="habilidades-carrossel">
+              {" "}
+              {/* <-- CLASSE MODIFICADA */}
+              <Slider {...settings}>
+                {botoesData.map((botao) => (
+                  <div key={botao.id} className="slide-item">
+                    <button
+                      ref={(el) => (buttonRefs.current[botao.id] = el)}
+                      onClick={() => handleButtonClick(botao.id)}
+                      className={`${botao.className} ${
+                        expandedButtonId && expandedButtonId !== botao.id
+                          ? "hidden-button"
+                          : ""
+                      }`}
+                    >
+                      <span className="img-card">
+                        <img src={botao.imageSrc} alt={botao.label} />
+                      </span>
+                      {botao.label}
+                    </button>
+                  </div>
+                ))}
+              </Slider>
             </div>
+          ) : (
+            // MODO GRADE (> 1300px)
+            <div className="btn-linha1">
+              {botoesData.map((botao) => (
+                <button
+                  key={botao.id}
+                  ref={(el) => (buttonRefs.current[botao.id] = el)}
+                  onClick={() => handleButtonClick(botao.id)}
+                  className={`${botao.className} ${
+                    expandedButtonId && expandedButtonId !== botao.id
+                      ? "hidden-button"
+                      : ""
+                  }`}
+                >
+                  <span className="img-card">
+                    <img src={botao.imageSrc} alt={botao.label} />
+                  </span>
+                  {botao.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* OVERLAY DE EXPANSÃO */}
+          <div
+            className={`expanding-overlay ${
+              expandedButtonId ? "expanded" : ""
+            }`}
+            style={{ transformOrigin: expandedOrigin }}
+          >
+            {expandedButtonId && (
+              <ExpandedContent buttonId={expandedButtonId} />
+            )}
+
+            {expandedButtonId && (
+              <button
+                className="close-expanded-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setExpandedButtonId(null);
+                }}
+                aria-label="Voltar"
+              >
+                {/* Ícone aqui, como no exemplo anterior */}
+              </button>
+            )}
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default Habilidades;

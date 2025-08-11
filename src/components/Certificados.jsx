@@ -17,11 +17,10 @@ export default function Certificados({
     distance: "50px",
   });
 
-  // Hook para animar o novo parágrafo
   const certificatesTextRef = useScrollReveal({
     origin: "bottom",
     distance: "50px",
-    delay: 200, // Um pequeno atraso para animar depois do título
+    delay: 200,
   });
 
   return (
@@ -34,7 +33,6 @@ export default function Certificados({
         <h2 className="titulo-certificado" ref={certificatesTitleRef}>
           Certificados e Cursos
         </h2>
-        {/* TEXTO MENOS FORMAL ADICIONADO AQUI */}
         <p className="texto-certificado" ref={certificatesTextRef}>
           Algumas das minhas
           certificações e cursos mais recentes.
@@ -52,7 +50,7 @@ export default function Certificados({
             768: { slidesPerView: 2, spaceBetween: 30 },
             1024: { slidesPerView: 3, spaceBetween: 40 },
           }}
-          className="swiper-container"
+          className="certificates-swiper" // <-- CLASSE MODIFICADA
         >
           {certificatesData.map((cert, index) => (
             <SwiperSlide key={index}>
