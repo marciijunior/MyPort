@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import ExpandedContent from "./ExpandedContent";
+import { FaReply } from "react-icons/fa";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,8 +53,7 @@ const Habilidades = ({ data, expansionState }) => {
       <div className="interligacao-habilidades">
         <h2 className="titulo-habilidades">Habilidades</h2>
         <p className="texto-habilidades">
-          A interligacao entre o design e a programação é essencial para criar
-          experiências digitais coesas e funcionais.
+          Como posso te ajudar:
         </p>
       </div>
 
@@ -128,7 +128,7 @@ const Habilidades = ({ data, expansionState }) => {
                 }}
                 aria-label="Voltar"
               >
-                {/* Ícone aqui, como no exemplo anterior */}
+                <FaReply />
               </button>
             )}
           </div>

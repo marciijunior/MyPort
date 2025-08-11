@@ -1,3 +1,7 @@
+/* src/styles/TechStack.css - VERSÃO FINAL COM ESTILO ORIGINAL NO CARROSSEL */
+
+/* --- ESTILOS GLOBAIS --- */
+
 @property --deg {
   syntax: "<angle>";
   inherits: true;
@@ -43,14 +47,13 @@
   padding: 0 18.75rem;
 }
 
+/* --- ESTILO ORIGINAL DO CARD (agora aplicado em todas as telas) --- */
 .tech-category-column {
-  border-radius: 0.1875rem;
+  border-radius: 0.625rem;
   padding: 1.5625rem;
   flex: 1;
-  width: 21.875rem;
   text-align: center;
   position: relative;
-  overflow: visible;
   z-index: 1;
 }
 
@@ -62,7 +65,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(240deg, #161616, #000000);
-  border-radius: 0.1875rem;
+  border-radius: 0.625rem;
   z-index: -1;
 }
 
@@ -82,13 +85,9 @@
   );
   animation: autoRotate 20s linear infinite;
   filter: blur(2.1875rem);
-  z-index: -2;
   opacity: 0.9;
-  border-radius: 0.1875rem;
-}
-
-.tech-category-column:hover {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.625rem;
+  z-index: -1;
 }
 
 .tech-category-column h3 {
@@ -123,16 +122,180 @@
   color: var(--cor5);
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 75rem) { /* 1200px */
+/* --- RESPONSIVIDADE (FONTES E PADDINGS) --- */
+@media (max-width: 1700px) {
   .tech-stack-container {
-    padding: 0 9.375rem;
+    padding: 0 16rem;
+  }
+}
+@media (max-width: 1600px) {
+  .tech-stack-container {
+    padding: 0 14rem;
+  }
+}
+@media (max-width: 1500px) {
+  .tech-stack-container {
+    padding: 0 12rem;
+  }
+  .titulo-tech {
+    font-size: 1.8rem;
+  }
+  .texto-tech {
+    font-size: 0.9rem;
+  }
+  .tech-category-column h3 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 1400px) {
+  .tech-stack-container {
+    padding: 0 10rem;
+  }
+}
+@media (max-width: 1300px) {
+  .tech-stack-container {
+    padding: 0 10rem;
+  }
+  .titulo-tech {
+    font-size: 1.6rem;
+  }
+  .texto-tech {
+    font-size: 0.8rem;
+  }
+  .tech-category-column h3 {
+    font-size: 1.2rem;
+  }
+  .tech-item {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 1200px) {
+  .tech-stack-container {
+    padding: 0 9rem;
+  }
+  .titulo-tech {
+    font-size: 1.6rem;
+  }
+  .texto-tech {
+    font-size: 0.8rem;
+  }
+  .tech-category-column h3 {
+    font-size: 1.2rem;
+  }
+  .tech-item {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 1000px) {
+  .slick-track2 div {
+    padding: 0rem 8rem;
+  }
+  .titulo-tech {
+    font-size: 1.4rem;
+  }
+  .texto-tech {
+    font-size: 0.7rem;
+  }
+  .tech-category-column h3 {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 700px) {
+  .titulo-tech {
+    font-size: 1.2rem;
+  }
+  .texto-tech {
+    line-height: 1.2;
+  }
+}
+@media (max-width: 600px) {
+  .titulo-tech {
+    font-size: 1.1rem;
+  }
+  .texto-tech {
+    font-size: 0.7rem;
+  }
+  .tech-item {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 500px) {
+  .titulo-tech {
+    font-size: 1rem;
+  }
+  .texto-tech {
+    padding: 0 1rem;
+    line-height: 1;
+  }
+  .tech-category-column {
+    min-height: 300px;
   }
 }
 
-@media (max-width: 62rem) { /* 992px */
+/* --- AJUSTES DO CARROSSEL PARA O ESTILO ORIGINAL (< 1000px) --- */
+@media (max-width: 999px) {
   .tech-stack-container {
-    flex-direction: column;
-    padding: 0 3.125rem;
+    padding: 0;
+  }
+
+  .tech-carousel {
+    width: 100%;
+    padding: 0rem 0; /* Espaço para o brilho "respirar" */
+  }
+
+  /* A MÁGICA ACONTECE AQUI */
+  .tech-carousel .slick-list {
+    overflow: visible; /* Permite que o brilho vaze para fora */
+  }
+
+  .tech-carousel .slick-slide {
+    padding: 0 1rem; /* Adiciona um respiro entre os slides */
+  }
+
+  /* Setas de Navegação */
+  .tech-carousel .slick-prev,
+  .tech-carousel .slick-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(59, 59, 59, 0.7);
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .tech-carousel .slick-prev:hover,
+  .tech-carousel .slick-next:hover {
+    background-color: var(--cor1);
+  }
+  .tech-carousel .slick-prev:before,
+  .tech-carousel .slick-next:before {
+    color: white;
+  }
+  .tech-carousel .slick-prev {
+    left: 10px;
+  }
+  .tech-carousel .slick-next {
+    right: 10px;
+  }
+
+  /* Pontos de Navegação */
+  .tech-carousel .slick-dots {
+    bottom: -30px; /* Mais perto do carrossel */
+  }
+  .tech-carousel .slick-dots li button:before {
+    color: var(--cor2);
+    font-size: 12px;
+  }
+  .tech-carousel .slick-dots li.slick-active button:before {
+    color: var(--cor1);
+  }
+
+  /* Esconde setas em telas muito pequenas */
+  @media (max-width: 800px) {
+    .tech-carousel .slick-prev,
+    .tech-carousel .slick-next {
+      display: none !important;
+    }
+    .tech-carousel .slick-dots {
+      justify-self: center;
+    }
   }
 }

@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding-bottom: 6.25rem;
+  padding-bottom: 0rem;
 }
 
 /* Borda Animada */
@@ -62,8 +62,13 @@
   width: 100%;
   height: 100%;
   background: conic-gradient(
-    from var(--deg), var(--cor5), var(--cor1), var(--cor5),
-    var(--cor1), var(--cor5), var(--cor2)
+    from var(--deg),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
+    var(--cor2)
   );
   border-radius: 0.625rem;
   animation: autoRotate 30s linear infinite;
@@ -81,55 +86,80 @@
   z-index: 1;
 }
 
-
 /* --- MEDIA QUERIES DE 100PX EM 100PX PARA A GRADE (ACIMA DE 1300PX) --- */
 
 @media (max-width: 1700px) {
-  .container-primeiro-main { padding: 0 16rem; }
+  .container-primeiro-main {
+    padding: 0 16rem;
+  }
 }
 @media (max-width: 1600px) {
-  .container-primeiro-main { padding: 0 14rem; }
+  .container-primeiro-main {
+    padding: 0 14rem;
+  }
 }
 @media (max-width: 1500px) {
-  .container-primeiro-main { padding: 0 12rem; }
-  .titulo-habilidades { font-size: 1.8rem; }
-  .texto-habilidades { font-size: 0.9rem; }
+  .container-primeiro-main {
+    padding: 0 12rem;
+  }
+  .titulo-habilidades {
+    font-size: 1.8rem;
+  }
+  .texto-habilidades {
+    font-size: 0.9rem;
+  }
 }
 @media (max-width: 1400px) {
-  .container-primeiro-main { padding: 0 10rem; }
+  .container-primeiro-main {
+    padding: 0 10rem;
+  }
 }
 @media (max-width: 1300px) {
-    .container-primeiro-main { padding: 0 8rem; }
-    .titulo-habilidades { font-size: 1.6rem; }
-    .texto-habilidades { font-size: 0.8rem; }
+  .container-primeiro-main {
+    padding: 0 8rem;
+  }
+  .titulo-habilidades {
+    font-size: 1.6rem;
+  }
+  .texto-habilidades {
+    font-size: 0.8rem;
+  }
 }
-@media (max-width: 1200px) { }
-@media (max-width: 1100px) { }
 @media (max-width: 1000px) {
-  .titulo-habilidades { font-size: 1.4rem; }
-  .texto-habilidades { font-size: 0.7rem; }
+  .titulo-habilidades {
+    font-size: 1.4rem;
+  }
+  .texto-habilidades {
+    font-size: 0.7rem;
+  }
 }
-@media (max-width: 900px) { }
-@media (max-width: 800px) { }
 @media (max-width: 700px) {
-  .titulo-habilidades { font-size: 1.2rem; }
-  .texto-habilidades { line-height: 1.2; }
+  .titulo-habilidades {
+    font-size: 1.2rem;
+  }
+  .texto-habilidades {
+    line-height: 1.2;
+  }
 }
 @media (max-width: 600px) {
-  .titulo-habilidades { font-size: 1.1rem; }
-  .texto-habilidades { font-size: 0.5rem; }
+  .titulo-habilidades {
+    font-size: 1.1rem;
+  }
+  .texto-habilidades {
+    font-size: 0.5rem;
+  }
 }
 @media (max-width: 500px) {
-  .titulo-habilidades { font-size: 1rem; }
-  .texto-habilidades { line-height: 1; }
-  .container-primeiro-main { padding: 0 4rem; }
+  .titulo-habilidades {
+    font-size: 1rem;
+  }
+  .texto-habilidades {
+    line-height: 1;
+  }
+  .container-primeiro-main {
+    padding: 0 4rem;
+  }
 }
-
-
-/* --- ESTILOS DO CARROSSEL (SLIDES LARGOS < 1300PX) --- */
-
-/* --- ESTILOS DO CARROSSEL (3 SLIDES LARGOS) --- */
-
 
 .habilidades-carrossel {
   width: 100%;
@@ -146,7 +176,7 @@
 /* Efeito de foco para o slide do meio */
 .slide-item {
   box-sizing: border-box;
-  padding: 0 15px;
+  padding: 0px;
   transition: transform 0.4s ease, opacity 0.4s ease;
   transform: scale(0.85);
   opacity: 0.6;
@@ -162,7 +192,7 @@
   background-color: #1a1a1a;
   border: 1px solid var(--cor2);
   color: var(--cor3);
-  padding: 2rem 2rem;
+  padding: 2rem 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
   width: 100%;
@@ -175,9 +205,8 @@
   justify-content: center;
   text-align: center;
   gap: 1rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   min-height: 15rem;
-  aspect-ratio: 16 / 10;
 }
 .btn-primeiro-main-linha1:hover,
 .btn-primeiro-main-linha2:hover {
@@ -206,14 +235,18 @@
 /* Corrige o tamanho e a aparência das setas */
 .slick-prev,
 .slick-next {
-  width: 40px;  /* <-- CORRIGIDO */
+  width: 40px; /* <-- CORRIGIDO */
   height: 40px; /* <-- CORRIGIDO */
   background-color: rgba(26, 26, 26, 0.5);
   border-radius: 50%;
   z-index: 2;
 }
-.slick-prev { left: -30px; } /* Posiciona mais para dentro */
-.slick-next { right: -30px; }
+.slick-prev {
+  left: -30px;
+} /* Posiciona mais para dentro */
+.slick-next {
+  right: -30px;
+}
 
 .slick-prev:hover,
 .slick-next:hover {
@@ -226,11 +259,10 @@
 
 /* Centraliza os pontos de navegação */
 .slick-dots {
+  justify-self: center;
   position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 180px; /* <-- CORRIGIDO */
+  bottom: -10px;
+  width: 180px;
 }
 .slick-dots li button:before {
   color: var(--cor2);
@@ -251,7 +283,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1700px) {
   /* Esconde as setas de navegação em telas de celular */
   .habilidades-carrossel .slick-prev,
   .habilidades-carrossel .slick-next {
