@@ -1,95 +1,81 @@
-/* src/styles/TechStack.css - VERSÃO FINAL COM ESTILO ORIGINAL NO CARROSSEL */
+/* src/styles/TechStack.css - VERSÃO FINAL COM PADDINGS CORRIGIDOS PARA DESKTOP */
 
 /* --- ESTILOS GLOBAIS --- */
-
 @property --deg {
   syntax: "<angle>";
   inherits: true;
   initial-value: 0deg;
 }
-
 @keyframes autoRotate {
   to {
     --deg: 360deg;
   }
 }
-
 .interligacao-tech {
   width: 100%;
   text-align: center;
   color: var(--cor3);
   padding: 6.25rem 0 0 0;
 }
-
 .titulo-tech {
   font-weight: 300;
   font-size: 2rem;
   color: var(--cor1);
   margin-bottom: 0rem;
 }
-
 .texto-tech {
   font-weight: 400;
   font-size: 1rem;
   margin: 0 auto;
   line-height: 1.6;
 }
-
 .tech-stack-section {
   background-color: var(--cor5);
+  padding: 0 18.75rem;
 }
-
 .tech-stack-container {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2.5rem;
   margin-top: 1.875rem;
-  padding: 0 18.75rem;
 }
 
-/* --- ESTILO ORIGINAL DO CARD (agora aplicado em todas as telas) --- */
+/* --- ESTILO DO CARD --- */
 .tech-category-column {
+  /* --- MUDANÇA PRINCIPAL AQUI --- */
+  flex: 1; /* Permite que o card seja flexível e se ajuste ao espaço */
   border-radius: 0.625rem;
   padding: 1.5625rem;
-  flex: 1;
   text-align: center;
   position: relative;
-  z-index: 1;
-}
-
-.tech-category-column::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: linear-gradient(240deg, #161616, #000000);
-  border-radius: 0.625rem;
-  z-index: -1;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
 }
-
+.tech-category-column::after {
+  display: none;
+}
 .tech-category-column::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: conic-gradient(
     from var(--deg),
-    var(--cor2),
     var(--cor5),
     var(--cor1),
+    var(--cor5),
+    var(--cor1),
+    var(--cor5),
     var(--cor2)
   );
-  animation: autoRotate 20s linear infinite;
-  filter: blur(2.1875rem);
-  opacity: 0.9;
   border-radius: 0.625rem;
+  animation: autoRotate 30s linear infinite;
+  filter: blur(1.875rem);
   z-index: -1;
 }
-
 .tech-category-column h3 {
   font-weight: 400;
   text-shadow: #000000 0rem 0rem 0.3125rem;
@@ -99,14 +85,13 @@
   border-bottom: 0.125rem solid var(--cor2);
   padding-bottom: 0.625rem;
 }
-
 .tech-items-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
   justify-content: center;
+  flex-grow: 0;
 }
-
 .tech-item {
   background-color: var(--cor2);
   color: #b0b0b0;
@@ -116,25 +101,24 @@
   font-weight: 500;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .tech-item:hover {
   background-color: var(--cor1);
   color: var(--cor5);
 }
 
-/* --- RESPONSIVIDADE (FONTES E PADDINGS) --- */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 1700px) {
-  .tech-stack-container {
+  .tech-stack-section {
     padding: 0 16rem;
   }
 }
 @media (max-width: 1600px) {
-  .tech-stack-container {
+  .tech-stack-section {
     padding: 0 14rem;
   }
 }
 @media (max-width: 1500px) {
-  .tech-stack-container {
+  .tech-stack-section {
     padding: 0 12rem;
   }
   .titulo-tech {
@@ -148,30 +132,13 @@
   }
 }
 @media (max-width: 1400px) {
-  .tech-stack-container {
+  .tech-stack-section {
     padding: 0 10rem;
   }
 }
 @media (max-width: 1300px) {
-  .tech-stack-container {
-    padding: 0 10rem;
-  }
-  .titulo-tech {
-    font-size: 1.6rem;
-  }
-  .texto-tech {
-    font-size: 0.8rem;
-  }
-  .tech-category-column h3 {
-    font-size: 1.2rem;
-  }
-  .tech-item {
-    font-size: 0.75rem;
-  }
-}
-@media (max-width: 1200px) {
-  .tech-stack-container {
-    padding: 0 9rem;
+  .tech-stack-section {
+    padding: 0 8rem;
   }
   .titulo-tech {
     font-size: 1.6rem;
@@ -187,9 +154,6 @@
   }
 }
 @media (max-width: 1000px) {
-  .slick-track2 div {
-    padding: 0rem 8rem;
-  }
   .titulo-tech {
     font-size: 1.4rem;
   }
@@ -198,6 +162,23 @@
   }
   .tech-category-column h3 {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 800px) {
+  .tech-stack-section {
+    padding: 0 6rem;
+  }
+  .titulo-tech {
+    font-size: 1.6rem;
+  }
+  .texto-tech {
+    font-size: 0.8rem;
+  }
+  .tech-category-column h3 {
+    font-size: 1.2rem;
+  }
+  .tech-item {
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 700px) {
@@ -209,76 +190,105 @@
   }
 }
 @media (max-width: 600px) {
+  .tech-stack-section {
+    padding: 0 2rem;
+  }
   .titulo-tech {
     font-size: 1.1rem;
   }
   .texto-tech {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
   .tech-item {
     font-size: 0.7rem;
   }
 }
 @media (max-width: 500px) {
+  .tech-stack-section {
+    padding: 0 0.5rem;
+  }
   .titulo-tech {
     font-size: 1rem;
   }
   .texto-tech {
-    padding: 0 1rem;
     line-height: 1;
   }
-  .tech-category-column {
-    min-height: 300px;
+  .tech-carousel .slick-slide {
+    padding: 0 3rem;
+  }
+}
+@media (max-width: 400px) {
+  .tech-stack-section {
+    padding: 0 0rem;
+  }
+  .titulo-tech {
+    font-size: 1rem;
+  }
+  .texto-tech {
+    line-height: 1;
+  }
+  .tech-carousel .slick-slide {
+    padding: 0 2rem;
   }
 }
 
-/* --- AJUSTES DO CARROSSEL PARA O ESTILO ORIGINAL (< 1000px) --- */
-@media (max-width: 999px) {
+/* --- AJUSTES DO CARROSSEL (< 1000px) --- */
+@media (max-width: 1200px) {
+  .tech-stack-section {
+    overflow-x: visible;
+  }
   .tech-stack-container {
-    padding: 0;
+    margin-top: 0;
   }
-
-  .tech-carousel {
+  .tech-carousel-wrapper {
+    position: relative;
     width: 100%;
-    padding: 0rem 0; /* Espaço para o brilho "respirar" */
-  }
-
-  /* A MÁGICA ACONTECE AQUI */
-  .tech-carousel .slick-list {
-    overflow: visible; /* Permite que o brilho vaze para fora */
-  }
-
-  .tech-carousel .slick-slide {
-    padding: 0 1rem; /* Adiciona um respiro entre os slides */
-  }
-
-  /* Setas de Navegação */
-  .tech-carousel .slick-prev,
-  .tech-carousel .slick-next {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(59, 59, 59, 0.7);
-    border-radius: 50%;
     z-index: 2;
   }
-  .tech-carousel .slick-prev:hover,
-  .tech-carousel .slick-next:hover {
-    background-color: var(--cor1);
+  .tech-carousel-wrapper::before {
+    margin: 1.5rem;
+    content: "";
+    position: absolute;
+    top: 0rem;
+    bottom: 0rem;
+    left: 0rem;
+    right: 0rem;
+    background: conic-gradient(
+      from var(--deg),
+      var(--cor5),
+      var(--cor1),
+      var(--cor5),
+      var(--cor1),
+      var(--cor5),
+      var(--cor2)
+    );
+    border-radius: 0.625rem;
+    animation: autoRotate 30s linear infinite;
+    filter: blur(1.875rem);
+    z-index: 0;
   }
-  .tech-carousel .slick-prev:before,
-  .tech-carousel .slick-next:before {
-    color: white;
+  .tech-carousel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 50px 0;
   }
-  .tech-carousel .slick-prev {
-    left: 10px;
+  .tech-carousel .tech-category-column::before {
+    display: none;
   }
+  .tech-carousel .slick-list {
+    overflow: hidden;
+  }
+  .tech-carousel .slick-track {
+    display: flex;
+    align-items: center;
+  }
+  .tech-carousel .slick-prev,
   .tech-carousel .slick-next {
-    right: 10px;
+    display: none !important;
   }
-
-  /* Pontos de Navegação */
   .tech-carousel .slick-dots {
-    bottom: -30px; /* Mais perto do carrossel */
+    bottom: -29px;
   }
   .tech-carousel .slick-dots li button:before {
     color: var(--cor2);
@@ -286,16 +296,5 @@
   }
   .tech-carousel .slick-dots li.slick-active button:before {
     color: var(--cor1);
-  }
-
-  /* Esconde setas em telas muito pequenas */
-  @media (max-width: 800px) {
-    .tech-carousel .slick-prev,
-    .tech-carousel .slick-next {
-      display: none !important;
-    }
-    .tech-carousel .slick-dots {
-      justify-self: center;
-    }
   }
 }

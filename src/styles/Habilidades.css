@@ -133,6 +133,18 @@
     font-size: 0.7rem;
   }
 }
+@media (max-width: 800px) {
+  .container-primeiro-main {
+    padding: 0 6rem;
+  }
+  .titulo-habilidades {
+    font-size: 1.2rem;
+  }
+  .texto-habilidades {
+    line-height: 1.2;
+  }
+}
+
 @media (max-width: 700px) {
   .titulo-habilidades {
     font-size: 1.2rem;
@@ -142,6 +154,9 @@
   }
 }
 @media (max-width: 600px) {
+  .container-primeiro-main {
+    padding: 0 2rem;
+  }
   .titulo-habilidades {
     font-size: 1.1rem;
   }
@@ -150,6 +165,9 @@
   }
 }
 @media (max-width: 500px) {
+  .container-primeiro-main {
+    padding: 0 1rem;
+  }
   .titulo-habilidades {
     font-size: 1rem;
   }
@@ -168,9 +186,10 @@
 }
 
 /* Garante o alinhamento vertical dos slides */
-.slick-track {
+.habilidades-carrossel .slick-track {
   display: flex;
   align-items: center;
+  padding: 0 0rem;
 }
 
 /* Efeito de foco para o slide do meio */

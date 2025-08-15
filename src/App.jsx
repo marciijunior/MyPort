@@ -158,32 +158,24 @@ export default function App() {
       id: "proj1",
       imageSrc: "./site1.png",
       title: "Website Corporativo Moderno",
-      description:
-        "Um projeto focado em criar uma presença online forte e profissional para a empresa InovaTech, com foco em performance e design responsivo.",
       technologies: ["React", "Vite", "CSS Grid", "Figma"],
     },
     {
       id: "proj2",
       imageSrc: "./site2.png",
       title: "Plataforma de E-commerce",
-      description:
-        "Desenvolvimento de uma loja virtual completa, com integração de pagamentos e um painel de gerenciamento de produtos intuitivo.",
       technologies: ["JavaScript", "HTML5", "CSS3", "API Rest"],
     },
     {
       id: "proj3",
       imageSrc: "./site3.png",
       title: "Landing Page para Evento",
-      description:
-        "Criação de uma landing page de alta conversão para um evento de tecnologia, utilizando animações para engajar os visitantes.",
       technologies: ["React", "ScrollReveal", "Spline"],
     },
     {
       id: "proj4",
       imageSrc: "./site4.png",
       title: "Blog Pessoal Minimalista",
-      description:
-        "Um blog com foco na legibilidade e na velocidade, construído com um design limpo para uma experiência de leitura agradável.",
       technologies: ["React", "CSS Flexbox", "UI/UX"],
     },
   ];
@@ -191,13 +183,11 @@ export default function App() {
     frontend: [
       "React",
       "Next.js",
-      "JavaScript (ES6+)",
       "HTML5",
       "CSS3",
-      "Tailwind CSS",
-      "Responsividade",
-      "React Three Fiber",
+      "JavaScript (ES6+)",
       "Three.js",
+      "Tailwind CSS",
     ],
     backend: ["Node.js", "Python", "SQL", "SQLite", "C++", "Pascal"],
     ferramentas: [

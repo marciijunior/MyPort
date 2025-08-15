@@ -1,27 +1,27 @@
-// src/components/AboutMe.jsx
+// src/components/AboutMe.jsx (Versão Final Limpa)
 import React from "react";
 import "../styles/AboutMe.css";
 
-export default function AboutMe({ sectionRef, refs }) {
+export default function AboutMe({ sectionRef }) {
   return (
     <section id="sobre" ref={sectionRef}>
       <div className="about-me-content">
-        <div className="about-me-image" ref={refs.sobreMim_imagem}>
+        <div className="about-me-image">
           <img src="/foto-about-me.JPG" alt="Foto de Marcio Junior" />
         </div>
         <div className="about-me-text">
-          <h2 className="about-me-title" ref={refs.sobreMim_titulo}>
+          <h2 className="about-me-title">
             Sobre Mim
           </h2>
-          <p className="about-me-subtitle" ref={refs.sobreMim_subtitulo}>
+          <p className="about-me-subtitle">
             Estudante de Engenharia de Computação, 23 anos.
           </p>
-          <p ref={refs.sobreMim_paragrafo1}>
+          <p>
             Meu nome é Márcio. Desde sempre, o apelo visual das coisas me
             fascina, mas minha verdadeira curiosidade está em entender como elas
             se conectam e funcionam por dentro.
           </p>
-          <p ref={refs.sobreMim_paragrafo2}>
+          <p>
             Meu objetivo é transformar essa visão em realidade, desenvolvendo
             projetos onde a engenharia robusta e o design cuidadoso andam lado a
             lado.

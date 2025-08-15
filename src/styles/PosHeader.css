@@ -1,8 +1,11 @@
+/* src/styles/PosHeader.css (CORRIGIDO com layout vertical para mobile) */
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .divpremain {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
   flex-grow: 1;
   padding: 0 6rem 0 20rem;
@@ -24,12 +27,10 @@
   height: 8vh;
   width: auto;
 }
-
 .Iam {
   position: relative;
   display: inline-block;
 }
-
 .p-im {
   font-size: 1.5vh;
   position: absolute;
@@ -40,13 +41,11 @@
   color: var(--cor5);
   pointer-events: none;
 }
-
 .titulo-container {
   display: flex;
   align-items: center;
   gap: 0rem;
 }
-
 .titulo-premain {
   font-size: 3.75rem;
   font-weight: 500;
@@ -54,7 +53,6 @@
   text-align: left;
   text-shadow: var(--cor2) 0rem 0rem 1rem;
 }
-
 .p-premain {
   display: flex;
   font-weight: 500;
@@ -65,7 +63,6 @@
   margin-bottom: 1.25rem;
   text-align: left;
 }
-
 .div-btn {
   display: flex;
   flex-direction: row;
@@ -73,7 +70,6 @@
   padding: 1.25rem 0rem;
   padding-left: 0rem;
 }
-
 .btn {
   background-color: var(--cor4);
   box-shadow: var(--cor1) 0rem 0rem 0.625rem;
@@ -89,7 +85,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .btn2 {
   background-color: var(--cor5);
   color: var(--cor3);
@@ -105,40 +100,33 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .btn:hover {
   background-color: var(--cor5);
   box-shadow: var(--cor1) 0rem 0rem 0.625rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .btn:active {
   transform: translateY(0.0625rem);
 }
-
 .btn2:hover {
   background-color: var(--cor4);
   box-shadow: var(--cor4) 0rem 0rem 0.625rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .btn2:active {
   transform: translateY(0.0625rem);
 }
-
 .img-premain {
   display: flex;
   mask-image: linear-gradient(to bottom, #000 70%, rgba(0, 0, 0, 0.01) 99%);
   margin: 0;
   padding: 0vh 0 0 14vh;
 }
-
 .img-premain img {
   height: 52rem;
 }
 
 /* --- RESPONSIVIDADE --- */
-
 @media (max-width: 1700px) {
   .divpremain {
     padding: 0 2rem 0 18rem;
@@ -153,7 +141,6 @@
     height: 48rem;
   }
 }
-
 @media (max-width: 1620px) {
   .divpremain {
     padding: 0 2rem 0 16rem;
@@ -168,7 +155,6 @@
     height: 44rem;
   }
 }
-
 @media (max-width: 1520px) {
   .divpremain {
     padding: 0 2rem 0 14rem;
@@ -183,7 +169,6 @@
     height: 40rem;
   }
 }
-
 @media (max-width: 1400px) {
   .divpremain {
     padding: 0 2rem 0 12rem;
@@ -198,11 +183,10 @@
     height: 36rem;
   }
 }
-
 @media (max-width: 1300px) {
   .divpremain {
     padding: 0 2rem 0 12rem;
-  } /* Aumentado */
+  }
   .titulo-premain {
     font-size: 2.5rem;
   }
@@ -213,11 +197,10 @@
     height: 32rem;
   }
 }
-
 @media (max-width: 1200px) {
   .divpremain {
     padding: 0 2rem 0 10rem;
-  } /* Aumentado */
+  }
   .titulo-premain {
     font-size: 2.25rem;
   }
@@ -228,11 +211,10 @@
     height: 28rem;
   }
 }
-
 @media (max-width: 1100px) {
   .divpremain {
     padding: 0 2rem 0 10rem;
-  } /* Aumentado */
+  }
   .titulo-premain {
     font-size: 2rem;
   }
@@ -244,32 +226,36 @@
   }
 }
 
+/* --- MUDANÇA PRINCIPAL AQUI --- */
 @media (max-width: 992px) {
   .divpremain {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Inverte a ordem e empilha: imagem vai para cima */
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 2.5rem 0 2.5rem;
-    gap: 1rem;
+    padding: 2rem 2.5rem; /* Ajusta o padding para o novo layout */
+    gap: 2rem;
+  }
+  .premain {
+    align-items: center;
+    padding: 0;
   }
   .premain,
   .titulo-premain,
   .p-premain {
     text-align: center;
-    align-items: center;
-    padding: 0;
   }
   .div-btn {
     justify-content: center;
   }
   .img-premain {
     padding: 0;
+    margin-bottom: 2rem;
   }
   .img-premain img {
     height: auto;
     width: 100%;
-    width: 31.25rem;
+    max-width: 31.25rem;
   }
   .img-im,
   .Iam {
@@ -278,66 +264,15 @@
 }
 
 @media (max-width: 500px) {
-  .divpremain {
-    display: flex;
-    flex-direction: row;
-    position: relative; /* Contexto para o posicionamento absoluto da imagem */
-    justify-content: flex-start;
-    align-items: start;
-    text-align: left;
-    padding: 0 4rem 0 4rem;
-  }
-
-  .premain {
-    display: flex;
-    position: relative;
-    z-index: 2; /* Garante que o texto fique na frente */
-    border-radius: 0.5rem;
-    padding: 0;
-    margin: 0;
-  }
-
   .titulo-premain {
-    display: flex;
-    font-size: 1.2rem;
-    margin: 0;
+    font-size: 1.5rem;
   }
-
   .p-premain {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
-
-  .div-btn {
-    justify-content: center;
-  }
-
   .btn,
   .btn2 {
-    font-size: 0.7rem;
-    padding: 0.5rem 0.5rem;
-  }
-
-  .img-premain {
-    position: absolute;
-    top: 30rem;
-    left: 12.5rem;
-    transform: translate(-20%, -30rem);
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Coloca a imagem atrás do texto */
-    padding: 0;
-    opacity: 1;
-  }
-
-  .img-premain img {
-    height: 30em;
-    width: auto;
-    object-fit: cover; /* Cobre a área mantendo a proporção */
-    mask-image: linear-gradient(to bottom, #000 70%, rgba(0, 0, 0, 0.01) 99%);
-  }
-
-  .img-im,
-  .Iam {
-    display: none;
+    font-size: 0.8rem;
+    padding: 0.8rem 1rem;
   }
 }

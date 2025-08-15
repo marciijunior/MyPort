@@ -1,3 +1,5 @@
+/* src/styles/Certificates.css (Versão Final com Responsividade Padronizada) */
+
 @property --deg {
   syntax: "<angle>";
   inherits: true;
@@ -11,14 +13,14 @@
 }
 
 .container-certificados {
-  padding: 6.25rem 15.625rem 0 15.625rem;
+  padding: 0rem 18.75rem; /* Padding base */
 }
 
 .interligacao-certificado {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 0rem 0 1.875rem 0;
+  padding: 0rem 0 2.5rem 0;
 }
 
 .titulo-certificado {
@@ -36,14 +38,15 @@
   line-height: 1.6;
 }
 
-.certificates-swiper { /* <-- SELETOR MODIFICADO */
+.certificates-swiper {
   width: 100%;
-  padding: 0 2.5rem 0rem 2.5rem;
+  padding-top: 1rem;
 }
 
 .swiper-slide {
   height: auto;
   display: flex;
+  padding-bottom: 2.5rem; /* Espaço para a paginação não sobrepor */
 }
 
 .certificate-card {
@@ -57,7 +60,7 @@
   height: 28.125rem;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.4), 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.4);
 }
 
 .certificate-card::before {
@@ -83,7 +86,7 @@
 
 .certificate-image {
   width: 100%;
-  height: auto;
+  height: 60%;
   background-color: #0c0c0c;
 }
 
@@ -100,7 +103,7 @@
 
 .certificate-info h4 {
   margin: 0 0 0.625rem 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--cor3);
 }
@@ -131,24 +134,91 @@
   height: 100%;
 }
 
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 75rem) { /* 1200px */
+/* --- RESPONSIVIDADE PADRONIZADA --- */
+@media (max-width: 1700px) {
   .container-certificados {
-    padding: 6.25rem 9.375rem 0 9.375rem;
+    padding: 0rem 16rem;
   }
 }
-
-@media (max-width: 62rem) { /* 992px */
+@media (max-width: 1600px) {
   .container-certificados {
-    padding: 5rem 3.125rem 0 3.125rem;
+    padding: 0rem 14rem;
   }
 }
-
-@media (max-width: 48rem) { /* 768px */
+@media (max-width: 1500px) {
   .container-certificados {
-    padding: 3.75rem 0.9375rem 0 0.9375rem;
+    padding: 0rem 12rem;
   }
-  .certificates-swiper { /* <-- SELETOR MODIFICADO */
-    padding: 0 0 2.5rem 0;
+  .titulo-certificado {
+    font-size: 1.8rem;
+  }
+  .texto-certificado {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 1400px) {
+  .container-certificados {
+    padding: 0rem 10rem;
+  }
+}
+@media (max-width: 1300px) {
+  .container-certificados {
+    padding: 0rem 8rem;
+  }
+  .titulo-certificado {
+    font-size: 1.6rem;
+  }
+  .texto-certificado {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 1000px) {
+  .titulo-certificado {
+    font-size: 1.4rem;
+  }
+  .texto-certificado {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 800px) {
+  .container-certificados {
+    padding: 0rem 6rem;
+  }
+  .titulo-certificado {
+    font-size: 1.2rem;
+  }
+  .texto-certificado {
+    line-height: 1.2;
+  }
+}
+@media (max-width: 600px) {
+  .container-certificados {
+    padding: 0rem 2rem;
+  }
+  .titulo-certificado {
+    font-size: 1.1rem;
+  }
+  .texto-certificado {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 500px) {
+  .container-certificados {
+    padding: 0rem 1rem;
+  }
+  .titulo-certificado {
+    font-size: 1rem;
+  }
+  .texto-certificado {
+    line-height: 1;
+  }
+}
+/* Adicionar ao final de src/styles/Certificates.css */
+
+/* Esconde as setas de navegação em telas menores que 1000px */
+@media (max-width: 1000px) {
+  .certificates-swiper .swiper-button-next,
+  .certificates-swiper .swiper-button-prev {
+    display: none !important;
   }
 }

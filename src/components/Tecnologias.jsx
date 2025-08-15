@@ -1,4 +1,4 @@
-// src/components/Tecnologias.jsx (Atualizado com Carrossel)
+// src/components/Tecnologias.jsx (Centralização Corrigida)
 import React from "react";
 import Slider from "react-slick";
 import { useMediaQuery } from "../hooks/useMediaQuery";
@@ -7,10 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Tecnologias({ sectionRef, techStackData }) {
-  // Retorna true se a tela for menor que 1000px
-  const isCarouselView = useMediaQuery('(max-width: 999px)');
+  const isCarouselView = useMediaQuery('(max-width: 1200px)');
 
-  // Configurações do Carrossel
   const settings = {
     dots: true,
     infinite: true,
@@ -19,11 +17,11 @@ export default function Tecnologias({ sectionRef, techStackData }) {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    arrows: true,
-    centerMode: true,      // <-- ADICIONE ESTA LINHA
-    centerPadding: '0px',  // <-- ADICIONE ESTA LINHA
+    arrows: false,
+    centerMode: true,
+    centerPadding: '0px', // <-- MUDANÇA PRINCIPAL AQUI: Cria espaço para o brilho
   };
-  // Helper para renderizar uma coluna (evita repetição de código)
+
   const renderCategoryColumn = (title, techs) => (
     <div className="tech-category-column">
       <h3>{title}</h3>
@@ -42,22 +40,23 @@ export default function Tecnologias({ sectionRef, techStackData }) {
       <div className="interligacao-tech">
         <h2 className="titulo-tech">Tecnologias e Ferramentas</h2>
         <p className="texto-tech">
-          As ferramentas e linguagens que mais utilizo.
+          As ferramentas e linguagens que mais utilizo para criar interfaces
+          dinâmicas e funcionais.
         </p>
       </div>
 
       <div className="tech-stack-container">
         {isCarouselView ? (
-          // ---- VISTA DE CARROSSEL PARA TELAS MENORES ----
-          <div className="tech-carousel">
-            <Slider {...settings}>
-              {renderCategoryColumn("Frontend", techStackData.frontend)}
-              {renderCategoryColumn("Backend", techStackData.backend)}
-              {renderCategoryColumn("Ferramentas", techStackData.ferramentas)}
-            </Slider>
+          <div className="tech-carousel-wrapper">
+            <div className="tech-carousel">
+              <Slider {...settings}>
+                {renderCategoryColumn("Frontend", techStackData.frontend)}
+                {renderCategoryColumn("Backend", techStackData.backend)}
+                {renderCategoryColumn("Ferramentas", techStackData.ferramentas)}
+              </Slider>
+            </div>
           </div>
         ) : (
-          // ---- VISTA DE GRADE PARA TELAS MAIORES ----
           <>
             {renderCategoryColumn("Frontend", techStackData.frontend)}
             {renderCategoryColumn("Backend", techStackData.backend)}

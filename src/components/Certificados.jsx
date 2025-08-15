@@ -1,28 +1,13 @@
-// src/components/Certificados.jsx
+// src/components/Certificados.jsx (Atualizado para 1 slide por vez no mobile)
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useScrollReveal } from "../hooks/useScrollReveal";
 
-export default function Certificados({
-  sectionRef,
-  certificatesData,
-  animRef,
-}) {
-  const certificatesTitleRef = useScrollReveal({
-    origin: "bottom",
-    distance: "50px",
-  });
-
-  const certificatesTextRef = useScrollReveal({
-    origin: "bottom",
-    distance: "50px",
-    delay: 200,
-  });
-
+export default function Certificados({ sectionRef, certificatesData }) {
   return (
     <section
       id="certificados"
@@ -30,27 +15,34 @@ export default function Certificados({
       className="container-certificados"
     >
       <div className="interligacao-certificado">
-        <h2 className="titulo-certificado" ref={certificatesTitleRef}>
+        <h2 className="titulo-certificado">
           Certificados e Cursos
         </h2>
-        <p className="texto-certificado" ref={certificatesTextRef}>
-          Algumas das minhas
-          certificações e cursos mais recentes.
+        <p className="texto-certificado">
+          Algumas das minhas certificações e cursos mais recentes.
         </p>
       </div>
-      <div ref={animRef}>
+      <div>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={30}
-          slidesPerView={1}
+          slidesPerView={1} // <-- PADRÃO AGORA É 1 SLIDE
           loop={true}
           pagination={{ clickable: true }}
           navigation={true}
           breakpoints={{
-            768: { slidesPerView: 2, spaceBetween: 30 },
-            1024: { slidesPerView: 3, spaceBetween: 40 },
+            // Acima de 768px, mostra 2 slides
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            // Acima de 1024px, mostra 3 slides
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            }
           }}
-          className="certificates-swiper" // <-- CLASSE MODIFICADA
+          className="certificates-swiper"
         >
           {certificatesData.map((cert, index) => (
             <SwiperSlide key={index}>
