@@ -156,25 +156,25 @@ export default function App() {
   const portfolioData = [
     {
       id: "proj1",
-      imageSrc: "./site1.png",
+      imageSrc: "./site1.webp",
       title: "Website Corporativo Moderno",
       technologies: ["React", "Vite", "CSS Grid", "Figma"],
     },
     {
       id: "proj2",
-      imageSrc: "./site2.png",
+      imageSrc: "./site2.webp",
       title: "Plataforma de E-commerce",
       technologies: ["JavaScript", "HTML5", "CSS3", "API Rest"],
     },
     {
       id: "proj3",
-      imageSrc: "./site3.png",
+      imageSrc: "./site3.webp",
       title: "Landing Page para Evento",
       technologies: ["React", "ScrollReveal", "Spline"],
     },
     {
       id: "proj4",
-      imageSrc: "./site4.png",
+      imageSrc: "./site4.webp",
       title: "Blog Pessoal Minimalista",
       technologies: ["React", "CSS Flexbox", "UI/UX"],
     },
@@ -287,7 +287,7 @@ export default function App() {
     certificados_container: useScrollReveal({ origin: "bottom", delay: 400 }),
 
     // Footer
-    footer: useScrollReveal({ origin: "bottom" }),
+    footer: useScrollReveal({ origin: "right" }),
   };
 
   return (

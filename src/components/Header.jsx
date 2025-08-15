@@ -33,7 +33,7 @@ export default function Header({ sectionRef, refs }) {
           </div>
         </div>
         <div className="img-premain" ref={refs.header_imagem}>
-          <img src="/img-premain.png" alt="Imagem principal do site" />
+          <img src="/img-premain.webp" alt="Imagem principal do site" />
         </div>
       </div>
     </header>
