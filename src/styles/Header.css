@@ -16,12 +16,11 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-header {
-  /* ALTERAÇÕES PRINCIPAIS AQUI */
-  min-height: 100vh; /* Garante que o header ocupe no mínimo a altura total da tela */
-  display: flex; /* Transforma o header em um container flex */
-  flex-direction: column; /* Organiza os filhos (header-content e divpremain) verticalmente */
-  padding: 0; /* Remove padding desnecessário */
+header#inicio { /* <-- MUDANÇA PRINCIPAL AQUI */
+  min-height: 100%; /* Agora só afeta o <header> com id="inicio" */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 .header-content {

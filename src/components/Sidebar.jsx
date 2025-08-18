@@ -4,7 +4,7 @@ import '../styles/Sidebar.css';
 const navLinks = [
   { id: 'inicio', icon: 'fa-house'},
   { id: 'sobre', icon: 'fa-user'},
-  { id: 'servicos', icon: 'fa-briefcase'},
+  { id: 'jornada', icon: 'fa-route'}, // <-- ALTERADO DE 'servicos' PARA 'jornada'
   { id: 'portfolio', icon: 'fa-image'},
   { id: 'certificados', icon: 'fa-certificate'}
 ];

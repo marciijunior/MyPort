@@ -1,23 +1,20 @@
-// App.jsx
 import React, { useState, useEffect, useRef } from "react";
 
-// Importando os componentes de seção
+// Componentes
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import AboutMe from "./components/AboutMe";
-import Habilidades from "./components/Habilidades";
 import Tecnologias from "./components/Tecnologias";
 import Portfolio from "./components/Portfolio";
 import Certificados from "./components/Certificados";
 import Footer from "./components/Footer";
+import Feed from "./components/Feed";
 
-// Imports de CSS
+// CSS
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
-import "./styles/Habilidades.css";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./styles/ExpandedContent.css";
 import "./styles/ScrollReveal.css";
 import "./styles/Portfolio.css";
 import "./styles/Modal.css";
@@ -26,19 +23,18 @@ import "./styles/InviteScroll.css";
 import "./styles/AboutMe.css";
 import "./styles/TechStack.css";
 import "./styles/Certificates.css";
+import "./styles/Feed.css";
 
-// Imports de Hooks e bibliotecas
+// Hooks
 import ScrollReveal from "scrollreveal";
-import { useButtonExpansion } from "./hooks/useButtonExpansion";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 export default function App() {
-  // --- ESTADO E DADOS ---
-  const expansionState = useButtonExpansion();
-  const { botoesData } = expansionState;
+  // --- ESTADOS ---
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeSection, setActiveSection] = useState("inicio");
 
+  // --- DADOS ---
   const certificatesData = [
     {
       title:
@@ -202,21 +198,23 @@ export default function App() {
     ],
   };
 
-  // --- LÓGICA DE NAVEGAÇÃO ---
+  // --- LÓGICA DE NAVEGAÇÃO E SCROLL ---
   const sectionRefs = {
     inicio: useRef(null),
     sobre: useRef(null),
-    servicos: useRef(null),
+    jornada: useRef(null),
     tecnologias: useRef(null),
     portfolio: useRef(null),
     certificados: useRef(null),
   };
+
   const handleNavigate = (id) => {
     sectionRefs[id].current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
+
   useEffect(() => {
     const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
     const observerCallback = (entries) => {
@@ -238,7 +236,6 @@ export default function App() {
     };
   }, []);
 
-  // --- CENTRAL DE ANIMAÇÕES SCROLLREVEAL ---
   useEffect(() => {
     ScrollReveal({
       distance: "100px",
@@ -250,44 +247,11 @@ export default function App() {
   }, []);
 
   const scrollRefs = {
-    // Header
     header_redesSociais: useScrollReveal({ origin: "left" }),
     header_olaEuSou: useScrollReveal({ origin: "left", delay: 200 }),
     header_titulo: useScrollReveal({ origin: "left", delay: 400 }),
     header_subtitulo: useScrollReveal({ origin: "left", delay: 600 }),
-    header_complemento: useScrollReveal({ origin: "left", delay: 800 }),
     header_imagem: useScrollReveal({ origin: "right", delay: 500 }),
-
-    // Sobre Mim
-    sobreMim_imagem: useScrollReveal({ origin: "left" }),
-    sobreMim_titulo: useScrollReveal({ origin: "right" }),
-    sobreMim_subtitulo: useScrollReveal({ origin: "right", delay: 200 }),
-    sobreMim_paragrafo1: useScrollReveal({ origin: "right", delay: 400 }),
-    sobreMim_paragrafo2: useScrollReveal({ origin: "right", delay: 600 }),
-
-    // Habilidades
-    habilidades_titulo: useScrollReveal({ origin: "left" }),
-    habilidades_texto: useScrollReveal({ origin: "right" }),
-    habilidades_imagemFundo: useScrollReveal({ origin: "left" }),
-    habilidades_containerBotoes: useScrollReveal({ origin: "right" }),
-
-    // Tecnologias
-    tecnologias_titulo: useScrollReveal({ origin: "bottom" }),
-    tecnologias_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
-    tecnologias_container: useScrollReveal({ origin: "bottom", delay: 400 }),
-
-    // Portfolio
-    portfolio_titulo: useScrollReveal({ origin: "bottom" }),
-    portfolio_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
-    portfolio_container: useScrollReveal({ origin: "bottom", delay: 400 }),
-
-    // Certificados
-    certificados_titulo: useScrollReveal({ origin: "bottom" }),
-    certificados_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
-    certificados_container: useScrollReveal({ origin: "bottom", delay: 400 }),
-
-    // Footer
-    footer: useScrollReveal({ origin: "right" }),
   };
 
   return (
@@ -296,31 +260,28 @@ export default function App() {
       <div className="content-wrapper">
         <Header sectionRef={sectionRefs.inicio} refs={scrollRefs} />
         <main>
-          <AboutMe sectionRef={sectionRefs.sobre} refs={scrollRefs} />
-          <Habilidades
-            sectionRef={sectionRefs.servicos}
-            refs={scrollRefs}
-            data={{ botoesData }}
-            expansionState={expansionState}
-          />
+          <AboutMe sectionRef={sectionRefs.sobre} />
+
+          <div id="jornada" ref={sectionRefs.jornada}>
+            <Feed />
+          </div>
+
           <Tecnologias
             sectionRef={sectionRefs.tecnologias}
-            refs={scrollRefs}
             techStackData={techStackData}
           />
           <Portfolio
             sectionRef={sectionRefs.portfolio}
-            refs={scrollRefs}
             portfolioData={portfolioData}
             onProjectClick={setSelectedProject}
           />
           <Certificados
             sectionRef={sectionRefs.certificados}
-            refs={scrollRefs}
             certificatesData={certificatesData}
           />
         </main>
-        <Footer animRef={scrollRefs.footer} />
+        <Footer />
+
         {selectedProject && (
           <div
             className="modal-overlay"
