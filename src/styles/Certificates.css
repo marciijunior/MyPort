@@ -1,17 +1,4 @@
 /* src/styles/Certificates.css - PADDING VERTICAL ZERADO */
-
-@property --deg {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0deg;
-}
-
-@keyframes autoRotate {
-  to {
-    --deg: 360deg;
-  }
-}
-
 .container-certificados {
   /* PADRÃO ZERADO: Padding vertical removido */
   padding: 0 18.75rem;
@@ -51,47 +38,25 @@
 }
 
 .certificate-card {
-  background: linear-gradient(145deg, #1a1a1a, #000000);
+  background: linear-gradient(145deg, #272727, #000000);
   border-radius: 0.625rem;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 28.125rem;
+  height: 22.125rem;
   position: relative;
   z-index: 1;
   box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.4);
 }
 
-.certificate-card::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150%;
-  height: 250%;
-  background: conic-gradient(
-    from var(--deg),
-    var(--cor5),
-    var(--cor1),
-    var(--cor5),
-    var(--cor2)
-  );
-  animation: autoRotate 20s linear infinite;
-  filter: blur(2.5rem);
-  z-index: -1;
-  opacity: 0.8;
-}
-
 .certificate-image {
-  width: 100%;
-  height: 60%;
   background-color: #0c0c0c;
 }
 
 .certificate-image img {
+  aspect-ratio: 16/9;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -99,13 +64,13 @@
 
 .certificate-info {
   padding: 1.25rem;
-  flex-grow: 1;
+  height: 3rem;
 }
 
 .certificate-info h4 {
   margin: 0 0 0.625rem 0;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 300;
   color: var(--cor3);
 }
 
@@ -187,7 +152,18 @@
 }
 @media (max-width: 800px) {
   .container-certificados {
-    padding: 0 6rem;
+    padding: 0 10rem;
+  }
+  .titulo-certificado {
+    font-size: 1.2rem;
+  }
+  .texto-certificado {
+    line-height: 1.2;
+  }
+}
+@media (max-width: 700px) {
+  .container-certificados {
+    padding: 0 7rem;
   }
   .titulo-certificado {
     font-size: 1.2rem;
@@ -198,7 +174,7 @@
 }
 @media (max-width: 600px) {
   .container-certificados {
-    padding: 0 2rem;
+    padding: 0 5rem;
   }
   .titulo-certificado {
     font-size: 1.1rem;
@@ -209,12 +185,41 @@
 }
 @media (max-width: 500px) {
   .container-certificados {
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
   .titulo-certificado {
     font-size: 1rem;
   }
   .texto-certificado {
     line-height: 1;
+  }
+  .certificate-card {
+    height: 20rem;
+  }
+  .certificate-info h4 {
+    font-size: 0.9rem;
+  }
+  .certificate-info span {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 400px) {
+  .container-certificados {
+    padding: 0 2rem;
+  }
+  .titulo-certificado {
+    font-size: 1rem;
+  }
+  .texto-certificado {
+    line-height: 1;
+  }
+  .certificate-card {
+    height: 17rem;
+  }
+  .certificate-info h4 {
+    font-size: 0.9rem;
+  }
+  .certificate-info span {
+    font-size: 0.8rem;
   }
 }

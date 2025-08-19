@@ -1,36 +1,65 @@
-/* src/styles/Scrollbar.css */
+/* src/styles/Scrollbar.css (VERSÃO FINAL E CORRIGIDA) */
 
-/* Estilo geral da scrollbar */
+/* REGRA GLOBAL: 
+  Define um padrão para a scrollbar principal da página e outros elementos.
+  Estilo padrão: Fundo preto, cursor cinza escuro.
+*/
 ::-webkit-scrollbar {
-  width: 8px; /* Mais fina para um visual minimalista */
-  height: 8px; /* Altura da scrollbar horizontal, também mais fina */
+  width: 8px;
+  height: 8px;
 }
-
-/* Fundo da trilha da scrollbar */
 ::-webkit-scrollbar-track {
-  background: var(--cor5); /* Preto do projeto para o fundo (pode ser #222 ou rgba(0,0,0,0.1) para mais leveza) */
-  border-radius: 10px; /* Mantém as bordas arredondadas */
+  background: var(--cor5); /* Preto */
+  border-radius: 10px;
 }
-
-/* "Polegar" da scrollbar (a parte que você arrasta) */
 ::-webkit-scrollbar-thumb {
-  background: var(--cor2); /* Cinza escuro do projeto para o polegar, mais discreto */
-  border-radius: 10px; /* Mantém as bordas arredondadas */
-  border: 2px solid var(--cor5); /* Borda fina para separar do fundo, usando o preto */
+  background: var(--cor2); /* Cinza escuro */
+  border-radius: 10px;
+  border: 2px solid var(--cor5);
 }
-
-/* "Polegar" da scrollbar ao passar o mouse */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--cor4); /* Laranja primário do projeto ao passar o mouse para um destaque suave */
+  background: var(--cor4);
 }
 
-/* Opcional: Estiliza o canto onde as scrollbars horizontal e vertical se encontram */
-/* Você pode remover esta regra se quiser um visual ainda mais limpo */
-::-webkit-scrollbar-corner {
-  background: transparent; /* Transparente para não adicionar elementos visuais */
+/* REGRAS ESPECÍFICAS (PADRÃO PORTFOLIO):
+  Aplica o estilo "flutuante" (fundo transparente, cursor branco)
+  especificamente nos contêineres do Feed e do Portfólio.
+  Esta regra é mais específica e irá sobrescrever a regra global nesses elementos.
+*/
+.feed-container::-webkit-scrollbar,
+.portfolio-img-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
+.feed-container::-webkit-scrollbar-track,
+.portfolio-img-container::-webkit-scrollbar-track {
+  background: transparent; /* Fundo transparente */
+}
+
+.feed-container::-webkit-scrollbar-thumb,
+.portfolio-img-container::-webkit-scrollbar-thumb {
+  background: var(--cor3); /* Branco */
+  border-radius: 10px;
+  border: none; /* Remove a borda para o estilo flutuante */
+}
+
+.feed-container::-webkit-scrollbar-thumb:hover,
+.portfolio-img-container::-webkit-scrollbar-thumb:hover {
+  background: var(--cor4); /* Laranja no hover */
+}
+
+
+/* --- ESTILOS GLOBAIS PARA FIREFOX --- */
 * {
-  scrollbar-width: thin; /* 'auto' ou 'thin' para minimalismo */
-  scrollbar-color: var(--cor2) var(--cor5); /* thumb color (cinza escuro) / track color (preto) */
+  /* Padrão para Firefox: cinza escuro sobre preto */
+  scrollbar-width: thin;
+  scrollbar-color: var(--cor2) var(--cor5);
+}
+
+.feed-container,
+.portfolio-img-container {
+  /* Padrão Portfólio para Firefox: branco sobre transparente */
+  scrollbar-width: thin;
+  scrollbar-color: var(--cor3) transparent;
 }

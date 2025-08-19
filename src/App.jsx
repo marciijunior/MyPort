@@ -17,6 +17,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/ScrollReveal.css";
 import "./styles/Portfolio.css";
+import "./styles/Scrollbar.css";
 import "./styles/Modal.css";
 import "./styles/Sidebar.css";
 import "./styles/InviteScroll.css";

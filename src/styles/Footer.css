@@ -1,4 +1,6 @@
-footer {
-  padding: 0.625rem 0rem 0 0;
-  text-align: center;
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 0rem;
 }
