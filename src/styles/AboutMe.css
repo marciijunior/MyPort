@@ -79,7 +79,7 @@
 
 @media (max-width: 1700px) {
   .about-me-content {
-  padding: 8rem 25rem 0 25rem;
+    padding: 8rem 25rem 0 25rem;
   }
   .about-me-image img {
     width: 18rem;
@@ -220,6 +220,27 @@
   }
   .about-me-title {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 500px) {
+  .about-me-content {
+    padding: 0 2rem;
+  }
+  .about-me-image {
+    width: 10rem;
+    height: 10rem;
+  }
+  .about-me-image img {
+    width: 9rem;
+    height: 9rem;
+  }
+  .about-me-title {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .about-me-text p {
+    line-height: 1;
+    font-size: 0.6rem;
   }
 }
 @media (max-width: 400px) {
