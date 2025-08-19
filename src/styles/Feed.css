@@ -1,16 +1,13 @@
-/* PADRÃO: Padding lateral grande, vertical controlado pelo header */
 .feed-view {
   padding: 0 18.75rem;
 }
 
-/* PADRÃO: Container do título com padding superior */
 .feed-header {
   padding-top: 6.25rem;
   text-align: center;
   margin-bottom: 2rem;
 }
 
-/* PADRÃO: Título com 2rem */
 .feed-header h1 {
   color: var(--cor1);
   font-size: 2rem;
@@ -18,7 +15,6 @@
   margin: 0;
 }
 
-/* Estilo para o parágrafo de descrição */
 .feed-description {
   font-weight: 400;
   font-size: 1rem;
@@ -28,7 +24,6 @@
   margin: 0 auto 1.5rem auto;
 }
 
-/* --- ESTILOS DA MINI TIMELINE --- */
 .mini-timeline {
   display: flex;
   justify-content: center;
@@ -37,8 +32,8 @@
   border-top: 1px solid var(--cor2);
   border-bottom: 1px solid var(--cor2);
   padding: 0.75rem 0;
-  flex-wrap: wrap; 
-  min-height: 46px; /* Altura mínima para não "pular" ao carregar */
+  flex-wrap: wrap;
+  min-height: 46px;
 }
 
 .timeline-year {
@@ -65,7 +60,6 @@
   font-weight: 600;
 }
 
-/* NOVO: Skeleton Loader para a Mini Timeline */
 .timeline-year-skeleton {
   width: 70px;
   height: 35px;
@@ -73,9 +67,7 @@
   border-radius: 6px;
   animation: pulse 1.5s ease-in-out infinite;
 }
-/* --- FIM DOS ESTILOS DA MINI TIMELINE --- */
 
-/* Contêiner do feed com altura máxima e scroll */
 .feed-container {
   max-width: 700px;
   margin: 2rem auto 0 auto;
@@ -92,47 +84,168 @@
   overflow: hidden;
 }
 
-.post-card-header { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; }
-.post-avatar { width: 48px; height: 48px; border-radius: 50%; }
-.post-author-info { display: flex; flex-direction: column; }
-.post-author-name { font-weight: 600; color: var(--cor3); }
-.post-date { font-size: 0.8rem; color: #aaa; }
-.post-content { padding: 0 1rem 1rem 1rem; }
-.post-content-title { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
-.post-title-icon { font-size: 1rem; color: var(--cor3); opacity: 0.7; }
-.post-title { font-size: 1.3rem; margin: 0; color: var(--cor3); }
-.post-description { font-size: 1rem; color: #b0b0b0; margin: 0; line-height: 1.6; white-space: pre-wrap; }
-.post-image-container { width: 100%; max-height: 500px; overflow: hidden; }
-.post-image { width: 100%; height: auto; display: block; }
-.feed-container::-webkit-scrollbar { width: 8px; }
-.feed-container::-webkit-scrollbar-track { background: #222; }
-.feed-container::-webkit-scrollbar-thumb { background: var(--cor2); border-radius: 4px; }
-.feed-container::-webkit-scrollbar-thumb:hover { background: var(--cor1); }
-.post-footer { padding: 0.5rem 1rem 1rem 1rem; display: flex; align-items: center; gap: 0.75rem; border-top: 1px solid var(--cor2); }
-.post-footer .like-button { background: var(--cor2); border: none; color: var(--cor3); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-family: inherit; font-size: 0.9rem; }
-.post-footer .like-button:hover:not(:disabled) { background-color: #444; }
-.post-footer .like-button.liked { background-color: var(--cor1); color: var(--cor5); font-weight: 600; cursor: default; }
-.post-footer .like-count { font-size: 0.8rem; color: #aaa; }
-.post-footer .like-count .anonimato-nota { font-size: 0.6rem; color: #777; margin-left: 0.5rem; }
-
-@media (max-width: 1700px) { .feed-view { padding: 0 16rem; } }
-@media (max-width: 1600px) { .feed-view { padding: 0 14rem; } }
-@media (max-width: 1500px) {
-  .feed-view { padding: 0 12rem; }
-  .feed-header h1 { font-size: 1.8rem; }
-  .feed-description { font-size: 0.9rem; }
+.post-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
 }
-@media (max-width: 1400px) { .feed-view { padding: 0 10rem; } }
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.post-author-info {
+  display: flex;
+  flex-direction: column;
+}
+.post-author-name {
+  font-weight: 600;
+  color: var(--cor3);
+}
+.post-date {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.post-content {
+  padding: 0 1rem 1rem 1rem;
+}
+.post-content-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.post-title-icon {
+  font-size: 1rem;
+  color: var(--cor3);
+  opacity: 0.7;
+}
+.post-title {
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--cor3);
+}
+.post-description {
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.post-image-container {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.feed-container::-webkit-scrollbar {
+  width: 8px;
+}
+.feed-container::-webkit-scrollbar-track {
+  background: #222;
+}
+.feed-container::-webkit-scrollbar-thumb {
+  background: var(--cor2);
+  border-radius: 4px;
+}
+.feed-container::-webkit-scrollbar-thumb:hover {
+  background: var(--cor1);
+}
+.post-footer {
+  padding: 0.5rem 1rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--cor2);
+}
+.post-footer .like-button {
+  background: var(--cor2);
+  border: none;
+  color: var(--cor3);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.post-footer .like-button:hover:not(:disabled) {
+  background-color: #444;
+}
+.post-footer .like-button.liked {
+  background-color: var(--cor1);
+  color: var(--cor5);
+  font-weight: 600;
+  cursor: default;
+}
+.post-footer .like-count {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.post-footer .like-count .anonimato-nota {
+  font-size: 0.6rem;
+  color: #777;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 1700px) {
+  .feed-view {
+    padding: 0 16rem;
+  }
+}
+@media (max-width: 1600px) {
+  .feed-view {
+    padding: 0 14rem;
+  }
+}
+@media (max-width: 1500px) {
+  .feed-view {
+    padding: 0 12rem;
+  }
+  .feed-header h1 {
+    font-size: 1.8rem;
+  }
+  .feed-description {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 1400px) {
+  .feed-view {
+    padding: 0 10rem;
+  }
+}
 @media (max-width: 1300px) {
-  .feed-view { padding: 0 8rem; }
-  .feed-header h1 { font-size: 1.6rem; }
-  .feed-description { font-size: 0.8rem; }
+  .feed-view {
+    padding: 0 8rem;
+  }
+  .feed-header h1 {
+    font-size: 1.6rem;
+  }
+  .feed-description {
+    font-size: 0.8rem;
+  }
 }
 @media (max-width: 1000px) {
-  .feed-header h1 { font-size: 1.4rem; }
-  .feed-description { font-size: 0.7rem; }
+  .feed-header h1 {
+    font-size: 1.4rem;
+  }
+  .feed-description {
+    font-size: 0.7rem;
+  }
 }
-@media (max-width: 800px) { .feed-view { padding: 0 6rem; } }
+@media (max-width: 800px) {
+  .feed-view {
+    padding: 0 6rem;
+  }
+}
 @media (max-width: 768px) {
   .feed-view {
     padding: 0 2rem 4rem 2rem;
@@ -171,16 +284,73 @@
     font-size: 0.9rem;
   }
 }
-@media (max-width: 600px) { .feed-view { padding: 0 2rem; } .post-title { font-size: 1.1rem; } .post-description { font-size: 0.9rem; } }
-@media (max-width: 500px) { .feed-view { padding: 0 1rem; } .feed-header h1 { font-size: 1rem; } .feed-description { line-height: 1; } }
-@media (max-width: 400px) { .feed-view { padding: 0 0.5rem; } }
+@media (max-width: 600px) {
+  .feed-view {
+    padding: 0 2rem;
+  }
+  .post-title {
+    font-size: 1.1rem;
+  }
+  .post-description {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 500px) {
+  .feed-view {
+    padding: 0 1rem;
+  }
+  .feed-header h1 {
+    font-size: 1rem;
+  }
+  .feed-description {
+    line-height: 1;
+  }
+}
+@media (max-width: 400px) {
+  .feed-view {
+    padding: 0 0.5rem;
+  }
+}
 
-.skeleton-post { padding: 1rem; }
-.skeleton-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: var(--cor2); }
-.skeleton-author-info { flex: 1; }
-.skeleton-text { background-color: var(--cor2); border-radius: 4px; animation: pulse 1.5s ease-in-out infinite; }
-.skeleton-name { height: 1rem; width: 40%; }
-.skeleton-date { height: 0.8rem; width: 30%; margin-top: 0.25rem; }
-.skeleton-desc { height: 1rem; margin-top: 0.75rem; }
-.skeleton-image { width: 100%; height: 300px; background-color: var(--cor2); margin-top: 1rem; border-radius: 8px; }
-@keyframes pulse { 50% { opacity: 0.5; } }
+.skeleton-post {
+  padding: 1rem;
+}
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--cor2);
+}
+.skeleton-author-info {
+  flex: 1;
+}
+.skeleton-text {
+  background-color: var(--cor2);
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.skeleton-name {
+  height: 1rem;
+  width: 40%;
+}
+.skeleton-date {
+  height: 0.8rem;
+  width: 30%;
+  margin-top: 0.25rem;
+}
+.skeleton-desc {
+  height: 1rem;
+  margin-top: 0.75rem;
+}
+.skeleton-image {
+  width: 100%;
+  height: 300px;
+  background-color: var(--cor2);
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

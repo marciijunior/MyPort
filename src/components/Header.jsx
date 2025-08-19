@@ -1,6 +1,5 @@
 import React from 'react';
 
-// 1. RECEBE A PROP 'onNavigate'
 export default function Header({ sectionRef, refs, onNavigate }) {
   return (
     <header id="inicio" ref={sectionRef}>
@@ -42,7 +41,6 @@ export default function Header({ sectionRef, refs, onNavigate }) {
           </div>
           <div className="div-btn">
             <button className="btn">Download CV</button>
-            {/* 2. ADICIONA O onClick AQUI, CHAMANDO A FUNÇÃO COM O ID 'jornada' */}
             <button className="btn2" onClick={() => onNavigate('jornada')}>My Work</button>
           </div>
           <div className="invite-to-scroll">

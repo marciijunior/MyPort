@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/JornadaSection.css';
 
-// NOVO: Componente para o Skeleton Loader
 const SkeletonYearCards = () => {
   return (
-    // Renderiza 4 cartões de skeleton para preencher o espaço
     <>
       <div className="year-card-skeleton"></div>
       <div className="year-card-skeleton"></div>
@@ -39,7 +37,6 @@ export default function JornadaSection({ onYearSelect }) {
       </div>
       <div className="years-container">
         {loading ? (
-          // ATUALIZADO: Mostra o skeleton em vez do texto
           <SkeletonYearCards />
         ) : (
           years.map(year => (

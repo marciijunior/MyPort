@@ -1,11 +1,8 @@
-/* src/styles/Portfolio.css - PADDING VERTICAL ZERADO */
-
 .container-portfolio {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* PADRÃO ZERADO: Padding vertical removido */
   padding: 0 18.75rem;
   margin: 0;
   box-sizing: border-box;
@@ -169,7 +166,6 @@
   background-color: var(--cor1);
 }
 
-/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .container-portfolio {
     padding: 0 16rem;

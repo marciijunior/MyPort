@@ -1,18 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGraduationCap, faCode, faBriefcase, faStar, faCertificate, faHeart } from '@fortawesome/free-solid-svg-icons';
-import '../styles/Feed.css';
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGraduationCap,
+  faCode,
+  faBriefcase,
+  faStar,
+  faCertificate,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
+import "../styles/Feed.css";
 
 const iconMap = { faGraduationCap, faCode, faBriefcase, faStar, faCertificate };
-const baseApiUrl = "https://script.google.com/macros/s/AKfycbxPCbv7lMZw-tTq-RqPR5Z2iOJzIEnykQVrR-uhxiIXizTJorZo7a6Q3BniMZVGLnU/exec";
+const baseApiUrl =
+  "https://script.google.com/macros/s/AKfycbxPCbv7lMZw-tTq-RqPR5Z2iOJzIEnykQVrR-uhxiIXizTJorZo7a6Q3BniMZVGLnU/exec";
 
-// Componente para um único post
 const PostCard = ({ post }) => {
   const [likeCount, setLikeCount] = useState(post.likes || 0);
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || {};
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
     if (Object.prototype.hasOwnProperty.call(likedPosts, post.id)) {
       setIsLiked(true);
     }
@@ -21,22 +28,29 @@ const PostCard = ({ post }) => {
   const handleLike = () => {
     if (isLiked) return;
     setIsLiked(true);
-    setLikeCount(prevCount => Number(prevCount) + 1);
+    setLikeCount((prevCount) => Number(prevCount) + 1);
 
-    const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || {};
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || {};
     if (!Object.prototype.hasOwnProperty.call(likedPosts, post.id)) {
       likedPosts[post.id] = true;
     }
-    localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+    localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
 
     fetch(baseApiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
       body: JSON.stringify({ postId: post.id }),
     })
-    .then(res => res.json())
-    .then(data => console.log('Like registrado para o post', post.id, 'Novo total:', data.newLikes))
-    .catch(console.error);
+      .then((res) => res.json())
+      .then((data) =>
+        console.log(
+          "Like registrado para o post",
+          post.id,
+          "Novo total:",
+          data.newLikes
+        )
+      )
+      .catch(console.error);
   };
 
   return (
@@ -51,7 +65,10 @@ const PostCard = ({ post }) => {
       <div className="post-content">
         <div className="post-content-title">
           {iconMap[post.icon] && (
-            <FontAwesomeIcon icon={iconMap[post.icon]} className="post-title-icon" />
+            <FontAwesomeIcon
+              icon={iconMap[post.icon]}
+              className="post-title-icon"
+            />
           )}
           <h3 className="post-title">{post.title}</h3>
         </div>
@@ -63,62 +80,67 @@ const PostCard = ({ post }) => {
         </div>
       )}
       <div className="post-footer">
-        <button onClick={handleLike} className={`like-button ${isLiked ? 'liked' : ''}`} disabled={isLiked}>
+        <button
+          onClick={handleLike}
+          className={`like-button ${isLiked ? "liked" : ""}`}
+          disabled={isLiked}
+        >
           <FontAwesomeIcon icon={faHeart} />
           <span>Apoiar</span>
         </button>
-        <span className="like-count">{likeCount} apoios <span className="anonimato-nota">(apoio anônimo)</span></span>
+        <span className="like-count">
+          {likeCount} apoios{" "}
+          <span className="anonimato-nota">(apoio anônimo)</span>
+        </span>
       </div>
     </div>
   );
 };
 
-// Componente para o skeleton dos posts
 const SkeletonPost = () => (
-    <div className="post-card skeleton-post">
-      <div className="post-card-header">
-        <div className="skeleton-avatar"></div>
-        <div className="skeleton-author-info">
-          <div className="skeleton-text skeleton-name"></div>
-          <div className="skeleton-text skeleton-date"></div>
-        </div>
+  <div className="post-card skeleton-post">
+    <div className="post-card-header">
+      <div className="skeleton-avatar"></div>
+      <div className="skeleton-author-info">
+        <div className="skeleton-text skeleton-name"></div>
+        <div className="skeleton-text skeleton-date"></div>
       </div>
-      <div className="skeleton-text skeleton-desc"></div>
-      <div className="skeleton-text skeleton-desc" style={{width: '80%'}}></div>
-      <div className="skeleton-image"></div>
     </div>
-  );
+    <div className="skeleton-text skeleton-desc"></div>
+    <div className="skeleton-text skeleton-desc" style={{ width: "80%" }}></div>
+    <div className="skeleton-image"></div>
+  </div>
+);
 
-// Componente principal do Feed
 export default function Feed({ refs }) {
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
+  const [selectedYear, setSelectedYear] = useState(
+    new Date().getFullYear().toString()
+  );
   const [availableYears, setAvailableYears] = useState([]);
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
-  const [loadingYears, setLoadingYears] = useState(true); // NOVO ESTADO
+  const [loadingYears, setLoadingYears] = useState(true);
 
-  // Efeito para buscar a lista de anos disponíveis
   useEffect(() => {
     fetch(baseApiUrl)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setAvailableYears(data);
-        setLoadingYears(false); // ATUALIZADO
+        setLoadingYears(false);
       })
       .catch(console.error);
   }, []);
 
-  // Efeito para buscar os posts sempre que o 'selectedYear' mudar
   useEffect(() => {
     if (!selectedYear) return;
     setLoadingPosts(true);
     fetch(`${baseApiUrl}?year=${selectedYear}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setPosts(data);
         setLoadingPosts(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Erro ao buscar posts:", error);
         setLoadingPosts(false);
       });
@@ -129,10 +151,10 @@ export default function Feed({ refs }) {
       <header className="feed-header">
         <h1 ref={refs.feed_titulo}>Minha Jornada</h1>
         <p className="feed-description" ref={refs.feed_descricao}>
-          Esta seção funciona como um diário profissional. Deixe seu apoio anônimo!
+          Esta seção funciona como um diário profissional. Deixe seu apoio
+          anônimo!
         </p>
         <nav className="mini-timeline" ref={refs.feed_timeline}>
-          {/* LÓGICA DE RENDERIZAÇÃO CONDICIONAL ADICIONADA AQUI */}
           {loadingYears ? (
             <>
               <div className="timeline-year-skeleton"></div>
@@ -141,10 +163,12 @@ export default function Feed({ refs }) {
               <div className="timeline-year-skeleton"></div>
             </>
           ) : (
-            availableYears.map(year => (
+            availableYears.map((year) => (
               <button
                 key={year}
-                className={`timeline-year ${year == selectedYear ? 'active' : ''}`}
+                className={`timeline-year ${
+                  year == selectedYear ? "active" : ""
+                }`}
                 onClick={() => setSelectedYear(year.toString())}
               >
                 {year}
@@ -160,7 +184,7 @@ export default function Feed({ refs }) {
             <SkeletonPost />
           </>
         ) : (
-          posts.map(post => <PostCard key={post.id} post={post} />)
+          posts.map((post) => <PostCard key={post.id} post={post} />)
         )}
       </main>
     </div>

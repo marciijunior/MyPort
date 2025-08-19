@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Conteúdo de exemplo para cada botão
 const contentData = {
   'btn1-1': {
     title: 'Desenvolvimento de Websites Personalizados',

@@ -1,20 +1,31 @@
-// src/components/AboutMe.jsx (com ScrollReveal)
 import React from "react";
 import "../styles/AboutMe.css";
 
-// Adicionamos a prop 'refs' aqui
 export default function AboutMe({ sectionRef, refs }) {
   return (
     <section id="sobre" ref={sectionRef}>
       <div className="about-me-content">
-        {/* Adicionamos a ref para a animação da imagem */}
         <div className="about-me-image">
-          <img className="about-me-image1" ref={refs.sobreMim_imagem1} src="/foto-about-me.webp" alt="Foto de Marcio Junior" />
-          <img className="about-me-image2" ref={refs.sobreMim_imagem2} src="/foto-about-me.webp" alt="Foto de Marcio Junior" />
-          <img className="about-me-image3" ref={refs.sobreMim_imagem3} src="/foto-about-me.webp" alt="Foto de Marcio Junior" />
+          <img
+            className="about-me-image1"
+            ref={refs.sobreMim_imagem1}
+            src="/foto-about-me.webp"
+            alt="Foto de Marcio Junior"
+          />
+          <img
+            className="about-me-image2"
+            ref={refs.sobreMim_imagem2}
+            src="/foto-about-me.webp"
+            alt="Foto de Marcio Junior"
+          />
+          <img
+            className="about-me-image3"
+            ref={refs.sobreMim_imagem3}
+            src="/foto-about-me.webp"
+            alt="Foto de Marcio Junior"
+          />
         </div>
         <div className="about-me-text">
-          {/* Adicionamos as refs para as animações dos textos */}
           <h2 className="about-me-title" ref={refs.sobreMim_titulo}>
             Sobre Mim
           </h2>

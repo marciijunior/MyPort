@@ -1,5 +1,5 @@
 :root {
-  --sidebar-width: 4.375em; /* 70px */
+  --sidebar-width: 4.375em;
   --transicao-suave: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -90,9 +90,7 @@
   z-index: 2;
 }
 
-
-/* --- RESPONSIVIDADE PARA CELULARES --- */
-@media (max-width: 800px) { /* 768px */
+@media (max-width: 800px) { 
   .sidebar {
     display: none;
   }

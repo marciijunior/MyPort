@@ -5,9 +5,8 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// PROP 'REFS' ADICIONADA AQUI
 export default function Tecnologias({ sectionRef, techStackData, refs }) {
-  const isCarouselView = useMediaQuery('(max-width: 1200px)');
+  const isCarouselView = useMediaQuery("(max-width: 1200px)");
 
   const settings = {
     dots: true,
@@ -19,7 +18,7 @@ export default function Tecnologias({ sectionRef, techStackData, refs }) {
     autoplaySpeed: 4000,
     arrows: false,
     centerMode: true,
-    centerPadding: '0px',
+    centerPadding: "0px",
   };
 
   const renderCategoryColumn = (title, techs) => (
@@ -37,7 +36,6 @@ export default function Tecnologias({ sectionRef, techStackData, refs }) {
 
   return (
     <section id="tecnologias" ref={sectionRef} className="tech-stack-section">
-      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-tech">
         <h2 className="titulo-tech" ref={refs.tecnologias_titulo}>
           Tecnologias e Ferramentas

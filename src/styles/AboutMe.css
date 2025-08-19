@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* PADRÃO ZERADO: Padding vertical removido */
   padding: 8rem 30rem 0 30rem;
   gap: 2rem;
 }
@@ -78,7 +77,6 @@
   padding-left: 0.9375rem;
 }
 
-/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .about-me-content {
   padding: 8rem 25rem 0 25rem;

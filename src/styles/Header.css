@@ -16,8 +16,8 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-header#inicio { /* <-- MUDANÇA PRINCIPAL AQUI */
-  min-height: 100%; /* Agora só afeta o <header> com id="inicio" */
+header#inicio {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   padding: 0;

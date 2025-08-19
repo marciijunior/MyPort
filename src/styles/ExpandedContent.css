@@ -1,5 +1,3 @@
-/* ExpandedContent.css - VERSÃO FINAL COM ÍCONE DA BIBLIOTECA */
-
 .expanding-overlay {
   position: fixed;
   background-color: rgba(10, 10, 10, 0.95);
@@ -43,7 +41,6 @@
   cursor: pointer;
   z-index: 11;
   transition: background-color 0.3s ease-in-out, transform 0.3s ease;
-  /* A cor do ícone é definida aqui */
   color: white; 
 }
 
@@ -52,14 +49,11 @@
   background-color: rgba(255, 77, 5, 0.8);
 }
 
-/* Estilo do ícone SVG renderizado pelo react-icons */
 .close-expanded-btn svg {
-  width: 50%; /* 50% do tamanho do botão pai */
+  width: 50%;
   height: 50%;
 }
 
-
-/* Estilos para o conteúdo interno */
 .container-expanded-content1 {
   color: var(--cor3);
   text-align: left;
@@ -103,7 +97,6 @@
   left: 0;
 }
 
-/* Oculta os botões que não estão expandidos */
 .hidden-button {
   visibility: hidden;
   opacity: 0;

@@ -1,14 +1,13 @@
-/* --- ESTILOS DO RODAPÉ --- */
 .footer-container {
   display: flex;
-  flex-direction: column; /* Empilha os elementos verticalmente */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem; /* Espaço entre os links e o texto */
+  gap: 1.5rem;
   margin: 10rem 0 0;
   padding: 2.5rem 2rem;
-  background-color: #101010; /* Um pouco mais claro que o fundo preto */
-  border-top: 2px solid var(--cor2); /* Borda sutil para separar */
+  background-color: #101010;
+  border-top: 2px solid var(--cor2);
 }
 
 .footer-social-links {
@@ -16,11 +15,11 @@
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 2.5rem; /* Espaço entre os ícones */
+  gap: 2.5rem;
 }
 
 .footer-social-links img {
-  width: 1.875rem; /* 30px */
+  width: 1.875rem;
   height: auto;
   opacity: 0.7;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -39,7 +38,6 @@
   text-align: center;
 }
 
-/* --- RESPONSIVIDADE --- */
 @media (max-width: 600px) {
   .footer-container {
     padding: 2rem 1rem;
@@ -49,7 +47,7 @@
     gap: 2rem;
   }
   .footer-social-links img {
-    width: 1.5rem; /* 24px */
+    width: 1.5rem;
   }
   .footer-text {
     font-size: 0.7rem;

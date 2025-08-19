@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-// PROP 'REFS' ADICIONADA AQUI
 export default function Portfolio({
   sectionRef,
   portfolioData,
@@ -28,7 +27,6 @@ export default function Portfolio({
 
   return (
     <section id="portfolio" ref={sectionRef} className="container-portfolio">
-      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-portfolio">
         <h2 className="titulo-portfolio" ref={refs.portfolio_titulo}>
           Portfólio

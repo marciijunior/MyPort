@@ -1,5 +1,3 @@
-/* src/styles/PosHeader.css (CORRIGIDO com layout vertical para mobile) */
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .divpremain {
@@ -126,7 +124,6 @@
   height: 52rem;
 }
 
-/* --- RESPONSIVIDADE --- */
 @media (max-width: 1700px) {
   .divpremain {
     padding: 0 2rem 0 18rem;
@@ -226,14 +223,13 @@
   }
 }
 
-/* --- MUDANÇA PRINCIPAL AQUI --- */
 @media (max-width: 992px) {
   .divpremain {
-    flex-direction: column-reverse; /* Inverte a ordem e empilha: imagem vai para cima */
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0rem 2.5rem 0 2.5rem; /* Ajusta o padding para o novo layout */
+    padding: 0rem 2.5rem 0 2.5rem;
     gap: 2rem;
   }
   .premain {

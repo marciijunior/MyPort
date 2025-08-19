@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-// Componentes
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import AboutMe from "./components/AboutMe";
@@ -10,7 +9,6 @@ import Certificados from "./components/Certificados";
 import Footer from "./components/Footer";
 import Feed from "./components/Feed";
 
-// CSS
 import "./styles/Header.css";
 import "./styles/PosHeader.css";
 import "slick-carousel/slick/slick.css";
@@ -26,16 +24,13 @@ import "./styles/Certificates.css";
 import "./styles/Feed.css";
 import "./styles/Scrollbar.css";
 
-// Hooks
 import ScrollReveal from "scrollreveal";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 export default function App() {
-  // --- ESTADOS ---
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeSection, setActiveSection] = useState("inicio");
 
-  // --- DADOS ---
   const certificatesData = [
     {
       title:
@@ -199,7 +194,6 @@ export default function App() {
     ],
   };
 
-  // --- LÓGICA DE NAVEGAÇÃO E SCROLL ---
   const scrollContainerRef = useRef(null);
 
   const sectionRefs = {
@@ -243,7 +237,6 @@ export default function App() {
     }
   }, []);
 
-  // useEffect para o IntersectionObserver (CORRIGIDO)
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -274,9 +267,7 @@ export default function App() {
     };
   }, []);
 
-  // useEffect para o ScrollReveal (CORRIGIDO)
   useEffect(() => {
-    // Verifica se o container já existe no DOM
     if (scrollContainerRef.current) {
       const sr = ScrollReveal({
         container: scrollContainerRef.current,
@@ -286,10 +277,9 @@ export default function App() {
         reset: false,
         easing: "cubic-bezier(0.5, 0, 0, 1)",
       });
-      // Função de limpeza para destruir a instância do ScrollReveal
       return () => sr.destroy();
     }
-  }, []); // Roda apenas uma vez após a montagem inicial
+  }, []);
 
   const scrollRefs = {
     // Header

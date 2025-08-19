@@ -274,17 +274,15 @@
   }
 }
 
-/* Centralizado para tablets e celulares */
 @media (max-width: 1000px) {
   .invite-to-scroll {
     display: none;
     position: absolute;
     transform: translateX(-50%);
-    z-index: 5; /* Garante que fique visível */
+    z-index: 5;
   }
 }
 
-/* Ajustes de tamanho e posição somente para celulares muito pequenos */
 @media (max-width: 500px) {
   .invite-to-scroll {
     position: absolute;
@@ -294,7 +292,7 @@
     width: 4rem;
     height: 8rem;
     bottom: 4rem;
-    margin: 0; /* Remove a margem para não interferir com o posicionamento absoluto */
+    margin: 0;
   }
 
   .animationScrollInvite {

@@ -5,7 +5,7 @@ const navLinks = [
   { id: 'inicio', icon: 'fa-house'},
   { id: 'sobre', icon: 'fa-user'},
   { id: 'jornada', icon: 'fa-route'},
-  { id: 'tecnologias', icon: 'fa-microchip'}, // ÍCONE ADICIONADO AQUI
+  { id: 'tecnologias', icon: 'fa-microchip'},
   { id: 'portfolio', icon: 'fa-image'},
   { id: 'certificados', icon: 'fa-certificate'}
 ];
@@ -34,7 +34,7 @@ export default function Sidebar({ onNavigate, activeSection }) {
               href={`#${link.id}`}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
               onClick={(e) => {
-                e.preventDefault(); // Evita que o link altere a URL
+                e.preventDefault();
                 onNavigate(link.id);
               }}
               aria-label={link.id}

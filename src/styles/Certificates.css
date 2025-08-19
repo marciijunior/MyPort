@@ -1,6 +1,4 @@
-/* src/styles/Certificates.css - PADDING VERTICAL ZERADO */
 .container-certificados {
-  /* PADRÃO ZERADO: Padding vertical removido */
   padding: 0 18.75rem;
 }
 
@@ -8,7 +6,6 @@
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  /* Adicionado padding-top para criar o espaçamento da seção */
   padding: 6.25rem 0 2.5rem 0;
 }
 
@@ -34,7 +31,7 @@
 .swiper-slide {
   height: auto;
   display: flex;
-  padding-bottom: 2.5rem; /* Espaço para a paginação não sobrepor */
+  padding-bottom: 2.5rem;
 }
 
 .certificate-card {
@@ -100,7 +97,6 @@
   height: 100%;
 }
 
-/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .container-certificados {
     padding: 0 16rem;

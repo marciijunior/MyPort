@@ -1,19 +1,13 @@
-/* src/styles/Scrollbar.css (VERSÃO FINAL E CORRIGIDA) */
-
-/* REGRA GLOBAL: 
-  Define um padrão para a scrollbar principal da página e outros elementos.
-  Estilo padrão: Fundo preto, cursor cinza escuro.
-*/
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cor5); /* Preto */
+  background: var(--cor5);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--cor2); /* Cinza escuro */
+  background: var(--cor2);
   border-radius: 10px;
   border: 2px solid var(--cor5);
 }
@@ -21,11 +15,6 @@
   background: var(--cor4);
 }
 
-/* REGRAS ESPECÍFICAS (PADRÃO PORTFOLIO):
-  Aplica o estilo "flutuante" (fundo transparente, cursor branco)
-  especificamente nos contêineres do Feed e do Portfólio.
-  Esta regra é mais específica e irá sobrescrever a regra global nesses elementos.
-*/
 .feed-container::-webkit-scrollbar,
 .portfolio-img-container::-webkit-scrollbar {
   width: 6px;
@@ -34,32 +23,28 @@
 
 .feed-container::-webkit-scrollbar-track,
 .portfolio-img-container::-webkit-scrollbar-track {
-  background: transparent; /* Fundo transparente */
+  background: transparent;
 }
 
 .feed-container::-webkit-scrollbar-thumb,
 .portfolio-img-container::-webkit-scrollbar-thumb {
-  background: var(--cor3); /* Branco */
+  background: var(--cor3);
   border-radius: 10px;
-  border: none; /* Remove a borda para o estilo flutuante */
+  border: none;
 }
 
 .feed-container::-webkit-scrollbar-thumb:hover,
 .portfolio-img-container::-webkit-scrollbar-thumb:hover {
-  background: var(--cor4); /* Laranja no hover */
+  background: var(--cor4);
 }
 
-
-/* --- ESTILOS GLOBAIS PARA FIREFOX --- */
 * {
-  /* Padrão para Firefox: cinza escuro sobre preto */
   scrollbar-width: thin;
   scrollbar-color: var(--cor2) var(--cor5);
 }
 
 .feed-container,
 .portfolio-img-container {
-  /* Padrão Portfólio para Firefox: branco sobre transparente */
   scrollbar-width: thin;
   scrollbar-color: var(--cor3) transparent;
 }

@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// PROP 'REFS' ADICIONADA AQUI
 export default function Certificados({ sectionRef, certificatesData, refs }) {
   return (
     <section
@@ -13,7 +12,6 @@ export default function Certificados({ sectionRef, certificatesData, refs }) {
       ref={sectionRef}
       className="container-certificados"
     >
-      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-certificado">
         <h2 className="titulo-certificado" ref={refs.certificados_titulo}>
           Certificados e Cursos
