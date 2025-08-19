@@ -1,11 +1,12 @@
-/* src/styles/Portfolio.css - OPÇÃO 2: MATERIAL ELEVADO */
+/* src/styles/Portfolio.css - PADDING VERTICAL ZERADO */
 
 .container-portfolio {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 6.25rem 18.75rem;
+  /* PADRÃO ZERADO: Padding vertical removido */
+  padding: 0 18.75rem;
   margin: 0;
   box-sizing: border-box;
   background-color: var(--cor5);
@@ -24,6 +25,7 @@
   font-size: 2rem;
   color: var(--cor1);
   margin: 0rem;
+  padding: 100px 0 0rem 0;
 }
 
 .texto-portfolio {
@@ -37,7 +39,7 @@
   height: 320px;
   display: flex;
   justify-content: center;
-  gap: 1.5rem; /* Aumentado o gap */
+  gap: 1.5rem;
   width: 100%;
   max-width: 2000px;
 }
@@ -47,22 +49,21 @@
   height: 20rem;
   flex-shrink: 1;
   flex-grow: 0;
-  border-radius: 1rem; /* Borda um pouco menos redonda */
+  border-radius: 1rem;
   cursor: pointer;
   margin: 0;
   transition: 1s ease;
   border: 1px solid #2a2a2a;
   position: relative;
   overflow: hidden;
-  background-color: #1c1c1c; /* Cinza escuro sólido */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+  background-color: #1c1c1c;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .portfolio-card.is-expanded {
   width: 600px;
   flex-shrink: 0;
   border-color: #333;
-  /* Sombra mais forte para o efeito de elevação */
   box-shadow: 0px 15px 45px -5px rgba(0, 0, 0, 0.7);
 }
 
@@ -164,20 +165,20 @@
   background-color: var(--cor1);
 }
 
-/* --- RESPONSIVIDADE PADRONIZADA --- */
+/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .container-portfolio {
-    padding: 6.25rem 16rem;
+    padding: 0 16rem;
   }
 }
 @media (max-width: 1600px) {
   .container-portfolio {
-    padding: 6.25rem 14rem;
+    padding: 0 14rem;
   }
 }
 @media (max-width: 1500px) {
   .container-portfolio {
-    padding: 6.25rem 12rem;
+    padding: 0 12rem;
   }
   .titulo-portfolio {
     font-size: 1.8rem;
@@ -188,12 +189,12 @@
 }
 @media (max-width: 1400px) {
   .container-portfolio {
-    padding: 6.25rem 10rem;
+    padding: 0 10rem;
   }
 }
 @media (max-width: 1300px) {
   .container-portfolio {
-    padding: 6.25rem 8rem;
+    padding: 0 8rem;
   }
   .titulo-portfolio {
     font-size: 1.6rem;
@@ -227,7 +228,7 @@
 }
 @media (max-width: 800px) {
   .container-portfolio {
-    padding: 6.25rem 6rem;
+    padding: 0 6rem;
   }
   .titulo-portfolio {
     font-size: 1.2rem;
@@ -238,7 +239,7 @@
 }
 @media (max-width: 600px) {
   .container-portfolio {
-    padding: 6.25rem 2rem;
+    padding: 0 2rem;
   }
   .titulo-portfolio {
     font-size: 1.1rem;
@@ -249,7 +250,7 @@
 }
 @media (max-width: 500px) {
   .container-portfolio {
-    padding: 6.25rem 1rem;
+    padding: 0 1rem;
   }
   .titulo-portfolio {
     font-size: 1rem;
@@ -258,29 +259,22 @@
     line-height: 1;
   }
 }
-/* Adicionar ao src/styles/Portfolio.css */
 
-/* Estilo para Firefox, específico para o container da imagem do portfólio */
 .portfolio-img-container {
   scrollbar-width: thin;
-  scrollbar-color: var(--cor1) transparent; /* Polegar cinza, fundo transparente */
+  scrollbar-color: var(--cor1) transparent;
 }
-
-/* Estilo para WebKit (Chrome, Safari, etc.), específico para o mesmo container */
 .portfolio-img-container::-webkit-scrollbar {
-  width: 6px; /* Mais fina */
+  width: 6px;
 }
-
 .portfolio-img-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0); /* Fundo semi-transparente e sutil */
+  background: rgba(0, 0, 0, 0);
   border-radius: 10px;
 }
-
 .portfolio-img-container::-webkit-scrollbar-thumb {
   background-color: var(--cor1);
   border-radius: 10px;
 }
-
 .portfolio-img-container::-webkit-scrollbar-thumb:hover {
   background-color: var(--cor2);
 }

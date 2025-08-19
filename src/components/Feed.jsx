@@ -124,7 +124,7 @@ export default function Feed() {
       <header className="feed-header">
         <h1>Minha Jornada</h1>
         <p className="feed-description">
-          Esta seção funciona como um diário profissional dinâmico, onde compartilho as atualizações e marcos da minha carreira. Navegue pelos anos para explorar.
+          Aqui compartilho as atualizações e marcos da minha carreira.
         </p>
         <nav className="mini-timeline">
           {availableYears.map(year => (

@@ -1,4 +1,4 @@
-/* src/styles/Certificates.css (Versão Final com Responsividade Padronizada) */
+/* src/styles/Certificates.css - PADDING VERTICAL ZERADO */
 
 @property --deg {
   syntax: "<angle>";
@@ -13,14 +13,16 @@
 }
 
 .container-certificados {
-  padding: 0rem 18.75rem; /* Padding base */
+  /* PADRÃO ZERADO: Padding vertical removido */
+  padding: 0 18.75rem;
 }
 
 .interligacao-certificado {
   width: 100%;
   text-align: center;
   color: var(--cor3);
-  padding: 0rem 0 2.5rem 0;
+  /* Adicionado padding-top para criar o espaçamento da seção */
+  padding: 6.25rem 0 2.5rem 0;
 }
 
 .titulo-certificado {
@@ -40,7 +42,6 @@
 
 .certificates-swiper {
   width: 100%;
-  padding-top: 1rem;
 }
 
 .swiper-slide {
@@ -134,20 +135,20 @@
   height: 100%;
 }
 
-/* --- RESPONSIVIDADE PADRONIZADA --- */
+/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .container-certificados {
-    padding: 0rem 16rem;
+    padding: 0 16rem;
   }
 }
 @media (max-width: 1600px) {
   .container-certificados {
-    padding: 0rem 14rem;
+    padding: 0 14rem;
   }
 }
 @media (max-width: 1500px) {
   .container-certificados {
-    padding: 0rem 12rem;
+    padding: 0 12rem;
   }
   .titulo-certificado {
     font-size: 1.8rem;
@@ -158,12 +159,12 @@
 }
 @media (max-width: 1400px) {
   .container-certificados {
-    padding: 0rem 10rem;
+    padding: 0 10rem;
   }
 }
 @media (max-width: 1300px) {
   .container-certificados {
-    padding: 0rem 8rem;
+    padding: 0 8rem;
   }
   .titulo-certificado {
     font-size: 1.6rem;
@@ -179,10 +180,14 @@
   .texto-certificado {
     font-size: 0.7rem;
   }
+  .certificates-swiper .swiper-button-next,
+  .certificates-swiper .swiper-button-prev {
+    display: none !important;
+  }
 }
 @media (max-width: 800px) {
   .container-certificados {
-    padding: 0rem 6rem;
+    padding: 0 6rem;
   }
   .titulo-certificado {
     font-size: 1.2rem;
@@ -193,7 +198,7 @@
 }
 @media (max-width: 600px) {
   .container-certificados {
-    padding: 0rem 2rem;
+    padding: 0 2rem;
   }
   .titulo-certificado {
     font-size: 1.1rem;
@@ -204,21 +209,12 @@
 }
 @media (max-width: 500px) {
   .container-certificados {
-    padding: 0rem 1rem;
+    padding: 0 1rem;
   }
   .titulo-certificado {
     font-size: 1rem;
   }
   .texto-certificado {
     line-height: 1;
-  }
-}
-/* Adicionar ao final de src/styles/Certificates.css */
-
-/* Esconde as setas de navegação em telas menores que 1000px */
-@media (max-width: 1000px) {
-  .certificates-swiper .swiper-button-next,
-  .certificates-swiper .swiper-button-prev {
-    display: none !important;
   }
 }

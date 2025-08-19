@@ -36,9 +36,6 @@ export default function JornadaSection({ onYearSelect }) {
     <section className="jornada-section">
       <div className="interligacao-jornada">
         <h2 className="titulo-jornada">Minha Jornada</h2>
-        <p className="texto-jornada">
-          Selecione um ano para ver as atualizações e conquistas do período.
-        </p>
       </div>
       <div className="years-container">
         {loading ? (

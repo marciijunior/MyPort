@@ -233,7 +233,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem 2.5rem; /* Ajusta o padding para o novo layout */
+    padding: 2rem 2.5rem 0 2.5rem; /* Ajusta o padding para o novo layout */
     gap: 2rem;
   }
   .premain {

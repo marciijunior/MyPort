@@ -40,8 +40,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
       <div className="interligacao-tech">
         <h2 className="titulo-tech">Tecnologias e Ferramentas</h2>
         <p className="texto-tech">
-          As ferramentas e linguagens que mais utilizo para criar interfaces
-          dinâmicas e funcionais.
+          As ferramentas e linguagens que mais utilizo.
         </p>
       </div>
 

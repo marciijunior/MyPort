@@ -7,12 +7,12 @@ export default function AboutMe({ sectionRef }) {
     <section id="sobre" ref={sectionRef}>
       <div className="about-me-content">
         <div className="about-me-image">
-          <img src="/foto-about-me.JPG" alt="Foto de Marcio Junior" />
+          <img className="about-me-image1" src="/foto-about-me.jpg" alt="Foto de Marcio Junior" />
+          <img className="about-me-image2" src="/foto-about-me.jpg" alt="Foto de Marcio Junior" />
+          <img className="about-me-image3" src="/foto-about-me.jpg" alt="Foto de Marcio Junior" />
         </div>
         <div className="about-me-text">
-          <h2 className="about-me-title">
-            Sobre Mim
-          </h2>
+          <h2 className="about-me-title">Sobre Mim</h2>
           <p className="about-me-subtitle">
             Estudante de Engenharia de Computação, 23 anos.
           </p>

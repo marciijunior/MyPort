@@ -1,34 +1,32 @@
-/* PADRÃO: Padding lateral grande, vertical controlado pelo header */
+/* src/styles/Feed.css - PADDING VERTICAL ZERADO */
+
+/* PADRÃO ZERADO: Padding vertical removido */
 .feed-view {
   padding: 0 18.75rem;
 }
 
-/* PADRÃO: Container do título com padding superior */
+/* Adicionado padding-top para compensar a remoção no container principal */
 .feed-header {
   padding-top: 6.25rem;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
-/* AJUSTE: Espaçamento do título */
 .feed-header h1 {
   color: var(--cor1);
   font-size: 2rem;
   font-weight: 300;
-  margin-bottom: 1rem; /* Margem menor para o parágrafo */
+  margin: 0;
 }
 
-/* NOVO: Estilo para o parágrafo de descrição */
 .feed-description {
   font-weight: 400;
   font-size: 1rem;
   color: #b0b0b0;
   line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto 1.5rem auto; /* Centraliza e adiciona espaço abaixo */
+  max-width: 900px;
+  margin: 0 auto 1.5rem auto;
 }
 
-/* --- ESTILOS DA NOVA MINI TIMELINE --- */
 .mini-timeline {
   display: flex;
   justify-content: center;
@@ -63,9 +61,7 @@
   color: var(--cor5);
   font-weight: 600;
 }
-/* --- FIM DOS ESTILOS DA MINI TIMELINE --- */
 
-/* Contêiner do feed com altura máxima e scroll */
 .feed-container {
   max-width: 700px;
   margin: 2rem auto 0 auto;
@@ -108,21 +104,17 @@
 .post-content {
   padding: 0 1rem 1rem 1rem;
 }
-
-/* Estilos para alinhar o ícone e o título */
 .post-content-title {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
-
 .post-title-icon {
   font-size: 1rem;
   color: var(--cor3);
   opacity: 0.7;
 }
-
 .post-title {
   font-size: 1.3rem;
   margin: 0;
@@ -158,8 +150,6 @@
 .feed-container::-webkit-scrollbar-thumb:hover {
   background: var(--cor1);
 }
-
-/* ESTILOS DO LIKE DO POST */
 .post-footer {
   padding: 0.5rem 1rem 1rem 1rem;
   display: flex;
@@ -200,7 +190,7 @@
   margin-left: 0.5rem;
 }
 
-/* RESPONSIVIDADE PADRONIZADA */
+/* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .feed-view {
     padding: 0 16rem;
@@ -215,11 +205,10 @@
   .feed-view {
     padding: 0 12rem;
   }
-  .feed-header h1,
-  .titulo-jornada {
+  .feed-header h1 {
     font-size: 1.8rem;
   }
-  .texto-jornada {
+  .feed-description {
     font-size: 0.9rem;
   }
 }
@@ -232,20 +221,18 @@
   .feed-view {
     padding: 0 8rem;
   }
-  .feed-header h1,
-  .titulo-jornada {
+  .feed-header h1 {
     font-size: 1.6rem;
   }
-  .texto-jornada {
+  .feed-description {
     font-size: 0.8rem;
   }
 }
 @media (max-width: 1000px) {
-  .feed-header h1,
-  .titulo-jornada {
+  .feed-header h1 {
     font-size: 1.4rem;
   }
-  .texto-jornada {
+  .feed-description {
     font-size: 0.7rem;
   }
 }
@@ -253,13 +240,10 @@
   .feed-view {
     padding: 0 6rem;
   }
-}
-@media (max-width: 700px) {
-  .feed-header h1,
-  .titulo-jornada {
+  .feed-header h1 {
     font-size: 1.2rem;
   }
-  .texto-jornada {
+  .feed-description {
     line-height: 1.2;
   }
 }
@@ -278,10 +262,32 @@
   .feed-view {
     padding: 0 1rem;
   }
+  .feed-header h1 {
+    font-size: 1rem;
+  }
+  .feed-description {
+    line-height: 1;
+  }
 }
 @media (max-width: 400px) {
   .feed-view {
     padding: 0 0.5rem;
+  }
+}
+@media (max-width: 350px) {
+  .mini-timeline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid var(--cor2);
+    border-bottom: 1px solid var(--cor2);
+    padding: 0.75rem 0;
+    flex-wrap: wrap;
+  }
+  .timeline-year {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
   }
 }
 
