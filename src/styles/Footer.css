@@ -1,6 +1,57 @@
+/* --- ESTILOS DO RODAPÉ --- */
 .footer-container {
   display: flex;
+  flex-direction: column; /* Empilha os elementos verticalmente */
   justify-content: center;
   align-items: center;
-  padding: 0rem 0rem;
+  gap: 1.5rem; /* Espaço entre os links e o texto */
+  margin: 10rem 0 0;
+  padding: 2.5rem 2rem;
+  background-color: #101010; /* Um pouco mais claro que o fundo preto */
+  border-top: 2px solid var(--cor2); /* Borda sutil para separar */
+}
+
+.footer-social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 2.5rem; /* Espaço entre os ícones */
+}
+
+.footer-social-links img {
+  width: 1.875rem; /* 30px */
+  height: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-links img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer-text {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 600px) {
+  .footer-container {
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+  .footer-social-links {
+    gap: 2rem;
+  }
+  .footer-social-links img {
+    width: 1.5rem; /* 24px */
+  }
+  .footer-text {
+    font-size: 0.7rem;
+  }
 }

@@ -4,13 +4,13 @@ import '../styles/Sidebar.css';
 const navLinks = [
   { id: 'inicio', icon: 'fa-house'},
   { id: 'sobre', icon: 'fa-user'},
-  { id: 'jornada', icon: 'fa-route'}, // <-- ALTERADO DE 'servicos' PARA 'jornada'
+  { id: 'jornada', icon: 'fa-route'},
+  { id: 'tecnologias', icon: 'fa-microchip'}, // ÍCONE ADICIONADO AQUI
   { id: 'portfolio', icon: 'fa-image'},
   { id: 'certificados', icon: 'fa-certificate'}
 ];
 
 export default function Sidebar({ onNavigate, activeSection }) {
-  // ... resto do seu componente Sidebar (sem alterações) ...
   const navRef = useRef(null);
   const linkRefs = useRef({});
 
@@ -33,11 +33,13 @@ export default function Sidebar({ onNavigate, activeSection }) {
             <a
               href={`#${link.id}`}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={() => onNavigate(link.id)}
-              aria-label={link.text}
+              onClick={(e) => {
+                e.preventDefault(); // Evita que o link altere a URL
+                onNavigate(link.id);
+              }}
+              aria-label={link.id}
             >
               <i className={`fa-solid ${link.icon}`}></i>
-              <span className="nav-text">{link.text}</span>
             </a>
           </li>
         ))}

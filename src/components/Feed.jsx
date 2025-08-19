@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// AQUI: faCalendarAlt foi removido da linha abaixo
 import { faGraduationCap, faCode, faBriefcase, faStar, faCertificate, faHeart } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Feed.css';
 
@@ -74,7 +73,7 @@ const PostCard = ({ post }) => {
   );
 };
 
-// Componente para o skeleton
+// Componente para o skeleton dos posts
 const SkeletonPost = () => (
     <div className="post-card skeleton-post">
       <div className="post-card-header">
@@ -91,55 +90,71 @@ const SkeletonPost = () => (
   );
 
 // Componente principal do Feed
-export default function Feed() {
+export default function Feed({ refs }) {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
   const [availableYears, setAvailableYears] = useState([]);
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingYears, setLoadingYears] = useState(true); // NOVO ESTADO
 
+  // Efeito para buscar a lista de anos disponíveis
   useEffect(() => {
     fetch(baseApiUrl)
       .then(res => res.json())
-      .then(data => setAvailableYears(data))
+      .then(data => {
+        setAvailableYears(data);
+        setLoadingYears(false); // ATUALIZADO
+      })
       .catch(console.error);
   }, []);
 
+  // Efeito para buscar os posts sempre que o 'selectedYear' mudar
   useEffect(() => {
     if (!selectedYear) return;
-    setLoading(true);
+    setLoadingPosts(true);
     fetch(`${baseApiUrl}?year=${selectedYear}`)
       .then(res => res.json())
       .then(data => {
         setPosts(data);
-        setLoading(false);
+        setLoadingPosts(false);
       })
       .catch(error => {
         console.error("Erro ao buscar posts:", error);
-        setLoading(false);
+        setLoadingPosts(false);
       });
   }, [selectedYear]);
 
   return (
     <div className="feed-view">
       <header className="feed-header">
-        <h1>Minha Jornada</h1>
-        <p className="feed-description">
-          Aqui compartilho as atualizações e marcos da minha carreira.
+        <h1 ref={refs.feed_titulo}>Minha Jornada</h1>
+        <p className="feed-description" ref={refs.feed_descricao}>
+          Esta seção funciona como um diário profissional. Deixe seu apoio anônimo!
         </p>
-        <nav className="mini-timeline">
-          {availableYears.map(year => (
-            <button
-              key={year}
-              className={`timeline-year ${year == selectedYear ? 'active' : ''}`}
-              onClick={() => setSelectedYear(year.toString())}
-            >
-              {year}
-            </button>
-          ))}
+        <nav className="mini-timeline" ref={refs.feed_timeline}>
+          {/* LÓGICA DE RENDERIZAÇÃO CONDICIONAL ADICIONADA AQUI */}
+          {loadingYears ? (
+            <>
+              <div className="timeline-year-skeleton"></div>
+              <div className="timeline-year-skeleton"></div>
+              <div className="timeline-year-skeleton"></div>
+              <div className="timeline-year-skeleton"></div>
+            </>
+          ) : (
+            availableYears.map(year => (
+              <button
+                key={year}
+                className={`timeline-year ${year == selectedYear ? 'active' : ''}`}
+                onClick={() => setSelectedYear(year.toString())}
+              >
+                {year}
+              </button>
+            ))
+          )}
         </nav>
       </header>
-      <main className="feed-container">
-        {loading ? (
+      <main className="feed-container" ref={refs.feed_container}>
+        {loadingPosts ? (
           <>
             <SkeletonPost />
             <SkeletonPost />

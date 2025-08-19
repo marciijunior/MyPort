@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   /* PADRÃO ZERADO: Padding vertical removido */
-  padding: 6rem 30rem;
+  padding: 8rem 30rem 0 30rem;
   gap: 2rem;
 }
 
@@ -81,7 +81,7 @@
 /* --- RESPONSIVIDADE COM PADDING VERTICAL ZERADO --- */
 @media (max-width: 1700px) {
   .about-me-content {
-    padding: 3rem 16rem;
+  padding: 8rem 25rem 0 25rem;
   }
   .about-me-image img {
     width: 18rem;
@@ -96,12 +96,12 @@
 }
 @media (max-width: 1600px) {
   .about-me-content {
-    padding: 3rem 14rem;
+    padding: 8rem 22rem 0 22rem;
   }
 }
 @media (max-width: 1500px) {
   .about-me-content {
-    padding: 3rem 12rem;
+    padding: 5rem 20rem 0 20rem;
   }
   .about-me-title {
     font-size: 1.8rem;
@@ -112,12 +112,12 @@
 }
 @media (max-width: 1400px) {
   .about-me-content {
-    padding: 4rem 10rem;
+    padding: 8rem 20rem 0 20rem;
   }
 }
 @media (max-width: 1300px) {
   .about-me-content {
-    padding: 5rem 10rem;
+    padding: 8rem 18rem 0 18rem;
   }
   .about-me-title {
     font-size: 1.6rem;
@@ -128,12 +128,12 @@
 }
 @media (max-width: 1200px) {
   .about-me-content {
-    padding: 8rem 10rem;
+    padding: 8rem 13rem 0 13rem;
   }
 }
 @media (max-width: 1100px) {
   .about-me-content {
-    padding: 10rem 8rem;
+    padding: 8rem 11rem 0 11rem;
   }
   .about-me-image {
     width: 18rem;
@@ -227,6 +227,7 @@
 @media (max-width: 400px) {
   .about-me-content {
     padding: 0 1rem;
+    gap: 1rem;
   }
   .about-me-image {
     width: 9rem;

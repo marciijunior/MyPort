@@ -1,4 +1,3 @@
-// src/components/Tecnologias.jsx (Centralização Corrigida)
 import React from "react";
 import Slider from "react-slick";
 import { useMediaQuery } from "../hooks/useMediaQuery";
@@ -6,7 +5,8 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Tecnologias({ sectionRef, techStackData }) {
+// PROP 'REFS' ADICIONADA AQUI
+export default function Tecnologias({ sectionRef, techStackData, refs }) {
   const isCarouselView = useMediaQuery('(max-width: 1200px)');
 
   const settings = {
@@ -19,7 +19,7 @@ export default function Tecnologias({ sectionRef, techStackData }) {
     autoplaySpeed: 4000,
     arrows: false,
     centerMode: true,
-    centerPadding: '0px', // <-- MUDANÇA PRINCIPAL AQUI: Cria espaço para o brilho
+    centerPadding: '0px',
   };
 
   const renderCategoryColumn = (title, techs) => (
@@ -37,14 +37,17 @@ export default function Tecnologias({ sectionRef, techStackData }) {
 
   return (
     <section id="tecnologias" ref={sectionRef} className="tech-stack-section">
+      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-tech">
-        <h2 className="titulo-tech">Tecnologias e Ferramentas</h2>
-        <p className="texto-tech">
+        <h2 className="titulo-tech" ref={refs.tecnologias_titulo}>
+          Tecnologias e Ferramentas
+        </h2>
+        <p className="texto-tech" ref={refs.tecnologias_texto}>
           As ferramentas e linguagens que mais utilizo.
         </p>
       </div>
 
-      <div className="tech-stack-container">
+      <div className="tech-stack-container" ref={refs.tecnologias_container}>
         {isCarouselView ? (
           <div className="tech-carousel-wrapper">
             <div className="tech-carousel">

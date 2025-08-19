@@ -15,7 +15,7 @@
   color: var(--cor1);
   font-size: 2rem;
   font-weight: 300;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 /* Estilo para o parágrafo de descrição */
@@ -38,6 +38,7 @@
   border-bottom: 1px solid var(--cor2);
   padding: 0.75rem 0;
   flex-wrap: wrap; 
+  min-height: 46px; /* Altura mínima para não "pular" ao carregar */
 }
 
 .timeline-year {
@@ -63,6 +64,15 @@
   color: var(--cor5);
   font-weight: 600;
 }
+
+/* NOVO: Skeleton Loader para a Mini Timeline */
+.timeline-year-skeleton {
+  width: 70px;
+  height: 35px;
+  background-color: var(--cor2);
+  border-radius: 6px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
 /* --- FIM DOS ESTILOS DA MINI TIMELINE --- */
 
 /* Contêiner do feed com altura máxima e scroll */
@@ -71,7 +81,7 @@
   margin: 2rem auto 0 auto;
   max-height: 80vh;
   overflow-y: auto;
-  padding-right: 15px; /* Espaço reservado para a scrollbar (será útil escondê-la) */
+  padding-right: 15px;
 }
 
 .post-card {
@@ -94,8 +104,10 @@
 .post-description { font-size: 1rem; color: #b0b0b0; margin: 0; line-height: 1.6; white-space: pre-wrap; }
 .post-image-container { width: 100%; max-height: 500px; overflow: hidden; }
 .post-image { width: 100%; height: auto; display: block; }
-
-/* ESTILOS DO LIKE DO POST */
+.feed-container::-webkit-scrollbar { width: 8px; }
+.feed-container::-webkit-scrollbar-track { background: #222; }
+.feed-container::-webkit-scrollbar-thumb { background: var(--cor2); border-radius: 4px; }
+.feed-container::-webkit-scrollbar-thumb:hover { background: var(--cor1); }
 .post-footer { padding: 0.5rem 1rem 1rem 1rem; display: flex; align-items: center; gap: 0.75rem; border-top: 1px solid var(--cor2); }
 .post-footer .like-button { background: var(--cor2); border: none; color: var(--cor3); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-family: inherit; font-size: 0.9rem; }
 .post-footer .like-button:hover:not(:disabled) { background-color: #444; }
@@ -103,7 +115,6 @@
 .post-footer .like-count { font-size: 0.8rem; color: #aaa; }
 .post-footer .like-count .anonimato-nota { font-size: 0.6rem; color: #777; margin-left: 0.5rem; }
 
-/* --- RESPONSIVIDADE PADRONIZADA --- */
 @media (max-width: 1700px) { .feed-view { padding: 0 16rem; } }
 @media (max-width: 1600px) { .feed-view { padding: 0 14rem; } }
 @media (max-width: 1500px) {
@@ -127,16 +138,13 @@
     padding: 0 2rem 4rem 2rem;
   }
   .feed-container {
-    padding-right: 0; /* Remove o padding extra que era para a scrollbar */
+    padding-right: 0;
     max-height: 85vh;
-    /* --- CÓDIGO PARA OCULTAR A SCROLLBAR --- */
-    scrollbar-width: none; /* Para Firefox */
+    scrollbar-width: none;
   }
   .feed-container::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari, Edge, etc. */
+    display: none;
   }
-  /* --- FIM DO CÓDIGO PARA OCULTAR A SCROLLBAR --- */
-
   .feed-header {
     margin-bottom: 1rem;
   }
@@ -167,7 +175,6 @@
 @media (max-width: 500px) { .feed-view { padding: 0 1rem; } .feed-header h1 { font-size: 1rem; } .feed-description { line-height: 1; } }
 @media (max-width: 400px) { .feed-view { padding: 0 0.5rem; } }
 
-/* Skeleton Loader */
 .skeleton-post { padding: 1rem; }
 .skeleton-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: var(--cor2); }
 .skeleton-author-info { flex: 1; }

@@ -1,16 +1,32 @@
-// src/components/Header.jsx
 import React from 'react';
 
-export default function Header({ sectionRef, refs }) {
+// 1. RECEBE A PROP 'onNavigate'
+export default function Header({ sectionRef, refs, onNavigate }) {
   return (
     <header id="inicio" ref={sectionRef}>
       <div className="header-content">
         <nav className="links" aria-label="Navegação principal do site">
           <ul className="links-redes" ref={refs.header_redesSociais}>
-            <li className="insta"> <a href="#" aria-label="Instagram"> <img src="/insta.png" alt="Instagram logo" /> </a> </li>
-            <li className="git"> <a href="#" aria-label="Github"> <img src="/git.png" alt="Github logo" /> </a> </li>
-            <li className="linkedin"> <a href="#" aria-label="LinkedIn"> <img src="/linkedin.png" alt="LinkedIn logo" /> </a> </li>
-            <li className="whatsapp"> <a href="#" aria-label="WhatsApp"> <img src="/whatsapp.png" alt="WhatsApp logo" /> </a> </li>
+            <li className="insta">
+              <a href="https://www.instagram.com/marciijunior/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="/insta.png" alt="Instagram logo" />
+              </a>
+            </li>
+            <li className="git">
+              <a href="https://github.com/marciijunior" target="_blank" rel="noopener noreferrer" aria-label="Github">
+                <img src="/git.png" alt="Github logo" />
+              </a>
+            </li>
+            <li className="linkedin">
+              <a href="https://www.linkedin.com/in/marciijunior" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="/linkedin.png" alt="LinkedIn logo" />
+              </a>
+            </li>
+            <li className="whatsapp">
+              <a href="https://wa.me/5518996741310?text=Olá!" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <img src="/whatsapp.png" alt="WhatsApp logo" />
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -26,7 +42,8 @@ export default function Header({ sectionRef, refs }) {
           </div>
           <div className="div-btn">
             <button className="btn">Download CV</button>
-            <button className="btn2">My Work</button>
+            {/* 2. ADICIONA O onClick AQUI, CHAMANDO A FUNÇÃO COM O ID 'jornada' */}
+            <button className="btn2" onClick={() => onNavigate('jornada')}>My Work</button>
           </div>
           <div className="invite-to-scroll">
             <div className="animationScrollInvite"></div>

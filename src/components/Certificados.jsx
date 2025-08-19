@@ -1,5 +1,3 @@
-// src/components/Certificados.jsx (Atualizado para 1 slide por vez no mobile)
-
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -7,40 +5,40 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function Certificados({ sectionRef, certificatesData }) {
+// PROP 'REFS' ADICIONADA AQUI
+export default function Certificados({ sectionRef, certificatesData, refs }) {
   return (
     <section
       id="certificados"
       ref={sectionRef}
       className="container-certificados"
     >
+      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-certificado">
-        <h2 className="titulo-certificado">
+        <h2 className="titulo-certificado" ref={refs.certificados_titulo}>
           Certificados e Cursos
         </h2>
-        <p className="texto-certificado">
+        <p className="texto-certificado" ref={refs.certificados_texto}>
           Algumas das minhas certificações e cursos mais recentes.
         </p>
       </div>
-      <div>
+      <div ref={refs.certificados_container}>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={30}
-          slidesPerView={1} // <-- PADRÃO AGORA É 1 SLIDE
+          slidesPerView={1}
           loop={true}
           pagination={{ clickable: true }}
           navigation={true}
           breakpoints={{
-            // Acima de 768px, mostra 2 slides
             768: {
               slidesPerView: 2,
               spaceBetween: 30,
             },
-            // Acima de 1024px, mostra 3 slides
             1024: {
               slidesPerView: 3,
               spaceBetween: 40,
-            }
+            },
           }}
           className="certificates-swiper"
         >

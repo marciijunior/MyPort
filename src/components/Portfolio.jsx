@@ -1,54 +1,60 @@
-// src/components/Portfolio.jsx (Lógica de clique e modal corrigida)
+import React, { useState } from "react";
 
-import React, { useState } from 'react';
-
-export default function Portfolio({ sectionRef, portfolioData, onProjectClick }) {
+// PROP 'REFS' ADICIONADA AQUI
+export default function Portfolio({
+  sectionRef,
+  portfolioData,
+  onProjectClick,
+  refs,
+}) {
   const [expandedId, setExpandedId] = useState(portfolioData[0]?.id || null);
 
   const handleCardClick = (e, project) => {
-    // Se o card clicado já estiver expandido, abre o modal.
     if (expandedId === project.id) {
-      onProjectClick(project); // Usa a prop para abrir o modal
-      return; // Encerra a função aqui
+      onProjectClick(project);
+      return;
     }
 
-    // Se não, apenas expande o novo card.
     setExpandedId(project.id);
 
     setTimeout(() => {
       e.currentTarget.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'center'
+        behavior: "smooth",
+        block: "start",
+        inline: "center",
       });
     }, 400);
   };
 
   return (
     <section id="portfolio" ref={sectionRef} className="container-portfolio">
+      {/* REFS APLICADAS AOS ELEMENTOS */}
       <div className="interligacao-portfolio">
-        <h2 className="titulo-portfolio">Portfólio</h2>
-        <p className="texto-portfolio">
+        <h2 className="titulo-portfolio" ref={refs.portfolio_titulo}>
+          Portfólio
+        </h2>
+        <p className="texto-portfolio" ref={refs.portfolio_texto}>
           Trabalhos realizados em minha carreira
         </p>
       </div>
 
-      <div className="flex-cards-container">
+      <div className="flex-cards-container" ref={refs.portfolio_container}>
         {portfolioData.map((project, index) => (
           <div
             key={project.id}
-            className={`portfolio-card ${expandedId === project.id ? 'is-expanded' : ''}`}
-            // A função de clique agora recebe o objeto 'project' inteiro
+            className={`portfolio-card ${
+              expandedId === project.id ? "is-expanded" : ""
+            }`}
             onClick={(e) => handleCardClick(e, project)}
           >
             <div className="portfolio-img-container">
-              <img 
-                src={project.imageSrc} 
+              <img
+                src={project.imageSrc}
                 alt={`Imagem do projeto ${project.title}`}
                 className="portfolio-card-img"
               />
             </div>
-            
+
             <div className="card-row">
               <div className="card-icon">{index + 1}</div>
               <div className="card-description">

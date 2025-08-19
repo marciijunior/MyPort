@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 // Componentes
 import Sidebar from "./components/Sidebar";
@@ -17,7 +17,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/ScrollReveal.css";
 import "./styles/Portfolio.css";
-import "./styles/Scrollbar.css";
 import "./styles/Modal.css";
 import "./styles/Sidebar.css";
 import "./styles/InviteScroll.css";
@@ -25,10 +24,20 @@ import "./styles/AboutMe.css";
 import "./styles/TechStack.css";
 import "./styles/Certificates.css";
 import "./styles/Feed.css";
+import "./styles/Scrollbar.css";
 
 // Hooks
 import ScrollReveal from "scrollreveal";
 import { useScrollReveal } from "./hooks/useScrollReveal";
+
+const sectionIds = [
+  "inicio",
+  "sobre",
+  "jornada",
+  "tecnologias",
+  "portfolio",
+  "certificados",
+];
 
 export default function App() {
   // --- ESTADOS ---
@@ -200,6 +209,8 @@ export default function App() {
   };
 
   // --- LÓGICA DE NAVEGAÇÃO E SCROLL ---
+  const scrollContainerRef = useRef(null);
+
   const sectionRefs = {
     inicio: useRef(null),
     sobre: useRef(null),
@@ -209,15 +220,48 @@ export default function App() {
     certificados: useRef(null),
   };
 
-  const handleNavigate = (id) => {
-    sectionRefs[id].current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
+  const handleNavigate = useCallback((id) => {
+    const targetElement = sectionRefs[id].current;
+    const containerElement = scrollContainerRef.current;
 
+    if (targetElement && containerElement) {
+      const currentScrollTop = containerElement.scrollTop;
+      const targetOffsetTop = targetElement.offsetTop;
+
+      const isScrollingDown = targetOffsetTop > currentScrollTop;
+
+      let topPosition;
+
+      if (isScrollingDown) {
+        topPosition =
+          targetOffsetTop +
+          targetElement.offsetHeight -
+          containerElement.clientHeight;
+      } else {
+        topPosition = targetOffsetTop;
+      }
+
+      if (id === "inicio") {
+        topPosition = 0;
+      }
+
+      containerElement.scrollTo({
+        top: topPosition,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
+  // useEffect para o IntersectionObserver (CORRIGIDO)
   useEffect(() => {
-    const observerOptions = { root: null, rootMargin: "0px", threshold: 0.4 };
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const observerOptions = {
+      root: container,
+      rootMargin: "0px",
+      threshold: 0.4,
+    };
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) setActiveSection(entry.target.id);
@@ -227,9 +271,11 @@ export default function App() {
       observerCallback,
       observerOptions
     );
+
     Object.values(sectionRefs).forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
+
     return () => {
       Object.values(sectionRefs).forEach((ref) => {
         if (ref.current) observer.unobserve(ref.current);
@@ -237,51 +283,99 @@ export default function App() {
     };
   }, []);
 
+  // useEffect para o ScrollReveal (CORRIGIDO)
   useEffect(() => {
-    ScrollReveal({
-      distance: "100px",
-      duration: 1000,
-      opacity: 0,
-      reset: true,
-      easing: "cubic-bezier(0.5, 0, 0, 1)",
-    });
-  }, []);
+    // Verifica se o container já existe no DOM
+    if (scrollContainerRef.current) {
+      const sr = ScrollReveal({
+        container: scrollContainerRef.current,
+        distance: "100px",
+        duration: 1000,
+        opacity: 0,
+        reset: false,
+        easing: "cubic-bezier(0.5, 0, 0, 1)",
+      });
+      // Função de limpeza para destruir a instância do ScrollReveal
+      return () => sr.destroy();
+    }
+  }, []); // Roda apenas uma vez após a montagem inicial
 
   const scrollRefs = {
+    // Header
     header_redesSociais: useScrollReveal({ origin: "left" }),
     header_olaEuSou: useScrollReveal({ origin: "left", delay: 200 }),
     header_titulo: useScrollReveal({ origin: "left", delay: 400 }),
     header_subtitulo: useScrollReveal({ origin: "left", delay: 600 }),
     header_imagem: useScrollReveal({ origin: "right", delay: 500 }),
+
+    // Sobre Mim
+    sobreMim_imagem1: useScrollReveal({ origin: "bottom", delay: 100 }),
+    sobreMim_imagem2: useScrollReveal({ origin: "top", delay: 200 }),
+    sobreMim_imagem3: useScrollReveal({ origin: "bottom", delay: 300 }),
+    sobreMim_titulo: useScrollReveal({ origin: "right" }),
+    sobreMim_subtitulo: useScrollReveal({ origin: "right", delay: 200 }),
+    sobreMim_paragrafo1: useScrollReveal({ origin: "right", delay: 400 }),
+    sobreMim_paragrafo2: useScrollReveal({ origin: "right", delay: 600 }),
+
+    // Feed (Jornada)
+    feed_titulo: useScrollReveal({ origin: "bottom" }),
+    feed_descricao: useScrollReveal({ origin: "bottom", delay: 200 }),
+    feed_timeline: useScrollReveal({ origin: "bottom", delay: 400 }),
+    feed_container: useScrollReveal({ origin: "bottom", delay: 600 }),
+
+    // Tecnologias
+    tecnologias_titulo: useScrollReveal({ origin: "bottom" }),
+    tecnologias_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    tecnologias_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Portfólio
+    portfolio_titulo: useScrollReveal({ origin: "bottom" }),
+    portfolio_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    portfolio_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Certificados
+    certificados_titulo: useScrollReveal({ origin: "bottom" }),
+    certificados_texto: useScrollReveal({ origin: "bottom", delay: 200 }),
+    certificados_container: useScrollReveal({ origin: "bottom", delay: 400 }),
+
+    // Footer
+    footer: useScrollReveal({ origin: "right" }),
   };
 
   return (
     <div className="app-container">
       <Sidebar onNavigate={handleNavigate} activeSection={activeSection} />
-      <div className="content-wrapper">
-        <Header sectionRef={sectionRefs.inicio} refs={scrollRefs} />
+      <div className="content-wrapper" ref={scrollContainerRef}>
+        <Header
+          sectionRef={sectionRefs.inicio}
+          refs={scrollRefs}
+          onNavigate={handleNavigate}
+        />
         <main>
-          <AboutMe sectionRef={sectionRefs.sobre} />
+          <AboutMe sectionRef={sectionRefs.sobre} refs={scrollRefs} />
 
           <div id="jornada" ref={sectionRefs.jornada}>
-            <Feed />
+            <Feed refs={scrollRefs} />
           </div>
 
           <Tecnologias
             sectionRef={sectionRefs.tecnologias}
             techStackData={techStackData}
+            refs={scrollRefs}
           />
           <Portfolio
             sectionRef={sectionRefs.portfolio}
             portfolioData={portfolioData}
             onProjectClick={setSelectedProject}
+            refs={scrollRefs}
           />
           <Certificados
             sectionRef={sectionRefs.certificados}
             certificatesData={certificatesData}
+            refs={scrollRefs}
           />
         </main>
-        <Footer />
+        <Footer animRef={scrollRefs.footer} />
 
         {selectedProject && (
           <div
