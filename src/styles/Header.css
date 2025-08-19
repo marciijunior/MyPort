@@ -72,6 +72,9 @@ header#inicio { /* <-- MUDANÇA PRINCIPAL AQUI */
 }
 
 @media (max-width: 500px) {
+  .links {
+  padding: 2.5rem 2.5rem 0 2.5rem;
+}
   .insta img,
   .git img,
   .linkedin img,
