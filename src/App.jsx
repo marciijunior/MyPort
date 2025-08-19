@@ -30,15 +30,6 @@ import "./styles/Scrollbar.css";
 import ScrollReveal from "scrollreveal";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
-const sectionIds = [
-  "inicio",
-  "sobre",
-  "jornada",
-  "tecnologias",
-  "portfolio",
-  "certificados",
-];
-
 export default function App() {
   // --- ESTADOS ---
   const [selectedProject, setSelectedProject] = useState(null);
