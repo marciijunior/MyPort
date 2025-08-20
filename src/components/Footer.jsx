@@ -26,7 +26,7 @@ export default function Footer({ animRef }) {
           </a>
         </li>
       </ul>
-      <p className="footer-text">© 2025 Marcio Junior - Desenvolvido com React</p>
+      <p className="footer-text">© 2025 Desenvolvido por Marcio Junior</p>
     </footer>
   );
 }
