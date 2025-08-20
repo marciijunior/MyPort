@@ -37,7 +37,7 @@ export default function Header({ sectionRef, refs, onNavigate }) {
               <p className="p-im">Olá, eu sou</p>
             </div>
             <h1 className="titulo-premain" ref={refs.header_titulo}> Marcio Junior </h1>
-            <h1 className="p-premain" ref={refs.header_subtitulo}> O Web desenvolvedor e designer UI/UX. </h1>
+            <h1 className="p-premain" ref={refs.header_subtitulo}> O Desenvolvedor Fullstack e designer UI/UX. </h1>
           </div>
           <div className="div-btn">
             <button className="btn">Download CV</button>
