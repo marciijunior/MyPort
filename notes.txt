@@ -1,0 +1,5 @@
+Domínio - https://dcc.godaddy.com/control/portfolio
+Deploy - https://vercel.com/marciijuniors-projects/my.port
+Deploy de Imagens - https://marciijunior.imgur.com/all/
+Planilha/Banco de dados Feed - https://docs.google.com/spreadsheets/d/13fINmKE5AK72q4tluMfn6gvTm3s70CuFsmQXWbxkl8s/edit?gid=1250598408#gid=1250598408
+GitHub - https://github.com/marciijunior/MyPort

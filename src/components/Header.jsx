@@ -40,7 +40,9 @@ export default function Header({ sectionRef, refs, onNavigate }) {
             <h1 className="p-premain" ref={refs.header_subtitulo}> O Desenvolvedor Fullstack e designer UI/UX. </h1>
           </div>
           <div className="div-btn">
-            <button className="btn">Download CV</button>
+            <a href="/Curriculo.pdf" download="Curriculo-Marcio-Junior.pdf" className="btn-link">
+              <button className="btn">Download CV</button>
+            </a>
             <button className="btn2" onClick={() => onNavigate('jornada')}>My Work</button>
           </div>
           <div className="invite-to-scroll">
