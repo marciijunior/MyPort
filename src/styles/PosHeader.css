@@ -88,15 +88,11 @@
 
 .btn {
   background-color: var(--cor4);
-  /* box-shadow: inset 2px 2px 10px rgba(37, 37, 37, 0.514),
-    inset -2px -3px 5px rgba(0, 0, 0, 0.26); */
   color: var(--cor3);
   transition: background-color 0.3s ease;
 }
 .btn2 {
-  background-color: var(--cor2);
-  /* box-shadow: inset 2px 2px 10px rgba(126, 126, 126, 0.514),
-    inset -2px -3px 5px rgba(0, 0, 0, 0.26); */
+  background: #141414;
   color: var(--cor3);
   transition: background-color 0.3s ease;
 }
@@ -126,8 +122,11 @@
 }
 
 .btn2:hover {
-  color: var(--cor5);
-  background-color: var(--cor3);
+  transition: all 0.2s;
+  background-color: #292929;
+  box-shadow: inset 2px 2px 5px rgb(34, 34, 34),
+    inset -2px -2px 5px rgb(22, 22, 22);
+  color: var(--cor3);
 }
 
 .btn:active,
@@ -243,7 +242,8 @@
   .img-premain img {
     height: 25rem;
   }
-  .btn, .btn2{
+  .btn,
+  .btn2 {
     font-size: 0.6rem;
   }
 }

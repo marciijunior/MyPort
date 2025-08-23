@@ -40,7 +40,6 @@ export default function Header({ sectionRef, refs, onNavigate }) {
             <h1 className="p-premain" ref={refs.header_subtitulo}> Desenvolvedor Fullstack e designer UI/UX. </h1>
           </div>
           <div className="div-btn">
-            {/* Botão com a estrutura de ícone para a animação */}
             <a href="/Curriculo_Marcio_Junior.pdf" download="Curriculo-Marcio-Junior.pdf" className="btn">
               <span>Download CV</span>
               <i>
@@ -51,11 +50,9 @@ export default function Header({ sectionRef, refs, onNavigate }) {
                 </svg>
               </i>
             </a>
-            
-            {/* Botão sem ícone, com um hover mais simples */}
-            <a href="#portfolio" className="btn2" onClick={(e) => {
+            <a href="#jornada" className="btn2" onClick={(e) => {
               e.preventDefault();
-              onNavigate('portfolio');
+              onNavigate('jornada');
             }}>
               <span>My Work</span>
             </a>
