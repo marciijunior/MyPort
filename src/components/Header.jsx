@@ -36,14 +36,29 @@ export default function Header({ sectionRef, refs, onNavigate }) {
               <img className="img-im" src="/img-im.png" alt="I am" />
               <p className="p-im">Olá, eu sou</p>
             </div>
-            <h1 className="titulo-premain" ref={refs.header_titulo}> Marcio Junior </h1>
-            <h1 className="p-premain" ref={refs.header_subtitulo}> O Desenvolvedor Fullstack e designer UI/UX. </h1>
+            <h1 className="titulo-premain" ref={refs.header_titulo}>Marcio Junior</h1>
+            <h1 className="p-premain" ref={refs.header_subtitulo}> Desenvolvedor Fullstack e designer UI/UX. </h1>
           </div>
           <div className="div-btn">
-            <a href="/Curriculo_Marcio_Junior.pdf" download="Curriculo-Marcio-Junior.pdf" className="btn-link">
-              <button className="btn">Download CV</button>
+            {/* Botão com a estrutura de ícone para a animação */}
+            <a href="/Curriculo_Marcio_Junior.pdf" download="Curriculo-Marcio-Junior.pdf" className="btn">
+              <span>Download CV</span>
+              <i>
+                <svg className="download-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </i>
             </a>
-            <button className="btn2" onClick={() => onNavigate('jornada')}>My Work</button>
+            
+            {/* Botão sem ícone, com um hover mais simples */}
+            <a href="#portfolio" className="btn2" onClick={(e) => {
+              e.preventDefault();
+              onNavigate('portfolio');
+            }}>
+              <span>My Work</span>
+            </a>
           </div>
           <div className="invite-to-scroll">
             <div className="animationScrollInvite"></div>

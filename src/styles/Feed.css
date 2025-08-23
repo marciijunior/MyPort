@@ -56,8 +56,8 @@
 
 .timeline-year.active {
   background-color: var(--cor1);
-  color: var(--cor5);
-  font-weight: 600;
+  color: var(--cor3);
+  font-weight: 400;
 }
 
 .timeline-year-skeleton {
